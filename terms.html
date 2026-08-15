@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terms of Service — Chatstronomy</title>
+<meta name="description" content="Terms of service for the Chatstronomy Discord application: software you run yourself, no accounts, no data held by us, and what to weigh before enabling telescope control.">
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header><div class="brand"><a href="/">Chatstronomy</a></div></header>
+
+  <h1>Terms of Service</h1>
+  <p class="updated">Last updated 14 August 2026</p>
+
+  <p class="lede">
+    Chatstronomy is a program you run on your own computer. It is not a hosted
+    service, and there is no account to sign up for. These terms describe what
+    the software does, what we do and do not do, and what you take on if you
+    let it control a telescope.
+  </p>
+
+  <h2>1. What Chatstronomy is</h2>
+  <p>
+    Chatstronomy watches an <a href="https://nighttime-imaging.eu/">N.I.N.A.</a>
+    imaging session and reports it to a chat service — Discord or Matrix — as
+    images, autofocus results, and status. Optionally, it accepts commands back
+    from that chat channel.
+  </p>
+  <p>
+    You install it. You supply the Discord bot token or Matrix login. You point
+    it at your own equipment. It runs under your control, on your hardware, on
+    your network. Nothing routes through a server we operate, because we do not
+    operate one.
+  </p>
+  <p>
+    The source is published under the Apache License 2.0 at
+    <a href="https://github.com/theatrus/spacecat">github.com/theatrus/spacecat</a>.
+    Those licence terms govern the software itself; the page you are reading
+    covers the application as you use it.
+  </p>
+
+  <h2>2. We hold nothing</h2>
+  <p>
+    We run no servers for Chatstronomy, so there is nothing on our side to
+    collect, store, sell, or lose. No telemetry, no analytics inside the
+    application, no crash reporting, no licence check, no account.
+  </p>
+  <p>
+    Everything the program keeps lives on your own machine: your configuration
+    file, including the tokens you provide, and a small state file recording the
+    identifiers of the chat messages it maintains, so it can update a status
+    post rather than repeat it. Deleting the program and those files removes
+    everything it kept. See the <a href="/privacy.html">privacy statement</a>.
+  </p>
+
+  <h2>3. What does leave your machine</h2>
+  <p>
+    Whatever you tell it to post. Images, session status, equipment readings,
+    and any text it sends go to Discord or Matrix, and once there they are held
+    by that service under that service's terms, not ours. Your bot connects
+    directly; we are not in the path and cannot see, retrieve, or delete any of
+    it.
+  </p>
+  <p>
+    Treat a chat channel as a place other people can read. Astronomical images
+    carry headers, and a channel's membership can change. Deciding what is safe
+    to post — and to which channel — is yours.
+  </p>
+  <p>
+    Your use of Discord remains subject to the
+    <a href="https://discord.com/terms">Discord Terms of Service</a>, and Matrix
+    to whichever homeserver you use.
+  </p>
+
+  <h2>4. Telescope control</h2>
+
+  <div class="callout">
+    <p>
+      <strong>Read this before enabling write commands.</strong> Chatstronomy
+      can issue commands to your equipment. Turning that on means a message in
+      a chat channel can move real hardware, in the dark, with nobody standing
+      next to it.
+    </p>
+  </div>
+
+  <p>
+    Control is <strong>off unless you enable it</strong>. Out of the box the
+    application reports; it does not act. When you do enable it, commands
+    include parking and unparking the mount, aborting a capture, and starting,
+    pausing or stopping a sequence, among others.
+  </p>
+  <p>
+    Two safeguards exist, and you should understand both of their limits:
+  </p>
+  <ul>
+    <li>
+      <strong>An allow list.</strong> Only the Discord user IDs you name may
+      issue commands that change anything. It is a list you maintain — an ID
+      added carelessly, or an account you no longer control, is inside it.
+    </li>
+    <li>
+      <strong>Confirmation on destructive commands.</strong> Parking, aborting a
+      capture, and starting or stopping a sequence ask for a button press first.
+      This guards against a slip, not against someone who meant it.
+    </li>
+  </ul>
+  <p>
+    Neither safeguard can protect you from the underlying risk: <strong>your
+    equipment's safety depends on the security of a third-party chat
+    account.</strong> If a permitted Discord account is compromised, or a bot
+    token leaks, or you invite the bot to a channel whose membership you have
+    not checked, the attacker's reach is the reach of your allow list.
+  </p>
+  <p>
+    Consider what your rig does on a bad command. A mount that slews or unparks
+    can strike a pier, wrap a cable, or drive optics into an obstruction. An
+    aborted capture loses a sub; a stopped sequence loses a night. Nothing in a
+    chat channel knows whether your roof is open, whether the sun is up, or
+    whether someone is standing at the eyepiece.
+  </p>
+  <p>
+    So, plainly: enable control only if you accept that risk, keep the allow
+    list short, protect the accounts on it, and keep the physical and software
+    limits your equipment offers — horizon limits, meridian limits, roof
+    interlocks — configured and working. They, not this program, are what stops
+    a mount from hurting itself.
+  </p>
+
+  <h2>5. No warranty</h2>
+  <p>
+    Chatstronomy is provided as is, without warranty of any kind, as set out in
+    the Apache License 2.0. It is unofficial software with no affiliation to
+    N.I.N.A., Discord, or Matrix.
+  </p>
+  <p>
+    To the extent the law allows, we accept no liability for damage to
+    equipment, lost imaging time, lost or exposed data, or any other loss
+    arising from using it — including anything that follows from enabling
+    telescope control. You run it; the consequences of running it are yours.
+  </p>
+  <p>
+    Nothing here limits liability that cannot be limited by law.
+  </p>
+
+  <h2>6. Acceptable use</h2>
+  <p>
+    Do not use Chatstronomy to control equipment you are not authorised to
+    control, and do not use it in a way that breaks the terms of the chat
+    service you connect it to.
+  </p>
+
+  <h2>7. Changes</h2>
+  <p>
+    These terms may change as the software does. The date at the top is the
+    version in force, and history is public in the site's repository. Because
+    there are no accounts, there is nobody for us to notify — checking this page
+    is the only mechanism, which is one more reason it stays short.
+  </p>
+
+  <h2>8. Contact</h2>
+  <p>
+    Questions, and anything that looks like a security problem, belong at
+    <a href="https://github.com/theatrus/spacecat/issues">the project's issue
+    tracker</a>.
+  </p>
+
+  <footer>
+    <a href="/">Home</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="https://github.com/theatrus/spacecat">GitHub</a>
+  </footer>
+
+</div>
+</body>
+</html>
