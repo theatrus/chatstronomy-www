@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Terms of Service — Chatstronomy</title>
-<meta name="description" content="Terms of service for the Chatstronomy Discord application: software you run yourself, no accounts, no data held by us, and what to weigh before enabling telescope control.">
+<meta name="description" content="Terms of service for the Chatstronomy Discord bot: software you run yourself, no accounts, and what to weigh before letting slash commands control your telescope.">
 <link rel="stylesheet" href="/assets/style.css">
 </head>
 <body>
@@ -24,10 +24,11 @@
 
   <h2>1. What Chatstronomy is</h2>
   <p>
-    Chatstronomy watches an <a href="https://nighttime-imaging.eu/">N.I.N.A.</a>
-    imaging session and reports it to a chat service — Discord or Matrix — as
-    images, autofocus results, and status. Optionally, it accepts commands back
-    from that chat channel.
+    Chatstronomy is a chat bot for your telescope. It watches an
+    <a href="https://nighttime-imaging.eu/">N.I.N.A.</a> imaging session and
+    posts it to a Discord or Matrix channel as it happens — captures, autofocus
+    results, status. If you turn it on, it also accepts slash commands typed in
+    that channel and passes them to your rig.
   </p>
   <p>
     You install it. You supply the Discord bot token or Matrix login. You point
@@ -88,17 +89,17 @@
   <div class="callout">
     <p>
       <strong>Read this before enabling write commands.</strong> Chatstronomy
-      can issue commands to your equipment. Turning that on means a message in
-      a chat channel can move real hardware, in the dark, with nobody standing
-      next to it.
+      can pass slash commands to your equipment. Turning that on means a
+      message typed in a chat channel moves real hardware, in the dark, with
+      nobody standing next to it.
     </p>
   </div>
 
   <p>
-    Control is <strong>off unless you enable it</strong>. Out of the box the
-    application reports; it does not act. When you do enable it, commands
-    include parking and unparking the mount, aborting a capture, and starting,
-    pausing or stopping a sequence, among others.
+    Control is <strong>off unless you enable it</strong>. Out of the box the bot
+    posts; it does not act. When you do enable it, the slash commands include
+    parking and unparking the mount, aborting a capture, and starting, pausing
+    or stopping a sequence, among others.
   </p>
   <p>
     Two safeguards exist, and you should understand both of their limits:
