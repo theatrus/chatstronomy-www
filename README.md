@@ -1,7 +1,7 @@
 # chatstronomy-www
 
 The marketing site for **[chatstronomy.com](https://chatstronomy.com/)** — the
-rebrand of [theatrus/spacecat](https://github.com/theatrus/spacecat), a N.I.N.A.
+rebrand of [theatrus/spacecat](https://github.com/theatrus/chatstronomy), a N.I.N.A.
 observing assistant that reports an imaging session to Discord and Matrix and,
 optionally, accepts control of the rig from a chat channel.
 
