@@ -4,34 +4,151 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Chatstronomy — a Discord bot for your telescope</title>
-<meta name="description" content="Chatstronomy — a Discord bot that posts your N.I.N.A. imaging session to a channel and lets you control the rig with slash commands. Matrix supported.">
-<!-- Placeholder page: marketing copy not written yet. Keep this honest and
-     short rather than filling it with lorem ipsum that could ship by accident. -->
-<meta name="robots" content="noindex">
+<meta name="description" content="Chatstronomy posts your N.I.N.A. imaging session to a Discord channel as it happens — captures, autofocus, guiding, live status — and lets you control the rig with slash commands. Matrix supported. Open source.">
 <link rel="stylesheet" href="/assets/style.css">
+<link rel="icon" href="/assets/favicon.ico" sizes="any">
+<meta property="og:title" content="Chatstronomy — a Discord bot for your telescope">
+<meta property="og:description" content="Your N.I.N.A. imaging session, posted to chat as it happens. Slash commands to control the rig.">
+<meta property="og:image" content="https://chatstronomy.com/assets/og-image.png">
+<meta property="og:url" content="https://chatstronomy.com/">
+<meta property="og:type" content="website">
 </head>
 <body>
 <div class="wrap">
 
-  <header><div class="brand">Chatstronomy</div></header>
+  <div class="site-head">
+    <img src="/assets/logo.png" alt="">
+    <span class="brand"><a href="/">Chatstronomy</a></span>
+    <nav>
+      <a href="https://github.com/theatrus/chatstronomy">GitHub</a>
+    </nav>
+  </div>
 
-  <h1>Coming soon</h1>
-  <p class="lede">
-    A Discord bot for your telescope. It posts your N.I.N.A. imaging session to
-    a channel as it happens — captures, autofocus results, status — and you can
-    run slash commands to control the rig from the same channel. Matrix works
-    too.
-  </p>
-  <p>
-    The site is still being written. The software is open source and working
-    today under its original name:
-    <a href="https://github.com/theatrus/chatstronomy">github.com/theatrus/spacecat</a>.
-  </p>
+  <div class="hero">
+    <img class="mark" src="/assets/logo.png" alt="Chatstronomy: a space cat piped into a chat bubble">
+    <h1>A Discord bot for your telescope.</h1>
+    <p class="tagline">pipe your observatory into chat</p>
+    <p class="lede">
+      Chatstronomy watches your <a href="https://nighttime-imaging.eu/">N.I.N.A.</a>
+      rigs and posts the night to a channel as it happens — each capture, autofocus
+      run, guiding graph and status change. Run slash commands to check on the rig,
+      or to control it.
+    </p>
+    <div class="cta">
+      <a class="btn" href="https://github.com/theatrus/chatstronomy/releases/latest">Download</a>
+      <a class="btn secondary" href="https://github.com/theatrus/chatstronomy">Source on GitHub</a>
+    </div>
+    <p class="note">Windows, Linux (RPM or binary) · Apache-2.0 · Discord and Matrix</p>
+  </div>
+
+  <section>
+    <h2>What lands in the channel</h2>
+    <p class="sub">
+      Enough to know how the night is going without opening a remote desktop.
+    </p>
+    <div class="grid two">
+      <div class="card">
+        <h3>Every sub, as it lands</h3>
+        <p>New captures posted with their filter, exposure and target, on a cooldown you set so a fast sequence cannot flood the channel.</p>
+      </div>
+      <div class="card">
+        <h3>Autofocus and guiding</h3>
+        <p>Focus runs arrive as a plotted curve, and guiding as a graph — the two things you actually want to squint at mid-session.</p>
+      </div>
+      <div class="card">
+        <h3>Live status</h3>
+        <p>Sequence progress, mount state, meridian flip timing, and equipment readings, kept in one message that updates rather than repeating.</p>
+      </div>
+      <div class="card">
+        <h3>Several rigs at once</h3>
+        <p>One process drives multiple telescopes concurrently, each with its own channel or room, under one bot identity.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Graphs, not just numbers</h2>
+    <div class="grid two">
+      <figure>
+        <img src="/assets/autofocus-graph.png" alt="An autofocus run plotted as a V-curve of HFR against focuser position">
+        <figcaption>An autofocus run, plotted where you can see whether it actually found the bottom.</figcaption>
+      </figure>
+      <figure>
+        <img src="/assets/guiding-graph.png" alt="A guiding graph showing RA and Dec error over time">
+        <figcaption>Guiding error over time, so a wandering star is obvious at a glance.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section>
+    <h2>Slash commands</h2>
+    <p class="sub">
+      Ask the rig what it is doing — and, if you turn it on, tell it what to do.
+    </p>
+    <ul class="cmds">
+      <li>/status</li><li>/sequence</li><li>/target</li><li>/mount</li>
+      <li>/last-image</li><li>/autofocus</li><li>/guider</li><li>/events</li>
+      <li>/park</li><li>/unpark</li><li>/home</li><li>/cool</li>
+      <li>/change-filter</li><li>/abort-capture</li><li>/stop-sequence</li>
+    </ul>
+    <p class="note">Twenty-one in all; the read-only ones need no special permission.</p>
+
+    <div class="callout">
+      <p>
+        <strong>Control is off until you enable it.</strong> Out of the box the bot
+        posts; it does not act. Turning control on means a message typed in a chat
+        channel moves real hardware, in the dark, with nobody standing next to it.
+      </p>
+      <p>
+        Commands that change anything are limited to Discord accounts you name, and
+        the destructive ones ask for a confirmation first. Neither safeguard changes
+        the underlying trade: your equipment's safety comes to rest on the security
+        of a chat account. <a href="/terms.html">The terms</a> spell out what to weigh
+        before enabling it.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Two ways to run it</h2>
+    <div class="grid two">
+      <div class="card">
+        <h3>On your own machine <span class="pill">available now</span></h3>
+        <p>
+          Install it beside N.I.N.A. or on a box that can reach it, bring your own
+          Discord bot token or Matrix login, and point it at your rigs. Nothing
+          routes through anyone else's server. Runs as a Windows service or a Linux
+          systemd unit.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Hosted hub <span class="pill">in progress</span></h3>
+        <p>
+          Install one Chatstronomy app into your Discord server, pair your telescopes
+          through a web page, and skip running a bot at all. Not open yet — it is
+          being built in the open alongside everything else.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Open source, and honest about it</h2>
+    <p class="sub" style="max-width:64ch">
+      Chatstronomy is Apache-2.0 and developed in the open at
+      <a href="https://github.com/theatrus/chatstronomy">github.com/theatrus/chatstronomy</a>.
+      It is unofficial software with no affiliation to N.I.N.A., Discord or Matrix.
+      The name is bilingual — <em>chat</em> is the destination in English and the cat
+      in French — and the logo says the same thing as a pipeline:
+      <code>space cat | chat</code>.
+    </p>
+  </section>
 
   <footer>
+    <a href="https://github.com/theatrus/chatstronomy">GitHub</a>
     <a href="/terms.html">Terms</a>
     <a href="/privacy.html">Privacy</a>
-    <a href="https://github.com/theatrus/chatstronomy">GitHub</a>
+    <a href="https://github.com/theatrus/chatstronomy/issues">Report an issue</a>
   </footer>
 
 </div>

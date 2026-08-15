@@ -20,10 +20,15 @@ it deploys** via a flotswarm webhook.
 
 | Path | What |
 |---|---|
-| `index.html` | landing page — **placeholder, copy not written yet** |
+| `index.html` | landing page |
 | `terms.html` | terms of service for the Discord application |
 | `privacy.html` | privacy statement, same substance, separately linkable |
 | `assets/` | images, favicon |
+
+Branding comes from `theatrus/chatstronomy` (`assets/branding/`) — the same
+artwork on every surface. `assets/logo.png` is the transparent master,
+`favicon.ico` carries the Windows sizes, and the graph samples are real output
+from the app rather than mock-ups.
 
 `terms.html` and `privacy.html` exist because Discord's application settings ask
 for a Terms of Service URL and a Privacy Policy URL before an app can be
@@ -36,14 +41,6 @@ Plain files — no generator, no npm. Analytics and the cross-site "More project
 band are injected by nginx from shared snippets, so no tag belongs in the HTML
 (see `tfinfra docs/www-sites.md`).
 
-## To do before launch
-
-- Marketing copy for `index.html` (deliberately a placeholder; it carries
-  `noindex` until it says something).
-- A favicon and an OG image in `assets/` — no `<link rel="icon">` is referenced
-  yet, so nothing 404s in the meantime.
-- Review `terms.html` and `privacy.html` before pointing Discord's application
-  settings at them.
 
 ## The multi-server change is a terms change
 
