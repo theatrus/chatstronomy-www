@@ -40,9 +40,9 @@ listing is available, or add the development repository alongside it:
 
 `https://raw.githubusercontent.com/theatrus/chatstronomy-nina-plugin/main/registry`
 
-Keep its install warning accurate: development packages contain the pinned,
-signed Rust runtime but an unsigned development `Chatstronomy.dll`; official
-plugin tags sign and verify both before packaging.
+Keep its install note accurate: the development repository serves the current
+tagged package without a separate beta channel. Plugin tags sign and verify
+both the pinned Rust runtime and `Chatstronomy.dll` before packaging.
 
 `terms.html` and `privacy.html` exist because Discord's application settings ask
 for a Terms of Service URL and a Privacy Policy URL before an app can be

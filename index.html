@@ -76,16 +76,16 @@
       <h3>Install from the N.I.N.A. plugin manager</h3>
       <ol>
         <li>Open <strong>Plugins &gt; Available</strong>, find <strong>Chatstronomy</strong>, install it, and restart N.I.N.A. once it appears in the official repository.</li>
-        <li>For the current development build, open <strong>Options &gt; General &gt; Plugin Repositories</strong>, select <strong>+</strong>, and add <a href="https://raw.githubusercontent.com/theatrus/chatstronomy-nina-plugin/main/registry"><code>https://raw.githubusercontent.com/theatrus/chatstronomy-nina-plugin/main/registry</code></a>.</li>
+        <li>For the current release from our development repository, open <strong>Options &gt; General &gt; Plugin Repositories</strong>, select <strong>+</strong>, and add <a href="https://raw.githubusercontent.com/theatrus/chatstronomy-nina-plugin/main/registry"><code>https://raw.githubusercontent.com/theatrus/chatstronomy-nina-plugin/main/registry</code></a>.</li>
         <li>Return to <strong>Plugins &gt; Available</strong>, install <strong>Chatstronomy</strong>, and restart N.I.N.A.</li>
         <li>Open <a href="https://hub.chatstronomy.com/">Chatstronomy Hub</a>, create a pairing code, then choose <strong>Chatstronomy.com — hosted bot</strong> in the plugin and pair the rig.</li>
       </ol>
       <p class="note">
         N.I.N.A. supports more than one plugin repository, so adding the
-        development repository does not replace the official one. Development
-        packages use a signed, release-pinned runtime but currently carry an
-        unsigned development <code>Chatstronomy.dll</code>. Official tagged
-        packages sign and verify both binaries. See the
+        development repository does not replace the official one. It serves
+        the current tagged package without a separate beta channel. Both the
+        release-pinned runtime and <code>Chatstronomy.dll</code> are signed and
+        verified before publication. See the
         <a href="https://github.com/theatrus/chatstronomy-nina-plugin#install-from-nina">plugin repository</a>
         for current installation details.
       </p>
