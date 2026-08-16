@@ -30,6 +30,14 @@ artwork on every surface. `assets/logo.png` is the transparent master,
 `favicon.ico` carries the Windows sizes, and the graph samples are real output
 from the app rather than mock-ups.
 
+The landing page also tracks the separately released
+[`theatrus/chatstronomy-nina-plugin`](https://github.com/theatrus/chatstronomy-nina-plugin):
+native Direct integration, local Discord/Matrix delivery, Advanced API
+compatibility, multi-machine hub pairing, and development-build installation.
+Keep its install warning accurate: ordinary CI packages contain the pinned,
+signed Rust runtime but an unsigned development `Chatstronomy.dll`; official
+plugin tags sign and verify both before packaging.
+
 `terms.html` and `privacy.html` exist because Discord's application settings ask
 for a Terms of Service URL and a Privacy Policy URL before an app can be
 verified or listed. They describe software you run yourself; there is no service
