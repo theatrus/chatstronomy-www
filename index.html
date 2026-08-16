@@ -20,6 +20,7 @@
     <img src="/assets/logo.png" alt="">
     <span class="brand"><a href="/">Chatstronomy</a></span>
     <nav>
+      <a href="https://hub.chatstronomy.com/">Hub</a>
       <a href="#nina-plugin">N.I.N.A. plugin</a>
       <a href="https://github.com/theatrus/chatstronomy">Backend</a>
     </nav>
@@ -36,8 +37,8 @@
       or to control it.
     </p>
     <div class="cta">
-      <a class="btn" href="https://github.com/theatrus/chatstronomy-nina-plugin">N.I.N.A. plugin</a>
-      <a class="btn secondary" href="https://github.com/theatrus/chatstronomy/releases/latest">Backend download</a>
+      <a class="btn" href="https://hub.chatstronomy.com/">Open Chatstronomy Hub</a>
+      <a class="btn secondary" href="#install-plugin">Install the N.I.N.A. plugin</a>
     </div>
     <p class="note">N.I.N.A. 3.2+ on Windows · standalone Windows and Linux backend · Apache-2.0</p>
   </div>
@@ -51,41 +52,42 @@
     </p>
     <div class="grid two">
       <div class="card">
-        <h3>Simple local mode</h3>
+        <h3>Recommended: Chatstronomy Hub</h3>
         <p>
-          N.I.N.A. starts a bundled Chatstronomy runtime and talks to it over a
-          current-user-only pipe. Send notifications through a Discord webhook,
-          run your own Discord application for slash commands, use a Matrix
-          account on an HTTPS homeserver, or deliver to Discord and Matrix at
-          the same time.
+          Pair the plugin with <a href="https://hub.chatstronomy.com/">Chatstronomy Hub</a>
+          for the simplest setup. Each N.I.N.A. machine connects outbound over
+          authenticated WSS, so one centralized Discord or Matrix bot can serve
+          rigs on different systems without opening observatory ports or copying
+          chat credentials to every computer.
         </p>
       </div>
       <div class="card">
-        <h3>One hub, several observatories</h3>
+        <h3>Local and Advanced API modes</h3>
         <p>
-          Hosted mode pairs each plugin with the Chatstronomy hub. Every N.I.N.A. machine connects outbound over
-          authenticated WSS, so one centralized bot can serve rigs on different
-          systems without opening observatory ports or copying chat credentials
-          to every computer. The complete integration is in the development
-          build while the public hosted service is prepared separately.
+          Keep everything on the observatory computer with a Discord webhook,
+          your own Discord application, or a Matrix account on an HTTPS homeserver.
+          The standalone backend can also continue to read N.I.N.A. through
+          Advanced API.
         </p>
       </div>
     </div>
 
-    <div class="install">
-      <h3>Install a development build</h3>
+    <div class="install" id="install-plugin">
+      <h3>Install from the N.I.N.A. plugin manager</h3>
       <ol>
-        <li>Open the latest successful <a href="https://github.com/theatrus/chatstronomy-nina-plugin/actions/workflows/ci.yml?query=branch%3Amain">plugin CI run on <code>main</code></a>.</li>
-        <li>Download and extract <code>chatstronomy-nina-package-smoke-test</code>.</li>
-        <li>Exit N.I.N.A. and extract the inner <code>Chatstronomy.NINA.0.1.0.10.zip</code> into <code>%LOCALAPPDATA%\NINA\Plugins\3.0.0\Chatstronomy</code>.</li>
-        <li>Restart N.I.N.A. and open <strong>Plugins &gt; Installed &gt; Chatstronomy</strong>.</li>
+        <li>Open <strong>Plugins &gt; Available</strong>, find <strong>Chatstronomy</strong>, install it, and restart N.I.N.A. once it appears in the official repository.</li>
+        <li>For the current development build, open <strong>Options &gt; General &gt; Plugin Repositories</strong>, select <strong>+</strong>, and add <a href="https://raw.githubusercontent.com/theatrus/chatstronomy-nina-plugin/main/registry"><code>https://raw.githubusercontent.com/theatrus/chatstronomy-nina-plugin/main/registry</code></a>.</li>
+        <li>Return to <strong>Plugins &gt; Available</strong>, install <strong>Chatstronomy</strong>, and restart N.I.N.A.</li>
+        <li>Open <a href="https://hub.chatstronomy.com/">Chatstronomy Hub</a>, create a pairing code, then choose <strong>Chatstronomy.com — hosted bot</strong> in the plugin and pair the rig.</li>
       </ol>
       <p class="note">
-        Development CI packages are for testing: the bundled Rust runtime is
-        signed and release-pinned, while the development <code>Chatstronomy.dll</code>
-        is unsigned. Official tagged packages sign and verify both binaries.
-        Source and contributor registry instructions live in the
-        <a href="https://github.com/theatrus/chatstronomy-nina-plugin#install-a-development-build">plugin repository</a>.
+        N.I.N.A. supports more than one plugin repository, so adding the
+        development repository does not replace the official one. Development
+        packages use a signed, release-pinned runtime but currently carry an
+        unsigned development <code>Chatstronomy.dll</code>. Official tagged
+        packages sign and verify both binaries. See the
+        <a href="https://github.com/theatrus/chatstronomy-nina-plugin#install-from-nina">plugin repository</a>
+        for current installation details.
       </p>
     </div>
   </section>
@@ -162,22 +164,21 @@
     <h2>Choose your topology</h2>
     <div class="grid two">
       <div class="card">
+        <h3>Chatstronomy Hub <span class="pill">recommended</span></h3>
+        <p>
+          Pair each N.I.N.A. installation with one centrally managed bot across
+          machines. The observatory side stays outbound-only and reconnects
+          without exposing N.I.N.A. or Advanced API to the internet.
+          <a href="https://hub.chatstronomy.com/">Open the Hub</a> to begin.
+        </p>
+      </div>
+      <div class="card">
         <h3>On your own machine <span class="pill">available now</span></h3>
         <p>
           Use the N.I.N.A. plugin's native Direct mode, or run the standalone
           backend against Advanced API. Bring a Discord webhook, your own Discord
           application, or a Matrix login. Nothing routes through anyone else's
           server; the backend can also run as a Windows service or Linux systemd unit.
-        </p>
-      </div>
-      <div class="card">
-        <h3>Hosted hub <span class="pill">development</span></h3>
-        <p>
-          The plugin can pair each N.I.N.A. installation with one centrally
-          managed bot across machines. The observatory side stays outbound-only
-          and reconnects without exposing N.I.N.A. or Advanced API to the
-          internet. Public hosted access will follow its service-specific terms
-          and privacy statement.
         </p>
       </div>
     </div>
@@ -196,6 +197,7 @@
   </section>
 
   <footer>
+    <a href="https://hub.chatstronomy.com/">Chatstronomy Hub</a>
     <a href="https://github.com/theatrus/chatstronomy">Backend source</a>
     <a href="https://github.com/theatrus/chatstronomy-nina-plugin">Plugin source</a>
     <a href="/terms.html">Terms</a>

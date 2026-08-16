@@ -85,6 +85,7 @@ ul.cmds li {
 }
 .install h3 { margin: 0 0 8px; font-size: 1rem; }
 .install ol { margin: 0; padding-left: 22px; }
+.install code { overflow-wrap: anywhere; }
 .install .note { margin-bottom: 0; }
 
 /* pages (terms/privacy) */
