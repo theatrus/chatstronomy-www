@@ -46,9 +46,9 @@
   <section id="nina-plugin">
     <h2>Chat, built into N.I.N.A.</h2>
     <p class="sub">
-      The new plugin reads N.I.N.A. natively, renders guider and autofocus
-      graphs, and exposes approved bot commands. Advanced API polling is
-      deprecated and retained only so existing installations can migrate.
+      The plugin reads N.I.N.A. natively, renders guider and autofocus graphs,
+      sends the event families you choose, and exposes approved bot commands.
+      No N.I.N.A. web server or polling setup is required.
     </p>
     <div class="grid two">
       <div class="card">
@@ -66,8 +66,8 @@
         <p>
           Keep everything on the observatory computer with a Discord webhook,
           your own Discord application, or a Matrix account on an HTTPS homeserver.
-          Existing standalone backend deployments can continue through deprecated
-          Advanced API polling while they migrate to the N.I.N.A. plugin.
+          The plugin starts its signed, release-pinned Chatstronomy runtime in
+          the background and supplies N.I.N.A. data directly.
         </p>
       </div>
     </div>
@@ -100,7 +100,7 @@
     <div class="grid two">
       <div class="card">
         <h3>Every sub, as it lands</h3>
-        <p>New captures posted with their filter, exposure and target, on a cooldown you set so a fast sequence cannot flood the channel.</p>
+        <p>New captures posted as useful full-size previews with their filter, exposure and target, on a cooldown you set so a fast sequence cannot flood the channel.</p>
       </div>
       <div class="card">
         <h3>Autofocus and guiding</h3>
@@ -108,11 +108,11 @@
       </div>
       <div class="card">
         <h3>Live status</h3>
-        <p>Sequence progress, mount state, meridian flip timing, and equipment readings, kept in one message that updates rather than repeating.</p>
+        <p>Sequence and Target Scheduler targets, cooling and timed-wait progress, slews, centering results, mount state, meridian flips, equipment readings, N.I.N.A. notifications, and optional log levels.</p>
       </div>
       <div class="card">
-        <h3>Several rigs at once</h3>
-        <p>One process drives multiple telescopes concurrently, each with its own channel or room, under one bot identity.</p>
+        <h3>Several rigs, one Hub</h3>
+        <p>Pair N.I.N.A. instances on different systems with one centrally managed bot, then route each telescope to its own channel or room.</p>
       </div>
     </div>
   </section>
@@ -168,7 +168,7 @@
         <p>
           Pair each N.I.N.A. installation with one centrally managed bot across
           machines. The observatory side stays outbound-only and reconnects
-          without exposing N.I.N.A. or Advanced API to the internet.
+          without exposing N.I.N.A. to the internet.
           <a href="https://hub.chatstronomy.com/">Open the Hub</a> to begin.
         </p>
       </div>
@@ -177,8 +177,7 @@
         <p>
           Use the N.I.N.A. plugin's native Direct mode with a Discord webhook,
           your own Discord application, or a Matrix login. Nothing routes through
-          anyone else's server. Existing Windows service and Linux systemd
-          deployments may keep using deprecated Advanced API polling during migration.
+          anyone else's server, and the plugin manages the local runtime for you.
         </p>
       </div>
     </div>
