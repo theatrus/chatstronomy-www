@@ -47,8 +47,8 @@
     <h2>Chat, built into N.I.N.A.</h2>
     <p class="sub">
       The new plugin reads N.I.N.A. natively, renders guider and autofocus
-      graphs, and exposes approved bot commands. Advanced API remains available
-      for existing installations, but it is no longer required.
+      graphs, and exposes approved bot commands. Advanced API polling is
+      deprecated and retained only so existing installations can migrate.
     </p>
     <div class="grid two">
       <div class="card">
@@ -62,12 +62,12 @@
         </p>
       </div>
       <div class="card">
-        <h3>Local and Advanced API modes</h3>
+        <h3>Local Direct mode</h3>
         <p>
           Keep everything on the observatory computer with a Discord webhook,
           your own Discord application, or a Matrix account on an HTTPS homeserver.
-          The standalone backend can also continue to read N.I.N.A. through
-          Advanced API.
+          Existing standalone backend deployments can continue through deprecated
+          Advanced API polling while they migrate to the N.I.N.A. plugin.
         </p>
       </div>
     </div>
@@ -175,10 +175,10 @@
       <div class="card">
         <h3>On your own machine <span class="pill">available now</span></h3>
         <p>
-          Use the N.I.N.A. plugin's native Direct mode, or run the standalone
-          backend against Advanced API. Bring a Discord webhook, your own Discord
-          application, or a Matrix login. Nothing routes through anyone else's
-          server; the backend can also run as a Windows service or Linux systemd unit.
+          Use the N.I.N.A. plugin's native Direct mode with a Discord webhook,
+          your own Discord application, or a Matrix login. Nothing routes through
+          anyone else's server. Existing Windows service and Linux systemd
+          deployments may keep using deprecated Advanced API polling during migration.
         </p>
       </div>
     </div>

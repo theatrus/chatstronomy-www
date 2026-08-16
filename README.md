@@ -32,9 +32,9 @@ from the app rather than mock-ups.
 
 The landing page also tracks the separately released
 [`theatrus/chatstronomy-nina-plugin`](https://github.com/theatrus/chatstronomy-nina-plugin):
-native Direct integration, local Discord/Matrix delivery, Advanced API
-compatibility, and multi-machine pairing through the recommended
-[Chatstronomy Hub](https://hub.chatstronomy.com/). Installation is through
+native Direct integration, local Discord/Matrix delivery, deprecated Advanced
+API compatibility for existing installations, and multi-machine pairing through
+the recommended [Chatstronomy Hub](https://hub.chatstronomy.com/). Installation is through
 N.I.N.A.'s plugin manager: use the built-in official repository when the public
 listing is available, or add the development repository alongside it:
 
