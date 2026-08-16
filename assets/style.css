@@ -79,6 +79,13 @@ ul.cmds li {
 }
 .callout p { margin: 0; }
 .callout p + p { margin-top: 10px; }
+.install {
+  margin-top: 18px; padding: 16px 18px; border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.install h3 { margin: 0 0 8px; font-size: 1rem; }
+.install ol { margin: 0; padding-left: 22px; }
+.install .note { margin-bottom: 0; }
 
 /* pages (terms/privacy) */
 header { padding: 48px 0 24px; border-bottom: 1px solid var(--line); }
