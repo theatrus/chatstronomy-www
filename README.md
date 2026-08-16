@@ -33,15 +33,21 @@ from the app rather than mock-ups.
 The landing page also tracks the separately released
 [`theatrus/chatstronomy-nina-plugin`](https://github.com/theatrus/chatstronomy-nina-plugin):
 native Direct integration, local Discord/Matrix delivery, Advanced API
-compatibility, multi-machine hub pairing, and development-build installation.
-Keep its install warning accurate: ordinary CI packages contain the pinned,
+compatibility, and multi-machine pairing through the recommended
+[Chatstronomy Hub](https://hub.chatstronomy.com/). Installation is through
+N.I.N.A.'s plugin manager: use the built-in official repository when the public
+listing is available, or add the development repository alongside it:
+
+`https://raw.githubusercontent.com/theatrus/chatstronomy-nina-plugin/main/registry`
+
+Keep its install warning accurate: development packages contain the pinned,
 signed Rust runtime but an unsigned development `Chatstronomy.dll`; official
 plugin tags sign and verify both before packaging.
 
 `terms.html` and `privacy.html` exist because Discord's application settings ask
 for a Terms of Service URL and a Privacy Policy URL before an app can be
-verified or listed. They describe software you run yourself; there is no service
-here to have an account with.
+verified or listed. They currently describe only software you run yourself and
+do not cover the hosted Hub.
 
 ## Editing
 
@@ -50,17 +56,16 @@ band are injected by nginx from shared snippets, so no tag belongs in the HTML
 (see `tfinfra docs/www-sites.md`).
 
 
-## The multi-server change is a terms change
+## The Hub requires service terms
 
 `terms.html` and `privacy.html` currently say the application talks to nothing
-of ours, which is true of the self-hosted version and **stops being true the day
-a coordinating service ships**. Both pages are scoped to the self-hosted
-application and say a service is planned, so neither becomes false on its own —
-but neither covers a service either.
+of ours, which remains true only of the self-hosted version. Both pages are
+scoped to the self-hosted application and say a service is planned, so neither
+covers the hosted Hub.
 
-Before that service takes its first connection it needs its own terms and
-privacy statement covering, at minimum: what it stores and for how long, where
-it runs, who can see an observatory's data, what happens to it on account
-closure, and what a compromise of the service means for connected equipment —
-which, if it can relay control commands, is the same equipment risk described
-under "Telescope control", now with our infrastructure in the path.
+Before public hosted launch, the Hub needs its own terms and privacy statement
+covering, at minimum: what it stores and for how long, where it runs, who can
+see an observatory's data, what happens to it on account closure, and what a
+compromise of the service means for connected equipment — which, if it can
+relay control commands, is the same equipment risk described under "Telescope
+control", now with our infrastructure in the path.
