@@ -36,24 +36,24 @@
   </div>
 
   <div class="hero">
-    <img class="mark" src="/assets/logo.png" alt="Chatstronomy: a space cat piped into a chat bubble">
+    <img class="mark" src="/assets/logo.png" alt="Chatstronomy logo.">
     <h1>A Discord bot for your telescope.</h1>
-    <p class="tagline">pipe your observatory into chat</p>
+    <p class="tagline">Observatory notifications and control in chat</p>
     <p class="lede">
-      Chatstronomy watches your <a href="https://nighttime-imaging.eu/">N.I.N.A.</a>
-      rigs and posts the night to a channel as it happens — each capture, autofocus
-      run, guiding graph and status change. Run slash commands to check on the rig,
+      Chatstronomy monitors your <a href="https://nighttime-imaging.eu/">N.I.N.A.</a>
+      rigs and posts real-time updates to a chat channel. It posts each capture, autofocus
+      run, guiding graph, and status change. You can run slash commands to check on the rig,
       or to control it.
     </p>
     <div class="cta">
       <a class="btn" href="https://hub.chatstronomy.com/">Open Chatstronomy Hub</a>
       <a class="btn secondary" href="#install-plugin">Install the N.I.N.A. plugin</a>
     </div>
-    <p class="note">N.I.N.A. 3.2+ on Windows · standalone Windows and Linux backend · Apache-2.0</p>
+    <p class="note">The software supports N.I.N.A. 3.2+ on Windows, runs on standalone Windows and Linux backends, and is licensed under Apache-2.0.</p>
   </div>
 
   <section id="nina-plugin">
-    <h2>Chat, built into N.I.N.A.</h2>
+    <h2>The Chatstronomy plugin is built into N.I.N.A.</h2>
     <p class="sub">
       The plugin reads N.I.N.A. natively, renders guider and autofocus graphs,
       sends the event families you choose, and exposes approved bot commands.
@@ -61,7 +61,7 @@
     </p>
     <div class="grid two">
       <div class="card">
-        <h3>Recommended: Chatstronomy Hub</h3>
+        <h3>The Chatstronomy Hub is the recommended setup.</h3>
         <p>
           Pair the plugin with <a href="https://hub.chatstronomy.com/">Chatstronomy Hub</a>
           for the simplest setup. Each N.I.N.A. machine connects outbound over
@@ -71,10 +71,10 @@
         </p>
       </div>
       <div class="card">
-        <h3>Local Direct mode</h3>
+        <h3>Local Direct mode keeps all operations local.</h3>
         <p>
-          Keep everything on the observatory computer with a Discord webhook,
-          your own Discord application, or a Matrix account on an HTTPS homeserver.
+          You can run the integration entirely on the observatory computer using a Discord webhook,
+          a custom Discord application, or a Matrix account on an HTTPS homeserver.
           The plugin starts its signed, release-pinned Chatstronomy runtime in
           the background and supplies N.I.N.A. data directly.
         </p>
@@ -82,7 +82,7 @@
     </div>
 
     <div class="install" id="install-plugin">
-      <h3>Install from the N.I.N.A. plugin manager</h3>
+      <h3>You can install the plugin from the N.I.N.A. plugin manager.</h3>
       <ol>
         <li>Open <strong>Plugins &gt; Available</strong>, find <strong>Chatstronomy</strong>, install it, and restart N.I.N.A. once it appears in the official repository.</li>
         <li>For the current release from our development repository, open <strong>Options &gt; General &gt; Plugin Repositories</strong>, select <strong>+</strong>, and add <a href="https://raw.githubusercontent.com/theatrus/chatstronomy-nina-plugin/main/registry"><code>https://raw.githubusercontent.com/theatrus/chatstronomy-nina-plugin/main/registry</code></a>.</li>
@@ -102,48 +102,48 @@
   </section>
 
   <section>
-    <h2>What lands in the channel</h2>
+    <h2>The plugin sends telemetry updates to the chat channel.</h2>
     <p class="sub">
-      Enough to know how the night is going without opening a remote desktop.
+      These notifications provide enough information to track the session without opening a remote desktop.
     </p>
     <div class="grid two">
       <div class="card">
-        <h3>Every sub, as it lands</h3>
-        <p>New captures posted as useful full-size previews with their filter, exposure and target, on a cooldown you set so a fast sequence cannot flood the channel.</p>
+        <h3>The bot posts every sub-exposure as it is captured.</h3>
+        <p>New captures are posted as full-size previews with metadata including the filter, exposure duration, and target. You can configure a cooldown interval to prevent a fast sequence from flooding the channel.</p>
       </div>
       <div class="card">
-        <h3>Autofocus and guiding</h3>
-        <p>Focus runs arrive as a plotted curve, and guiding as a graph — the two things you actually want to squint at mid-session.</p>
+        <h3>The bot sends autofocus and guiding charts.</h3>
+        <p>Autofocus runs are sent as plotted curves, and guiding data is sent as a graph. These charts allow you to monitor focusing and tracking performance during the session.</p>
       </div>
       <div class="card">
-        <h3>Live status</h3>
-        <p>Sequence and Target Scheduler targets, cooling and timed-wait progress, slews, centering results, mount state, meridian flips, equipment readings, N.I.N.A. notifications, and optional log levels.</p>
+        <h3>The bot reports live status updates.</h3>
+        <p>Status updates include Sequence and Target Scheduler targets, cooling progress, timed-wait status, slewing events, and centering results. The bot also tracks mount state, meridian flips, equipment telemetry, N.I.N.A. notifications, and optional logs.</p>
       </div>
       <div class="card">
-        <h3>Several rigs, one Hub</h3>
-        <p>Pair N.I.N.A. instances on different systems with one centrally managed bot, then route each telescope to its own channel or room.</p>
+        <h3>The Hub supports multiple rigs.</h3>
+        <p>You can pair multiple N.I.N.A. instances on different systems with a single centrally managed bot, and then route each telescope's telemetry to a dedicated channel or room.</p>
       </div>
     </div>
   </section>
 
   <section>
-    <h2>Graphs, not just numbers</h2>
+    <h2>The plugin generates visual telemetry graphs.</h2>
     <div class="grid two">
       <figure>
         <img src="/assets/autofocus-graph.png" alt="An autofocus run plotted as a V-curve of HFR against focuser position">
-        <figcaption>An autofocus run, plotted where you can see whether it actually found the bottom.</figcaption>
+        <figcaption>The autofocus run plots as a curve to confirm that the focus sequence completed successfully.</figcaption>
       </figure>
       <figure>
         <img src="/assets/guiding-graph.png" alt="A guiding graph showing RA and Dec error over time">
-        <figcaption>Guiding error over time, so a wandering star is obvious at a glance.</figcaption>
+        <figcaption>The guiding graph shows Dec and RA tracking error over time.</figcaption>
       </figure>
     </div>
   </section>
 
   <section>
-    <h2>Slash commands</h2>
+    <h2>Control the telescope using slash commands.</h2>
     <p class="sub">
-      Ask the rig what it is doing — and, if you turn it on, tell it what to do.
+      You can query the current status of your equipment and, when control features are enabled, issue commands directly from chat.
     </p>
     <ul class="cmds">
       <li>/status</li><li>/sequence</li><li>/target</li><li>/mount</li>
@@ -151,56 +151,44 @@
       <li>/park</li><li>/unpark</li><li>/home</li><li>/cool</li>
       <li>/change-filter</li><li>/abort-capture</li><li>/stop-sequence</li>
     </ul>
-    <p class="note">Twenty-one in all; the read-only ones need no special permission.</p>
+    <p class="note">The plugin provides twenty-one commands in total; the read-only commands do not require special permissions.</p>
 
     <div class="callout">
       <p>
-        <strong>Control is off until you enable it.</strong> Out of the box the bot
-        posts; it does not act. Turning control on means a message typed in a chat
-        channel moves real hardware, in the dark, with nobody standing next to it.
+        <strong>Control features are disabled by default.</strong> By default, the bot only sends telemetry notifications and does not execute commands. Enabling control features allows users to operate telescope hardware remotely through chat channels.
       </p>
       <p>
-        Commands that change anything are limited to Discord accounts you name, and
-        the destructive ones ask for a confirmation first. Neither safeguard changes
-        the underlying trade: your equipment's safety comes to rest on the security
-        of a chat account. <a href="/terms.html">The terms</a> spell out what to weigh
-        before enabling it.
+        Commands that modify equipment state are restricted to authorized Discord accounts, and critical commands require explicit confirmation. Users must evaluate the security implications of managing equipment through chat integrations. The <a href="/terms.html">Terms of Service</a> details these considerations.
       </p>
     </div>
   </section>
 
   <section>
-    <h2>Choose your topology</h2>
+    <h2>You can select your deployment topology.</h2>
     <div class="grid two">
       <div class="card">
-        <h3>Chatstronomy Hub <span class="pill">recommended</span></h3>
+        <h3>The Chatstronomy Hub topology is recommended.</h3>
         <p>
-          Pair each N.I.N.A. installation with one centrally managed bot across
-          machines. The observatory side stays outbound-only and reconnects
-          without exposing N.I.N.A. to the internet.
+          This option pairs multiple N.I.N.A. installations with a centrally managed bot. The observatory computers make outbound connections over WebSockets, which eliminates the need to expose N.I.N.A. or local ports to the internet.
           <a href="https://hub.chatstronomy.com/">Open the Hub</a> to begin.
         </p>
       </div>
       <div class="card">
-        <h3>On your own machine <span class="pill">available now</span></h3>
+        <h3>The local host topology is available now.</h3>
         <p>
-          Use the N.I.N.A. plugin's native Direct mode with a Discord webhook,
-          your own Discord application, or a Matrix login. Nothing routes through
-          anyone else's server, and the plugin manages the local runtime for you.
+          You can configure the N.I.N.A. plugin to run in Direct mode using a local Discord webhook, a custom Discord application, or a Matrix account. This approach does not route data through external servers, and the plugin manages the local background runtime automatically.
         </p>
       </div>
     </div>
   </section>
 
   <section>
-    <h2>Open source, and honest about it</h2>
+    <h2>The software is open source and independently developed.</h2>
     <p class="sub" style="max-width:64ch">
-      Chatstronomy is Apache-2.0 and developed in the open at
+      Chatstronomy is licensed under the Apache License 2.0 and developed publicly at
       <a href="https://github.com/theatrus/chatstronomy">github.com/theatrus/chatstronomy</a>.
-      It is unofficial software with no affiliation to N.I.N.A., Discord or Matrix.
-      The name is bilingual — <em>chat</em> is the destination in English and the cat
-      in French — and the logo says the same thing as a pipeline:
-      <code>space cat | chat</code>.
+      It is independent software and has no affiliation with N.I.N.A., Discord, or Matrix.
+      The project logo represents the integration of observatory systems with chat platforms.
     </p>
   </section>
 

@@ -26,8 +26,8 @@
     <nav><a href="/">Home</a><a href="https://github.com/theatrus/chatstronomy">GitHub</a></nav>
   </div>
 
-  <h1>Self-hosted Terms of Service</h1>
-  <p class="updated">Last updated 16 August 2026</p>
+  <h1>These terms of service govern self-hosted Chatstronomy.</h1>
+  <p class="updated">This document was last updated on 16 August 2026.</p>
 
   <p class="lede">
     These terms cover only the Chatstronomy software you run on your own
@@ -35,156 +35,101 @@
     separately operated Chatstronomy Hub is not covered by these terms.
   </p>
 
-  <h2>1. What Chatstronomy is</h2>
+  <h2>1. Chatstronomy is a telemetry and control integration for telescopes.</h2>
   <p>
-    Chatstronomy is a chat bot for your telescope. It watches an
+    Chatstronomy is a chat bot designed for telescope integration. The software monitors a
     <a href="https://nighttime-imaging.eu/">N.I.N.A.</a> imaging session and
-    posts it to a Discord or Matrix channel as it happens — captures, autofocus
-    results, status. If you turn it on, it also accepts slash commands typed in
-    that channel and passes them to your rig.
+    posts real-time status updates, including image captures and autofocus results, to a Discord or Matrix channel.
+    If enabled, the software can also accept slash commands from the chat channel and transmit them to the telescope equipment.
   </p>
   <p>
-    You install it. You supply the Discord bot token or Matrix login. You point
-    it at your own equipment. It runs under your control, on your hardware, on
-    your network. In the version these terms cover, nothing routes through a
-    server we operate.
+    You are responsible for installing the software, supplying the Discord bot token or Matrix credentials, and configuring the connection to your equipment. The software runs locally under your control, on your hardware and network. For the self-hosted version covered by these terms, no data is routed through servers operated by us.
   </p>
   <p>
-    Chatstronomy Hub coordinates installations across several observatories and
-    routes through a service we operate. It requires its own hosted-service
-    terms. This page is not those terms and makes no claims about what the Hub
-    stores or for how long.
+    The separately managed Chatstronomy Hub coordinates connections across multiple observatories and routes telemetry through a hosted service we operate. The Hub requires its own hosted-service terms of service. These self-hosted terms do not apply to the Hub, and they do not describe the data storage or retention policies of the Hub.
   </p>
   <p>
-    The source is published under the Apache License 2.0 at
+    The source code is published under the Apache License 2.0 at
     <a href="https://github.com/theatrus/chatstronomy">github.com/theatrus/chatstronomy</a>.
-    Those licence terms govern the software itself; the page you are reading
-    covers the application as you use it.
+    Those license terms govern the software itself, whereas these terms govern your use of the application.
   </p>
 
-  <h2>2. We hold nothing</h2>
+  <h2>2. We do not collect or store user data.</h2>
   <p>
-    The self-hosted application talks to nothing of ours, so there is nothing on
-    our side to collect, store, sell, or lose. No telemetry, no analytics inside
-    the application, no crash reporting, no licence check, no account.
+    The self-hosted application does not communicate with our servers, which means we do not collect, store, share, or lose any user information. There are no built-in telemetry features, application analytics, crash reporting systems, license checks, or user accounts.
   </p>
   <p>
-    Everything the program keeps lives on your own machine: its N.I.N.A. profile
-    settings, credentials in the Windows credential store, and a small state file
-    recording the identifiers of the chat messages it maintains, so it can update
-    a status post rather than repeat it. Deleting the program and those files
-    removes everything it kept. See the <a href="/privacy.html">privacy statement</a>.
+    All application data is stored locally on your machine, including N.I.N.A. profile settings, credentials in the Windows credential store, and a small state file that tracks active chat message identifiers. This state file allows the bot to update existing status posts instead of creating duplicate entries. Removing the application and these local files deletes all associated data. You can refer to the <a href="/privacy.html">Privacy Policy</a> for more details.
   </p>
 
-  <h2>3. What does leave your machine</h2>
+  <h2>3. The application transmits telemetry data to third-party chat services.</h2>
   <p>
-    Whatever you tell it to post. Images, session status, equipment readings,
-    and any text it sends go to Discord or Matrix, and once there they are held
-    by that service under that service's terms, not ours. Your bot connects
-    directly; we are not in the path and cannot see, retrieve, or delete any of
-    it.
+    The application transmits only the data that you configure it to post. Telemetry data, such as images, session status, equipment readings, and text notifications, is transmitted directly to Discord or Matrix. Once transmitted, this data is subject to the respective service's terms and conditions. The bot establishes a direct connection to these services, so we cannot access, retrieve, or delete any of your sent data.
   </p>
   <p>
-    Treat a chat channel as a place other people can read. Astronomical images
-    carry headers, and a channel's membership can change. Deciding what is safe
-    to post — and to which channel — is yours.
+    You should assume that any shared chat channel can be viewed by other users. Astronomical images frequently contain metadata headers that specify equipment details and capture coordinates, and channel membership may change over time. You are responsible for determining what data is safe to post and selecting the appropriate destination channels.
   </p>
   <p>
-    Your use of Discord remains subject to the
-    <a href="https://discord.com/terms">Discord Terms of Service</a>, and Matrix
-    to whichever homeserver you use.
+    Your usage of Discord is governed by the
+    <a href="https://discord.com/terms">Discord Terms of Service</a>, and your usage of Matrix is subject to the terms of your selected homeserver.
   </p>
 
-  <h2>4. Telescope control</h2>
+  <h2>4. Telescope control features present security and operational risks.</h2>
 
   <div class="callout">
     <p>
-      <strong>Read this before enabling write commands.</strong> Chatstronomy
-      can pass slash commands to your equipment. Turning that on means a
-      message typed in a chat channel moves real hardware, in the dark, with
-      nobody standing next to it.
+      <strong>You must review security implications before enabling command execution.</strong> Chatstronomy can relay slash commands to your equipment. Enabling this functionality allows users to control physical hardware remotely through chat channels without local supervision.
     </p>
   </div>
 
   <p>
-    Control is <strong>off unless you enable it</strong>. Out of the box the bot
-    posts; it does not act. When you do enable it, the slash commands include
-    parking and unparking the mount, aborting a capture, and starting, pausing
-    or stopping a sequence, among others.
+    Telescope control is <strong>disabled by default</strong>. The default installation only posts telemetry notifications and does not execute actions. Once enabled, available slash commands include parking or unparking the mount, aborting captures, and starting, pausing, or stopping sequences.
   </p>
   <p>
-    Two safeguards exist, and you should understand both of their limits:
+    The system provides two security safeguards, and you should understand their limitations:
   </p>
   <ul>
     <li>
-      <strong>An allow list.</strong> Only the Discord user IDs you name may
-      issue commands that change anything. It is a list you maintain — an ID
-      added carelessly, or an account you no longer control, is inside it.
+      <strong>The application implements an authorized user allowlist.</strong> Only the specific Discord user IDs you configure are permitted to issue control commands. You are responsible for maintaining this list, as unauthorized or compromised accounts on the list will retain control permissions.
     </li>
     <li>
-      <strong>Confirmation on destructive commands.</strong> Parking, aborting a
-      capture, and starting or stopping a sequence ask for a button press first.
-      This guards against a slip, not against someone who meant it.
+      <strong>Destructive commands require explicit confirmation.</strong> Commands such as parking, aborting a capture, or stopping a sequence require an initial button press confirmation. This mechanism prevents accidental command execution but does not block authorized malicious actions.
     </li>
   </ul>
   <p>
-    Neither safeguard can protect you from the underlying risk: <strong>your
-    equipment's safety depends on the security of a third-party chat
-    account.</strong> If a permitted Discord account is compromised, or a bot
-    token leaks, or you invite the bot to a channel whose membership you have
-    not checked, the attacker's reach is the reach of your allow list.
+    Neither safeguard eliminates the fundamental risk: <strong>the physical safety of your equipment depends on the security of your third-party chat accounts.</strong> If an authorized Discord account is compromised, a bot token is leaked, or the bot is invited to an unverified channel, any user with access can execute commands allowed by your authorization list.
   </p>
   <p>
-    Consider what your rig does on a bad command. A mount that slews or unparks
-    can strike a pier, wrap a cable, or drive optics into an obstruction. An
-    aborted capture loses a sub; a stopped sequence loses a night. Nothing in a
-    chat channel knows whether your roof is open, whether the sun is up, or
-    whether someone is standing at the eyepiece.
+    You must evaluate the potential consequences of incorrect command execution on your specific hardware. Unwanted mount movements, such as slewing or unparking, can cause physical collisions, cable wraps, or optical damage. Aborting a capture or stopping a sequence can result in data loss or lost imaging time. The chat interface has no awareness of local physical conditions, such as roof status, daylight, or local personnel.
   </p>
   <p>
-    So, plainly: enable control only if you accept that risk, keep the allow
-    list short, protect the accounts on it, and keep the physical and software
-    limits your equipment offers — horizon limits, meridian limits, roof
-    interlocks — configured and working. They, not this program, are what stops
-    a mount from hurting itself.
+    Therefore, you should enable control features only if you accept these operational risks. It is recommended to restrict the allowlist to essential accounts, secure those accounts, and ensure that your physical and software safety limits, such as horizon limits, meridian limits, and roof interlocks, are fully configured and functional. Hardware and safety controller limits are the primary mechanisms for protecting equipment from damage.
   </p>
 
-  <h2>5. No warranty</h2>
+  <h2>5. The software is provided without warranty of any kind.</h2>
   <p>
-    Chatstronomy is provided as is, without warranty of any kind, as set out in
-    the Apache License 2.0. It is unofficial software with no affiliation to
-    N.I.N.A., Discord, or Matrix.
+    As set forth in the Apache License 2.0, Chatstronomy is provided on an "as is" basis, without warranties or conditions of any kind. This software is an independent, unofficial project and is not affiliated with, authorized by, or associated with N.I.N.A., Discord, or Matrix.
   </p>
   <p>
-    To the extent the law allows, we accept no liability for damage to
-    equipment, lost imaging time, lost or exposed data, or any other loss
-    arising from using it — including anything that follows from enabling
-    telescope control. You run it; the consequences of running it are yours.
+    To the maximum extent permitted by law, we disclaim all liability for physical damage to equipment, lost imaging time, lost or exposed data, or any other operational or financial loss resulting from the use of this software, including any issues arising from enabling telescope control features. You assume all responsibility and risk associated with operating the software.
   </p>
   <p>
-    Nothing here limits liability that cannot be limited by law.
+    Nothing in these terms limits liability where such limitation is prohibited by applicable law.
   </p>
 
-  <h2>6. Acceptable use</h2>
+  <h2>6. Users must comply with acceptable use policies.</h2>
   <p>
-    Do not use Chatstronomy to control equipment you are not authorised to
-    control, and do not use it in a way that breaks the terms of the chat
-    service you connect it to.
+    You must not use Chatstronomy to operate any equipment that you are not authorized to control. Additionally, you must not use the software in a manner that violates the terms of service of any connected chat platform.
   </p>
 
-  <h2>7. Changes</h2>
+  <h2>7. These terms of service may be updated.</h2>
   <p>
-    These terms may change as the software does. The date at the top is the
-    version in force, and history is public in the site's repository. Because
-    there are no accounts, there is nobody for us to notify — checking this page
-    is the only mechanism, which is one more reason it stays short.
+    These terms of service may be updated periodically to reflect changes to the software. The date at the top of this document indicates when it was last modified, and the revision history is publicly accessible in the website repository. Since the self-hosted application does not maintain user accounts, we cannot provide direct notifications. You are responsible for periodically reviewing this page to monitor updates.
   </p>
 
-  <h2>8. Contact</h2>
+  <h2>8. Technical questions can be submitted through the project tracker.</h2>
   <p>
-    Questions, and anything that looks like a security problem, belong at
-    <a href="https://github.com/theatrus/chatstronomy/issues">the project's issue
-    tracker</a>.
+    You can submit general inquiries, technical questions, and security concerns through the <a href="https://github.com/theatrus/chatstronomy/issues">project's issue tracker</a>.
   </p>
 
   <footer>
