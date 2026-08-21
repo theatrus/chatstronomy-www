@@ -26,12 +26,11 @@
     <nav><a href="/">Home</a><a href="https://github.com/theatrus/chatstronomy">GitHub</a></nav>
   </div>
 
-  <h1>Self-hosted Privacy</h1>
-  <p class="updated">Last updated 16 August 2026</p>
+  <h1>This policy governs the privacy of self-hosted Chatstronomy.</h1>
+  <p class="updated">This document was last updated on 16 August 2026.</p>
 
   <p class="lede">
-    Short version: the Chatstronomy application runs on your computer, talks to
-    nothing of ours, and sends us nothing about you or your equipment.
+    The Chatstronomy application runs entirely on your local computer, does not communicate with our servers, and does not transmit any information about you or your equipment to us.
   </p>
   <p>
     This covers only the self-hosted application. Chatstronomy Hub is a
@@ -40,7 +39,7 @@
     it requires a separate hosted-service privacy statement.
   </p>
 
-  <h2>What we collect</h2>
+  <h2>We do not collect personal data.</h2>
   <p>
     Nothing. There is no account, no telemetry, no analytics in the
     application, no crash reporting, and no licence check. In this version the
@@ -48,85 +47,62 @@
     collect anything even if we wanted to.
   </p>
 
-  <h2>What stays on your machine</h2>
+  <h2>Certain configuration and log files are stored on your local machine.</h2>
   <ul>
     <li>
-      <strong>Your configuration</strong>, including the Discord bot token or
-      Matrix credentials you supply, plus the Chatstronomy settings in your
-      N.I.N.A. profile.
+      The application stores your configuration, which includes the Discord bot token or Matrix credentials you supply and the Chatstronomy settings within your N.I.N.A. profile.
     </li>
     <li>
-      <strong>A small state file</strong> holding the identifiers of the chat
-      messages the bot maintains, so it can edit a live status post instead of
-      posting a new one each time.
+      The application maintains a small state file containing the identifiers of chat messages so the bot can edit a live status post instead of creating a new post each time.
     </li>
     <li>
-      <strong>Log output</strong>, wherever your operating system puts it.
+      The application generates log output, which is saved to the default locations managed by your operating system.
     </li>
   </ul>
   <p>
-    That is the whole of it. Removing the program and those files removes
-    everything it kept.
+    These are the only files stored locally. Removing the application and these files deletes all associated local data.
   </p>
 
-  <h2>What goes to Discord or Matrix</h2>
+  <h2>Data is transmitted directly to Discord or Matrix.</h2>
   <p>
-    Whatever you configure it to post: images, autofocus results, equipment
-    status, and session progress. It goes directly from your machine to that
-    service, using your own bot credentials, and is then held by that service
-    under its terms — the
+    The application transmits the data you configure it to post, such as images, autofocus results, equipment status, and session progress. This data is sent directly from your machine to the configured chat service using your bot credentials, and it is governed by that service's privacy policy, such as the
     <a href="https://discord.com/privacy">Discord Privacy Policy</a>, or your
     Matrix homeserver's policy.
   </p>
   <p>
-    We cannot see it, retrieve it, or delete it. If you need something removed
-    from a channel, that is between you and the chat service.
+    We do not have access to this data and cannot retrieve or delete it. If you need to remove information from a channel, you must manage it directly through your chat service.
   </p>
   <p>
-    Worth remembering: astronomical images carry headers describing equipment
-    and, often, where and when they were taken. Anyone who can read the channel
-    can read those.
+    Astronomical images often contain metadata headers that describe your equipment, capture time, and geographic location. Any user with access to the chat channel can view this metadata.
   </p>
 
-  <h2>Commands from chat</h2>
+  <h2>Slash commands are processed locally.</h2>
   <p>
-    If you enable control, the bot reads the Discord user ID of whoever ran the
-    slash command so it can check the allow list you configured. That comparison
-    happens on your machine and is not reported anywhere. See
-    <a href="/terms.html">the terms</a> for what enabling control means for
-    your equipment.
+    If you enable control features, the bot reads the Discord user ID of any user executing a slash command to verify them against your configured allow list. This verification process occurs locally on your machine and is not transmitted externally. The
+    <a href="/terms.html">Terms of Service</a> describe the security implications of enabling control features.
   </p>
 
-  <h2>This website</h2>
+  <h2>The marketing website collects standard web metrics.</h2>
   <p>
-    chatstronomy.com is static pages. The server keeps ordinary web access logs,
-    which include IP addresses, for operating and securing the site.
+    The website at chatstronomy.com consists of static pages. The web server maintains standard access logs containing IP addresses to assist with site operations and security.
   </p>
   <p>
-    The site uses <strong>Google Analytics</strong> to count visits and see which
-    pages people read. It sets cookies in your browser and sends Google your IP
-    address, the pages you view, and general details about your browser and
-    device. That is Google's to hold, under the
-    <a href="https://policies.google.com/privacy">Google Privacy Policy</a>;
-    we see only the aggregate reports.
+    The site uses <strong>Google Analytics</strong> to measure visitor traffic and analyze page usage. It stores cookies in your browser and transmits details to Google, including your IP address, visited pages, and browser or device information. This data is processed by Google in accordance with the
+    <a href="https://policies.google.com/privacy">Google Privacy Policy</a>, and we only access aggregated, anonymous reports.
   </p>
   <p>
-    Nothing about the application is measured here. This is the marketing site;
-    Chatstronomy itself still contacts nothing of ours, as above. If you would
-    rather not be counted, any content blocker or Google's
-    <a href="https://tools.google.com/dlpage/gaoptout">opt-out add-on</a> stops
-    it, and the site works exactly the same without it.
+    The website does not collect analytics or metrics from the Chatstronomy application. The application does not connect to our servers. If you wish to opt out of web analytics, you can use a content blocker or the Google
+    <a href="https://tools.google.com/dlpage/gaoptout">opt-out browser add-on</a>, and the site will continue to function fully.
   </p>
 
-  <h2>Children</h2>
+  <h2>The software is not directed at children.</h2>
   <p>
-    Chatstronomy is not directed at children, and we hold no data about anyone.
+    The Chatstronomy application is not directed at children, and we do not collect or store personal data.
   </p>
 
-  <h2>Contact</h2>
+  <h2>You can contact the project via the issue tracker.</h2>
   <p>
-    <a href="https://github.com/theatrus/chatstronomy/issues">The project's issue
-    tracker</a>.
+    You can submit questions or reports through the <a href="https://github.com/theatrus/chatstronomy/issues">project's issue tracker</a>.
   </p>
 
   <footer>
