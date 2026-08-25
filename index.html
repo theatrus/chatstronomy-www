@@ -153,7 +153,7 @@
   <section>
     <h2>Control the telescope using slash commands.</h2>
     <p class="sub">
-      You can query the current status of your equipment and, when control features are enabled, issue commands directly from chat.
+      You can query the current status of your equipment and, when individually approved in N.I.N.A., issue commands directly from chat.
     </p>
     <ul class="cmds">
       <li>/status</li><li>/sequence</li><li>/target</li><li>/mount</li>
@@ -165,15 +165,16 @@
 
     <div class="callout">
       <p>
-        <strong>Hardware control is disabled by default in the N.I.N.A. plugin.</strong>
-        Monitoring and read-only queries remain available, but hardware-changing
-        commands require explicit consent in the local N.I.N.A. profile. A Hub
-        setting or Discord server permission cannot enable telescope control on
-        the observatory computer.
+        <strong>Hardware control and every individual equipment command are disabled by default.</strong>
+        Monitoring and read-only queries remain available. To permit a command,
+        turn on both the local hardware-control master switch and that command's
+        individual permission in the N.I.N.A. profile. Enabling the master
+        switch alone grants no commands.
       </p>
       <p>
-        Once control is enabled locally, Hub or Discord permissions can add
-        further restrictions; they do not replace the local safety boundary.
+        Skipping sequence validation requires separate local approval. Hub or
+        Discord permissions can add further restrictions; neither can enable
+        the master switch or grant an individual equipment permission.
         Review the <a href="/hub-terms.html">hosted Hub terms</a> or
         <a href="/terms.html">self-hosted terms</a> for the risks of managing
         physical equipment remotely.

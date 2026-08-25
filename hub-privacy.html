@@ -130,7 +130,7 @@
     Discord server members and administrators may see messages posted to their
     channels. Server managers can manage the routing and permissions available
     to their server, subject to telescope ownership and the plugin's local
-    hardware-control setting.
+    hardware-control master switch and individual command approvals.
   </p>
   <p>
     The service operator and administrators who maintain its infrastructure
@@ -198,12 +198,14 @@
 
   <h2>Remote control and your choices</h2>
   <p>
-    Hardware-changing commands are disabled in the N.I.N.A. plugin by default.
-    Only an explicit change in the local N.I.N.A. profile can allow the Hub to
-    relay such commands to that installation. A Hub setting, server manager,
-    Discord role, or service operator cannot turn on the plugin's local
-    control permission remotely. If you enable it, command attempts and
-    related operational or audit information may be processed by the Hub and
+    The hardware-control master switch and every individual equipment-command
+    permission are disabled in the N.I.N.A. plugin by default. A command is
+    allowed only when both the master switch and that command's local permission
+    have been explicitly enabled; the master switch alone grants no commands.
+    Skipping sequence validation requires separate local approval. A Hub
+    setting, server manager, Discord role, or service operator cannot change
+    these local permissions remotely. For enabled commands, related attempts
+    and operational or audit information may be processed by the Hub and
     Discord. Review the <a href="/hub-terms.html">hosted Hub terms</a> before
     enabling control.
   </p>
