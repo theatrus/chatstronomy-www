@@ -64,6 +64,18 @@
       sends the event families you choose, and exposes approved bot commands.
       No N.I.N.A. web server or polling setup is required.
     </p>
+    <div class="callout">
+      <p>
+        <strong>Event switches control what leaves N.I.N.A.</strong>
+        Disabled event families, including previously buffered events, are
+        never sent to the hosted Hub or local bot; events captured while
+        disabled cannot be released later. Disabling images also blocks image
+        history, previews, thumbnails, and automatic image delivery. Other
+        permitted equipment-status snapshots and explicitly requested non-image
+        slash-command data remain available; raw N.I.N.A. logs are shared only
+        when you enable individual log levels.
+      </p>
+    </div>
     <div class="grid two">
       <div class="card">
         <h3>The Chatstronomy Hub is the recommended setup.</h3>

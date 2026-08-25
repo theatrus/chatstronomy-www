@@ -55,14 +55,15 @@
     While a rig is connected, the plugin can transmit live N.I.N.A. information
     over an encrypted WebSocket so the Hub can reconstruct state, answer
     read-only queries, render updates, and post to the channels you select.
-    Depending on your equipment and plugin settings, this information includes:
+    Depending on your equipment and the event families, location sharing, and
+    log levels you permit in the plugin, this information can include:
   </p>
   <ul>
     <li>
       The plugin transmits status information, which includes the connection status, equipment display names, celestial target coordinates, permitted mount-position fields, and details regarding the telescope, camera, mount, focuser, filter wheel, rotator, and guider.
     </li>
     <li>
-      The plugin transmits session details, which include Sequence and Target Scheduler names and progress, exposure metadata, autofocus and guiding measurements, plots, previews, images, timestamps, and selected log messages.
+      The plugin can transmit permitted session details, including Sequence and Target Scheduler names and progress, exposure metadata, autofocus and guiding measurements, plots, previews, images, timestamps, and explicitly selected log messages.
     </li>
     <li>
       The plugin transmits site information, which includes the latitude, longitude, elevation, and location-derived mount readings, but only if you explicitly enable the local observatory-location setting.
@@ -70,11 +71,17 @@
   </ul>
   <div class="callout">
     <p>
-      <strong>Event switches are not transmission or privacy controls.</strong>
-      Turning off an event-delivery category suppresses its user-facing Discord
-      message, but underlying events can still be sent to the Hub to maintain
-      accurate target, sequence, cooling, and equipment state. N.I.N.A. log
-      forwarding is separately controlled and is opt-in.
+      <strong>Event switches are transmission and privacy controls.</strong>
+      When you disable an event family in N.I.N.A., its underlying event records
+      do not leave the plugin: they are not sent to the hosted Hub or to a
+      local Chatstronomy runtime. This also applies immediately to previously
+      buffered records. Events that occur while a family is disabled cannot be
+      released later by re-enabling it. Disabling images also blocks image
+      history, previews, thumbnails, and automatic image delivery, including
+      previously captured images. Other permitted events, equipment-status
+      snapshots, and non-image information explicitly requested by a slash
+      command can still be shared. Raw N.I.N.A. log forwarding is separately
+      controlled by level and is opt-in; disabled levels stop being transmitted.
     </p>
   </div>
 
