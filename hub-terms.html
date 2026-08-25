@@ -74,11 +74,13 @@
 
   <div class="callout">
     <p>
-      <strong>Hardware control is disabled by default in the N.I.N.A. plugin.</strong>
-      The Hub may execute a hardware-changing command only after someone with
-      access to the relevant N.I.N.A. profile explicitly enables control on
-      that observatory computer. A website setting, Discord server role,
-      telescope attachment, or Hub operator cannot grant that local permission.
+      <strong>Hardware control and every individual equipment command are disabled by default.</strong>
+      A hardware-changing command requires someone with access to the relevant
+      N.I.N.A. profile to explicitly enable both the hardware-control master
+      switch and that command's individual permission on the observatory
+      computer. Enabling the master switch alone grants no commands. A website
+      setting, Discord server role, telescope attachment, or Hub operator cannot
+      grant either local permission.
     </p>
   </div>
 
@@ -86,17 +88,20 @@
     Local consent is the equipment-side trust boundary. Hub permissions,
     Discord server management checks, selected roles, and confirmations can
     further restrict command access; they are not a substitute for the local
-    N.I.N.A. setting and cannot override it. Disable control locally whenever
-    you want a monitoring-only installation.
+    N.I.N.A. permissions and cannot override them. Disable the master switch
+    whenever you want a monitoring-only installation, or disable individual
+    commands you do not want to expose.
   </p>
   <p>
-    Once local control is enabled, supported actions can include parking or
-    unparking a mount, starting or stopping guiding, changing filters, adjusting
-    camera cooling, running autofocus, aborting exposures, and starting or
-    stopping imaging sequences. Some sequence commands can request that
-    validation be skipped. A command being accepted or submitted does not by
-    itself guarantee that an asynchronous equipment operation completed
-    successfully; check the reported outcome and actual equipment state.
+    Once local control and the relevant individual command are enabled,
+    supported actions can include parking or unparking a mount, starting or
+    stopping guiding, changing filters, adjusting camera cooling, running
+    autofocus, aborting exposures, and starting or stopping imaging sequences.
+    A request to skip sequence validation requires an additional, separately
+    enabled local permission beyond permission to start the sequence. Accepting
+    or submitting a command does not itself guarantee that an asynchronous
+    equipment operation completed successfully; check the reported outcome and
+    actual equipment state.
   </p>
 
   <h2>4. Physical safety remains your responsibility</h2>

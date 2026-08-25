@@ -59,10 +59,13 @@ versioned S3 storage; older backup versions expire after 90 days. Account
 deletion is currently a manual request, and administrative audit history has no
 fixed automatic retention schedule.
 
-Hardware-changing commands are disabled by default and must be explicitly
-enabled in the local N.I.N.A. profile. Hub roles and permissions add
-restrictions but cannot grant local consent. Sharing observatory coordinates and
-location-derived mount data is also off by default; hardware device and driver
-identifiers are always redacted. Keep both hosted policy documents accurate
-when equipment privacy controls, retention, infrastructure, supported providers,
-command handling, or deletion workflows change.
+The hardware-control master switch and every individual equipment-command
+permission default to off in each local N.I.N.A. profile. An equipment command
+requires both permissions; enabling the master switch alone grants no commands.
+Skipping sequence validation requires its own additional local permission. Hub
+roles and permissions can add restrictions but cannot grant local consent.
+Sharing observatory coordinates and location-derived mount data is also off by
+default; hardware device and driver identifiers are always redacted. Keep both
+hosted policy documents accurate when equipment privacy controls, retention,
+infrastructure, supported providers, command handling, or deletion workflows
+change.
