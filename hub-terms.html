@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hosted Hub Terms of Service — Chatstronomy</title>
+<meta name="description" content="Terms for the hosted Chatstronomy Hub, including Discord accounts, observatory data, local consent for telescope control, equipment safety, and account deletion.">
+<link rel="stylesheet" href="/assets/style.css">
+<link rel="icon" href="/assets/favicon.ico" sizes="any">
+</head>
+<body>
+<div class="wrap">
+
+  <div class="site-head">
+    <img src="/assets/logo.png" alt="">
+    <span class="brand"><a href="/">Chatstronomy</a></span>
+    <nav><a href="https://hub.chatstronomy.com/">Hub</a><a href="/hub-privacy.html">Hub privacy</a></nav>
+  </div>
+
+  <h1>Chatstronomy Hub Terms of Service</h1>
+  <p class="updated">Last updated 24 August 2026</p>
+
+  <p class="lede">
+    These terms apply to the hosted Chatstronomy Hub operated by Yann Ramin at
+    <a href="https://hub.chatstronomy.com/">hub.chatstronomy.com</a>, including
+    its Discord application and connections from paired N.I.N.A. installations.
+  </p>
+  <p>
+    By signing in, pairing an installation, or using the hosted service, you
+    agree to these terms and the
+    <a href="/hub-privacy.html">hosted Hub privacy policy</a>. The
+    <a href="/terms.html">self-hosted terms</a> govern separate installations
+    that you operate locally without the hosted Hub.
+  </p>
+
+  <h2>1. What the hosted service does</h2>
+  <p>
+    The Hub authenticates users with Discord, manages telescope ownership and
+    Discord server attachments, accepts outbound encrypted connections from
+    N.I.N.A. plugins, and routes configured observatory updates to authorized
+    Discord channels. It can also relay read-only equipment queries and, only
+    when independently enabled inside N.I.N.A., hardware-changing commands.
+  </p>
+  <p>
+    This is an operated online service, not a purely local application. Account
+    details, observatory telemetry, images, notifications, selected logs,
+    routing configuration, and operational activity can pass through or be
+    retained by service infrastructure and Discord as described in the
+    <a href="/hub-privacy.html">hosted privacy policy</a>. You are responsible
+    for deciding whether the service is appropriate for your observatory and
+    for the information you permit your installation to share.
+  </p>
+
+  <h2>2. Accounts, access, and acceptable use</h2>
+  <p>
+    You must have authority to connect the equipment, Discord servers, and
+    channels you configure. Protect your Discord account, N.I.N.A. computer,
+    pairing codes, rig credentials, and any accounts or roles permitted to
+    manage your equipment. Do not share credentials publicly, access another
+    user's equipment without authorization, interfere with the service, or use
+    it in a manner that violates the
+    <a href="https://discord.com/terms">Discord Terms of Service</a> or
+    applicable law.
+  </p>
+  <p>
+    Server managers can configure access within the servers they manage;
+    telescope sharing can expose observatory information to additional
+    channels or communities. Review destinations, server membership, role
+    assignments, and shared subscriptions before connecting a rig or enabling
+    additional access.
+  </p>
+
+  <h2>3. Telescope control requires local, explicit consent</h2>
+
+  <div class="callout">
+    <p>
+      <strong>Hardware control is disabled by default in the N.I.N.A. plugin.</strong>
+      The Hub may execute a hardware-changing command only after someone with
+      access to the relevant N.I.N.A. profile explicitly enables control on
+      that observatory computer. A website setting, Discord server role,
+      telescope attachment, or Hub operator cannot grant that local permission.
+    </p>
+  </div>
+
+  <p>
+    Local consent is the equipment-side trust boundary. Hub permissions,
+    Discord server management checks, selected roles, and confirmations can
+    further restrict command access; they are not a substitute for the local
+    N.I.N.A. setting and cannot override it. Disable control locally whenever
+    you want a monitoring-only installation.
+  </p>
+  <p>
+    Once local control is enabled, supported actions can include parking or
+    unparking a mount, starting or stopping guiding, changing filters, adjusting
+    camera cooling, running autofocus, aborting exposures, and starting or
+    stopping imaging sequences. Some sequence commands can request that
+    validation be skipped. A command being accepted or submitted does not by
+    itself guarantee that an asynchronous equipment operation completed
+    successfully; check the reported outcome and actual equipment state.
+  </p>
+
+  <h2>4. Physical safety remains your responsibility</h2>
+  <p>
+    A remote command can move real equipment without anyone standing nearby.
+    Incorrect or malicious commands may cause mount collisions, cable wraps,
+    optical damage, unsafe operation around people or moving roofs, interrupted
+    exposures, or lost observing time. The Hub cannot reliably know your local
+    roof position, physical clearances, weather conditions, daylight, wiring,
+    or presence of people.
+  </p>
+  <p>
+    Enabling control means the safety of your installation also depends on the
+    security of your N.I.N.A. computer, Discord accounts and roles, hosted
+    service infrastructure, software dependencies, and network connections. A
+    compromise of any authorized component could expose information or, where
+    local control has been enabled, permit equipment commands. Keep physical
+    interlocks, horizon and meridian limits, emergency stops, and other
+    independent safety systems configured. The Hub is not a safety controller.
+  </p>
+
+  <h2>5. Information sharing and retention</h2>
+  <p>
+    The Hub processes observatory data even when an event category is disabled
+    for Discord delivery, because the raw event can still be needed to
+    reconstruct equipment state. Observatory-location sharing is disabled by
+    default; when disabled, the plugin redacts site coordinates and practical
+    location-derived mount readings. Hardware device and driver identifiers are
+    always redacted. Your connection IP address, images, metadata, equipment
+    display names, timestamps, and optional logs can still disclose sensitive
+    information. Messages and images posted to Discord remain subject to
+    Discord's retention practices and the access granted to its users.
+  </p>
+  <p>
+    The primary service runs on AWS infrastructure in the United States. Live
+    account and routing records, operational logs, and administrative audit
+    history do not all have fixed automatic expiration schedules. Database
+    backups are created approximately hourly, with previous encrypted backup
+    versions retained for up to 90 days. The
+    <a href="/hub-privacy.html">hosted privacy policy</a> explains the current
+    categories of information, subprocessors, and retention limits.
+  </p>
+
+  <h2>6. Disconnecting and deletion</h2>
+  <p>
+    You can disconnect the N.I.N.A. plugin, revoke a rig credential, remove a
+    telescope, or remove channel routes through available plugin and Hub
+    controls. The Hub does not currently provide a self-service account-deletion
+    endpoint. Account deletion or questions about associated audit records
+    require a manual request to the operator. Previously created database
+    backups can retain removed information for up to 90 days, and Discord
+    messages must be removed through Discord.
+  </p>
+
+  <h2>7. Availability, changes, and liability</h2>
+  <p>
+    The Hub and its software are provided on an "as is" and "as available"
+    basis. There is no promise of uninterrupted connectivity, continuous
+    notifications, error-free command execution, backup restoration for a
+    particular user, or any particular service level. The operator may modify,
+    restrict, suspend, or discontinue the service when necessary for security,
+    maintenance, or operational reasons.
+  </p>
+  <p>
+    To the extent permitted by applicable law, the operator disclaims
+    warranties and liability for equipment damage, personal injury, lost
+    observing time, exposed or unavailable data, failed notifications,
+    unauthorized commands, or other consequences of using the hosted service.
+    Nothing in these terms excludes liability that applicable law does not
+    permit to be excluded. Chatstronomy is an independent project and is not
+    affiliated with N.I.N.A., Discord, or Amazon Web Services.
+  </p>
+  <p>
+    These terms may be updated as the service changes. The date above identifies
+    the current published version, and revision history is maintained in the
+    website's source repository.
+  </p>
+
+  <h2>8. Contact</h2>
+  <p>
+    Chatstronomy Hub is operated by Yann Ramin. Questions, service reports, and
+    requests to discuss account deletion can be initiated through the
+    <a href="https://github.com/theatrus/chatstronomy/issues">Chatstronomy issue tracker</a>.
+    GitHub issues are public. Do not include passwords, pairing codes, access
+    tokens, private observatory coordinates, or other sensitive information;
+    any required account verification should be arranged separately.
+  </p>
+
+  <footer>
+    <a href="/">Home</a>
+    <a href="https://hub.chatstronomy.com/">Chatstronomy Hub</a>
+    <a href="/hub-privacy.html">Hosted Hub privacy</a>
+    <a href="/terms.html">Self-hosted terms</a>
+    <a href="https://github.com/theatrus/chatstronomy/issues">Contact the project</a>
+  </footer>
+
+</div>
+</body>
+</html>

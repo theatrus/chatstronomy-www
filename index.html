@@ -49,6 +49,11 @@
       <a class="btn" href="https://hub.chatstronomy.com/">Open Chatstronomy Hub</a>
       <a class="btn secondary" href="#install-plugin">Install the N.I.N.A. plugin</a>
     </div>
+    <p class="note">
+      Before pairing a rig, review the
+      <a href="/hub-privacy.html">hosted Hub privacy policy</a> and
+      <a href="/hub-terms.html">hosted Hub terms</a>.
+    </p>
     <p class="note">The software supports N.I.N.A. 3.2+ on Windows, runs on standalone Windows and Linux backends, and is licensed under Apache-2.0.</p>
   </div>
 
@@ -65,9 +70,14 @@
         <p>
           Pair the plugin with <a href="https://hub.chatstronomy.com/">Chatstronomy Hub</a>
           for the simplest setup. Each N.I.N.A. machine connects outbound over
-          authenticated WSS, so one centralized Discord or Matrix bot can serve
+          authenticated WSS, so one centralized Discord bot can serve
           rigs on different systems without opening observatory ports or copying
           chat credentials to every computer.
+        </p>
+        <p class="note">
+          The Hub processes account and observatory information.
+          Read its <a href="/hub-privacy.html">privacy policy</a> and
+          <a href="/hub-terms.html">terms</a> before connecting.
         </p>
       </div>
       <div class="card">
@@ -87,7 +97,7 @@
         <li>Open <strong>Plugins &gt; Available</strong>, find <strong>Chatstronomy</strong>, install it, and restart N.I.N.A. once it appears in the official repository.</li>
         <li>For the current release from our development repository, open <strong>Options &gt; General &gt; Plugin Repositories</strong>, select <strong>+</strong>, and add <a href="https://raw.githubusercontent.com/theatrus/chatstronomy-nina-plugin/main/registry"><code>https://raw.githubusercontent.com/theatrus/chatstronomy-nina-plugin/main/registry</code></a>.</li>
         <li>Return to <strong>Plugins &gt; Available</strong>, install <strong>Chatstronomy</strong>, and restart N.I.N.A.</li>
-        <li>Open <a href="https://hub.chatstronomy.com/">Chatstronomy Hub</a>, create a pairing code, then choose <strong>Chatstronomy.com — hosted bot</strong> in the plugin and pair the rig.</li>
+        <li>Review the <a href="/hub-privacy.html">hosted Hub privacy policy</a> and <a href="/hub-terms.html">terms</a>, open <a href="https://hub.chatstronomy.com/">Chatstronomy Hub</a>, create a pairing code, then choose <strong>Chatstronomy Hub — hosted service</strong> in the plugin and pair the rig.</li>
       </ol>
       <p class="note">
         N.I.N.A. supports more than one plugin repository, so adding the
@@ -155,10 +165,18 @@
 
     <div class="callout">
       <p>
-        <strong>Control features are disabled by default.</strong> By default, the bot only sends telemetry notifications and does not execute commands. Enabling control features allows users to operate telescope hardware remotely through chat channels.
+        <strong>Hardware control is disabled by default in the N.I.N.A. plugin.</strong>
+        Monitoring and read-only queries remain available, but hardware-changing
+        commands require explicit consent in the local N.I.N.A. profile. A Hub
+        setting or Discord server permission cannot enable telescope control on
+        the observatory computer.
       </p>
       <p>
-        Commands that modify equipment state are restricted to authorized Discord accounts, and critical commands require explicit confirmation. Users must evaluate the security implications of managing equipment through chat integrations. The <a href="/terms.html">Terms of Service</a> details these considerations.
+        Once control is enabled locally, Hub or Discord permissions can add
+        further restrictions; they do not replace the local safety boundary.
+        Review the <a href="/hub-terms.html">hosted Hub terms</a> or
+        <a href="/terms.html">self-hosted terms</a> for the risks of managing
+        physical equipment remotely.
       </p>
     </div>
   </section>
@@ -176,7 +194,12 @@
       <div class="card">
         <h3>The local host topology is available now.</h3>
         <p>
-          You can configure the N.I.N.A. plugin to run in Direct mode using a local Discord webhook, a custom Discord application, or a Matrix account. This approach does not route data through external servers, and the plugin manages the local background runtime automatically.
+          You can configure the N.I.N.A. plugin to run in Direct mode using a
+          local Discord webhook, a custom Discord application, or a Matrix
+          account. This approach does not route observatory data through
+          Chatstronomy-operated servers; your selected Discord or Matrix
+          service still receives posted content. The plugin manages the local
+          background runtime automatically.
         </p>
       </div>
     </div>
@@ -196,6 +219,8 @@
     <a href="https://hub.chatstronomy.com/">Chatstronomy Hub</a>
     <a href="https://github.com/theatrus/chatstronomy">Backend source</a>
     <a href="https://github.com/theatrus/chatstronomy-nina-plugin">Plugin source</a>
+    <a href="/hub-terms.html">Hosted Hub terms</a>
+    <a href="/hub-privacy.html">Hosted Hub privacy</a>
     <a href="/terms.html">Self-hosted terms</a>
     <a href="/privacy.html">Self-hosted privacy</a>
     <a href="https://github.com/theatrus/chatstronomy/issues">Report an issue</a>

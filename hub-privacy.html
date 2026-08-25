@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hosted Hub Privacy Policy — Chatstronomy</title>
+<meta name="description" content="Privacy policy for the hosted Chatstronomy Hub: Discord account information, observatory telemetry, United States hosting, data retention, backups, and deletion requests.">
+<link rel="stylesheet" href="/assets/style.css">
+<link rel="icon" href="/assets/favicon.ico" sizes="any">
+</head>
+<body>
+<div class="wrap">
+
+  <div class="site-head">
+    <img src="/assets/logo.png" alt="">
+    <span class="brand"><a href="/">Chatstronomy</a></span>
+    <nav><a href="https://hub.chatstronomy.com/">Hub</a><a href="/hub-terms.html">Hub terms</a></nav>
+  </div>
+
+  <h1>Chatstronomy Hub Privacy Policy</h1>
+  <p class="updated">Last updated 24 August 2026</p>
+
+  <p class="lede">
+    Chatstronomy Hub is a hosted service operated by Yann Ramin. Unlike the
+    self-hosted application, it receives account information and observatory
+    data so it can connect your N.I.N.A. installations to Discord.
+  </p>
+  <p>
+    This policy applies to <a href="https://hub.chatstronomy.com/">hub.chatstronomy.com</a>
+    and to N.I.N.A. profiles paired with that hosted service. The
+    <a href="/privacy.html">self-hosted privacy policy</a> applies separately
+    when you run Chatstronomy locally without connecting to the Hub.
+  </p>
+
+  <h2>Account and Discord information</h2>
+  <p>
+    The Hub uses Discord to authenticate users. Discord OAuth requests the
+    <code>identify</code>, <code>email</code>, and <code>guilds</code> scopes.
+    Depending on what Discord provides, the Hub stores your Discord user ID,
+    username, email address and verification status, avatar URL, and the names,
+    identifiers, ownership flags, and management permissions of your servers.
+    Discord OAuth access tokens are used during sign-in and are not retained as
+    persistent Hub account credentials.
+  </p>
+  <p>
+    The service also stores telescope names, ownership and server attachments,
+    Discord channel names and identifiers, command and role policies, image
+    delivery preferences, and the N.I.N.A. node and profile identifiers needed
+    to recognize each paired installation. Pairing codes and long-lived rig
+    credentials are stored as cryptographic hashes, not as reusable plaintext.
+  </p>
+
+  <h2>Observatory information processed by the Hub</h2>
+  <p>
+    While a rig is connected, the plugin can transmit live N.I.N.A. information
+    over an encrypted WebSocket so the Hub can reconstruct state, answer
+    read-only queries, render updates, and post to the channels you select.
+    Depending on your equipment and plugin settings, this information includes:
+  </p>
+  <ul>
+    <li>
+      Telescope, camera, mount, focuser, filter-wheel, rotator, and guider
+      status; equipment display names; celestial target coordinates and
+      permitted mount-position fields; tracking, slewing, cooling, and
+      connection information.
+    </li>
+    <li>
+      Sequence and Target Scheduler names and progress, capture and exposure
+      details, autofocus and guiding measurements, plots, previews, images,
+      notifications, timestamps, and selected N.I.N.A. log messages.
+    </li>
+    <li>
+      Observatory site latitude, longitude, elevation, and location-derived
+      mount readings only when the single local observatory-location setting
+      is explicitly enabled.
+    </li>
+  </ul>
+  <div class="callout">
+    <p>
+      <strong>Event switches are not transmission or privacy controls.</strong>
+      Turning off an event-delivery category suppresses its user-facing Discord
+      message, but underlying events can still be sent to the Hub to maintain
+      accurate target, sequence, cooling, and equipment state. N.I.N.A. log
+      forwarding is separately controlled and is opt-in.
+    </p>
+  </div>
+
+  <h2>Location and redaction limits</h2>
+  <p>
+    Observatory-location sharing is off by default. When it remains off, the
+    plugin redacts explicit site latitude, longitude, and elevation together
+    with location-derived readings such as local sidereal time, altitude,
+    azimuth, and meridian timing. Enabling the one local location-sharing
+    setting can disclose those observatory-related fields. Hardware device and
+    driver identifiers are always redacted, even when location sharing is
+    enabled; persistent plugin node and profile identifiers are still required
+    to authenticate the paired installation.
+  </p>
+  <p>
+    Redaction does not make a rig anonymous. The network must still disclose
+    its IP address to connect, and IP addresses can indicate an approximate
+    location. Telescope or equipment display names, image or file metadata,
+    target coordinates, timestamps, free-text N.I.N.A. notifications, and
+    optional logs may independently reveal a location, observatory, equipment,
+    or local filesystem details. Celestial target coordinates describe where a
+    telescope points and are not the same as the observatory's terrestrial
+    coordinates.
+  </p>
+  <p>
+    Review image and notification contents before sharing them. Do not enable
+    raw log forwarding unless you are comfortable with the additional details
+    it may contain. Data already posted to Discord must be managed through
+    Discord and the relevant server or channel administrators.
+  </p>
+
+  <h2>Infrastructure, service providers, and access</h2>
+  <p>
+    The Hub application and its primary database run on Amazon Web Services in
+    the United States, primarily the Oregon region (<code>us-west-2</code>).
+    Amazon CloudFront proxies browser and rig traffic, so requests may traverse
+    global edge locations. Database backups are stored in a private,
+    server-side-encrypted Amazon S3 bucket. AWS provides the hosting, network,
+    content-delivery, and backup infrastructure.
+  </p>
+  <p>
+    Discord provides account authentication, server and channel information,
+    bot connectivity, and the destination for the messages and images you
+    choose to publish. Discord processes and retains that information under
+    its <a href="https://discord.com/privacy">privacy policy</a>. Authorized
+    Discord server members and administrators may see messages posted to their
+    channels. Server managers can manage the routing and permissions available
+    to their server, subject to telescope ownership and the plugin's local
+    hardware-control setting.
+  </p>
+  <p>
+    The service operator and administrators who maintain its infrastructure
+    can access operational systems and stored service data when necessary to
+    operate, troubleshoot, secure, or restore the service. The Hub does not
+    maintain a separate permanent image or observatory-event archive in its
+    SQLite database; live telemetry is processed for current state and delivery.
+    Discord messages, operational logs, and account or configuration records
+    have their own retention characteristics.
+  </p>
+
+  <h2>Sessions, cookies, and operational logs</h2>
+  <p>
+    The Hub uses a signed browser session cookie containing a random session
+    identifier. Server-side sessions normally expire after 30 days, and
+    expired sessions and short-lived Discord login state are cleaned up
+    periodically. A one-time telescope pairing code is valid for one hour; a
+    telescope share code is valid for seven days. Code expiration limits use,
+    but does not guarantee that every expired hashed database record is
+    immediately deleted.
+  </p>
+  <p>
+    Web server access logs record information such as your IP address, request
+    path, timestamp, response status, and browser or client user-agent.
+    Operational and security logs may also record connection errors and
+    administrative activity. No specific automatic log-retention period is
+    currently guaranteed.
+  </p>
+  <p>
+    The Hub does not load the marketing website's Google Analytics tag. Some
+    separate pages at <code>chatstronomy.com</code> use Google Analytics and its
+    cookies as described in the
+    <a href="/privacy.html#website-analytics">marketing website privacy disclosure</a>.
+    This hosted-policy page does not include that analytics script.
+  </p>
+
+  <h2>Retention, backups, and deletion</h2>
+  <p>
+    Account identity, telescope ownership, server and channel routing, rig
+    credential hashes, and configuration remain in the live database while
+    they are needed to provide your account and telescope connections.
+    Administrative audit entries can include account or server identifiers and
+    descriptions of management actions. There is currently no fixed automatic
+    expiration schedule for account records or audit history.
+  </p>
+  <p>
+    The database is backed up approximately hourly to versioned, encrypted S3
+    storage. Previous backup versions expire after 90 days. Consequently,
+    information removed from the live database can remain in existing backup
+    versions for up to 90 days after subsequent backups replace them. Backups
+    are maintained for disaster recovery, not as an end-user data archive.
+  </p>
+  <p>
+    The Hub currently has <strong>no self-service account-deletion endpoint</strong>.
+    You can remove individual telescopes, disconnect or revoke rig credentials,
+    and remove channel routes using the available Hub controls. To request
+    account deletion or discuss associated audit records, contact the operator
+    through the
+    <a href="https://github.com/theatrus/chatstronomy/issues">Chatstronomy issue tracker</a>.
+    GitHub issues are public: do not post pairing codes, credentials, private
+    location information, or other sensitive account details. The operator can
+    arrange any necessary verification separately. Removing data from Discord
+    requires using Discord's own controls.
+  </p>
+
+  <h2>Remote control and your choices</h2>
+  <p>
+    Hardware-changing commands are disabled in the N.I.N.A. plugin by default.
+    Only an explicit change in the local N.I.N.A. profile can allow the Hub to
+    relay such commands to that installation. A Hub setting, server manager,
+    Discord role, or service operator cannot turn on the plugin's local
+    control permission remotely. If you enable it, command attempts and
+    related operational or audit information may be processed by the Hub and
+    Discord. Review the <a href="/hub-terms.html">hosted Hub terms</a> before
+    enabling control.
+  </p>
+
+  <footer>
+    <a href="/">Home</a>
+    <a href="https://hub.chatstronomy.com/">Chatstronomy Hub</a>
+    <a href="/hub-terms.html">Hosted Hub terms</a>
+    <a href="/privacy.html">Self-hosted privacy</a>
+    <a href="https://github.com/theatrus/chatstronomy/issues">Contact the project</a>
+  </footer>
+
+</div>
+</body>
+</html>
