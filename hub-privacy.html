@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hosted Hub Privacy Policy — Chatstronomy</title>
-<meta name="description" content="Privacy policy for the hosted Chatstronomy Hub: Discord account information, observatory telemetry, United States hosting, data retention, backups, and deletion requests.">
+<meta name="description" content="This document is the privacy policy for the hosted Chatstronomy Hub. It covers Discord account information, observatory telemetry, United States hosting, data retention, backups, and deletion requests.">
 <link rel="stylesheet" href="/assets/style.css">
 <link rel="icon" href="/assets/favicon.ico" sizes="any">
 </head>
@@ -17,8 +17,8 @@
     <nav><a href="https://hub.chatstronomy.com/">Hub</a><a href="/hub-terms.html">Hub terms</a></nav>
   </div>
 
-  <h1>Chatstronomy Hub Privacy Policy</h1>
-  <p class="updated">Last updated 24 August 2026</p>
+  <h1>This policy governs the privacy of the hosted Chatstronomy Hub.</h1>
+  <p class="updated">This document was last updated on 24 August 2026.</p>
 
   <p class="lede">
     Chatstronomy Hub is a hosted service operated by Yann Ramin. Unlike the
@@ -32,7 +32,7 @@
     when you run Chatstronomy locally without connecting to the Hub.
   </p>
 
-  <h2>Account and Discord information</h2>
+  <h2>The Hub collects account and Discord information.</h2>
   <p>
     The Hub uses Discord to authenticate users. Discord OAuth requests the
     <code>identify</code>, <code>email</code>, and <code>guilds</code> scopes.
@@ -50,7 +50,7 @@
     credentials are stored as cryptographic hashes, not as reusable plaintext.
   </p>
 
-  <h2>Observatory information processed by the Hub</h2>
+  <h2>The Hub processes specific observatory information.</h2>
   <p>
     While a rig is connected, the plugin can transmit live N.I.N.A. information
     over an encrypted WebSocket so the Hub can reconstruct state, answer
@@ -59,20 +59,13 @@
   </p>
   <ul>
     <li>
-      Telescope, camera, mount, focuser, filter-wheel, rotator, and guider
-      status; equipment display names; celestial target coordinates and
-      permitted mount-position fields; tracking, slewing, cooling, and
-      connection information.
+      The plugin transmits status information, which includes the connection status, equipment display names, celestial target coordinates, permitted mount-position fields, and details regarding the telescope, camera, mount, focuser, filter wheel, rotator, and guider.
     </li>
     <li>
-      Sequence and Target Scheduler names and progress, capture and exposure
-      details, autofocus and guiding measurements, plots, previews, images,
-      notifications, timestamps, and selected N.I.N.A. log messages.
+      The plugin transmits session details, which include Sequence and Target Scheduler names and progress, exposure metadata, autofocus and guiding measurements, plots, previews, images, timestamps, and selected log messages.
     </li>
     <li>
-      Observatory site latitude, longitude, elevation, and location-derived
-      mount readings only when the single local observatory-location setting
-      is explicitly enabled.
+      The plugin transmits site information, which includes the latitude, longitude, elevation, and location-derived mount readings, but only if you explicitly enable the local observatory-location setting.
     </li>
   </ul>
   <div class="callout">
@@ -85,7 +78,7 @@
     </p>
   </div>
 
-  <h2>Location and redaction limits</h2>
+  <h2>The application provides location sharing and redaction controls.</h2>
   <p>
     Observatory-location sharing is off by default. When it remains off, the
     plugin redacts explicit site latitude, longitude, and elevation together
@@ -113,7 +106,7 @@
     Discord and the relevant server or channel administrators.
   </p>
 
-  <h2>Infrastructure, service providers, and access</h2>
+  <h2>The service uses specific infrastructure and service providers.</h2>
   <p>
     The Hub application and its primary database run on Amazon Web Services in
     the United States, primarily the Oregon region (<code>us-west-2</code>).
@@ -142,7 +135,7 @@
     have their own retention characteristics.
   </p>
 
-  <h2>Sessions, cookies, and operational logs</h2>
+  <h2>The Hub uses sessions, cookies, and operational logs.</h2>
   <p>
     The Hub uses a signed browser session cookie containing a random session
     identifier. Server-side sessions normally expire after 30 days, and
@@ -167,7 +160,7 @@
     This hosted-policy page does not include that analytics script.
   </p>
 
-  <h2>Retention, backups, and deletion</h2>
+  <h2>The operator retains, backs up, and deletes data.</h2>
   <p>
     Account identity, telescope ownership, server and channel routing, rig
     credential hashes, and configuration remain in the live database while
@@ -196,7 +189,7 @@
     requires using Discord's own controls.
   </p>
 
-  <h2>Remote control and your choices</h2>
+  <h2>The application provides remote control settings.</h2>
   <p>
     The hardware-control master switch and every individual equipment-command
     permission are disabled in the N.I.N.A. plugin by default. A command is
