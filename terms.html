@@ -27,7 +27,7 @@
   </div>
 
   <h1>These terms of service govern self-hosted Chatstronomy.</h1>
-  <p class="updated">This document was last updated on 16 August 2026.</p>
+  <p class="updated">This document was last updated on 24 August 2026.</p>
 
   <p class="lede">
     These terms cover only the Chatstronomy software you run on your own
@@ -41,8 +41,9 @@
   <p>
     Chatstronomy is a chat bot designed for telescope integration. The software monitors a
     <a href="https://nighttime-imaging.eu/">N.I.N.A.</a> imaging session and
-    posts real-time status updates, including image captures and autofocus results, to a Discord or Matrix channel.
-    If enabled, the software can also accept slash commands from the chat channel and transmit them to the telescope equipment.
+    posts selected status updates, including image captures and autofocus
+    results, to Discord or Matrix. When explicitly approved in N.I.N.A., a
+    local Discord bot can also relay equipment-control slash commands.
   </p>
   <p>
     You are responsible for installing the software, supplying the Discord bot token or Matrix credentials, and configuring the connection to your equipment. The software runs locally under your control, on your hardware and network. For the self-hosted version covered by these terms, no data is routed through servers operated by us.
@@ -62,18 +63,48 @@
 
   <h2>2. We do not collect or store user data.</h2>
   <p>
-    The self-hosted application does not communicate with our servers, which means we do not collect, store, share, or lose any user information. There are no built-in telemetry features, application analytics, crash reporting systems, license checks, or user accounts.
+    The self-hosted application does not communicate with our servers, so we
+    do not collect or store its user information. It does not send developer
+    telemetry, application analytics, or crash reports; require a license
+    check; or create a project-operated account. Observatory updates you choose
+    to share still go directly to your configured Discord or Matrix service.
   </p>
   <p>
-    All application data is stored locally on your machine, including N.I.N.A. profile settings, credentials in the Windows credential store, and a small state file that tracks active chat message identifiers. This state file allows the bot to update existing status posts instead of creating duplicate entries. Removing the application and these local files deletes all associated data. You can refer to the <a href="/privacy.html">Privacy Policy</a> for more details.
+    Local configuration includes N.I.N.A. profile settings, protected credentials
+    in Windows Credential Manager, and a small state file that tracks active
+    chat message identifiers. Removing the application does not necessarily
+    remove its profile, credential-store entries, state, or logs; remove those
+    separately when appropriate. Content already sent to Discord or Matrix is
+    managed by that service. See the <a href="/privacy.html">self-hosted
+    privacy policy</a> for details.
   </p>
 
   <h2>3. The application transmits telemetry data to third-party chat services.</h2>
   <p>
-    The application transmits only the data that you configure it to post. Telemetry data, such as images, session status, equipment readings, and text notifications, is transmitted directly to Discord or Matrix. Once transmitted, this data is subject to the respective service's terms and conditions. The bot establishes a direct connection to these services, so we cannot access, retrieve, or delete any of your sent data.
+    Ordinary event categories, images, and N.I.N.A. popup notifications start
+    enabled. Review or disable them in N.I.N.A. before starting a local runtime.
+    Disabled event categories never reach the runtime, including previously
+    buffered records; events captured while disabled are not released when a
+    category is re-enabled. No background state-maintenance exception bypasses
+    these settings. Disabling images also prevents image history, thumbnails,
+    previews, and explicit last-image requests. Equipment-status snapshots and
+    other permitted non-image queries can remain available. Raw N.I.N.A. logs
+    are disabled unless you explicitly enable individual log levels.
   </p>
   <p>
-    You should assume that any shared chat channel can be viewed by other users. Astronomical images frequently contain metadata headers that specify equipment details and capture coordinates, and channel membership may change over time. You are responsible for determining what data is safe to post and selecting the appropriate destination channels.
+    Permitted updates travel directly to your configured Discord or Matrix
+    service and are governed by that service's terms. We cannot access,
+    retrieve, or delete content posted by a self-hosted runtime. The plugin does
+    not disclose observatory coordinates or location-derived mount data unless
+    location sharing is explicitly enabled in N.I.N.A.; hardware device and
+    driver identifiers remain redacted.
+  </p>
+  <p>
+    Assume other users may view a shared chat channel or Matrix room, and that
+    its membership can change. Image contents, capture metadata, celestial
+    target coordinates, equipment display names, notifications, and optional
+    logs may still reveal sensitive information. You are responsible for
+    deciding what to send and where to send it.
   </p>
   <p>
     Your usage of Discord is governed by the
@@ -84,32 +115,60 @@
 
   <div class="callout">
     <p>
-      <strong>You must review security implications before enabling command execution.</strong> Chatstronomy can relay slash commands to your equipment. Enabling this functionality allows users to control physical hardware remotely through chat channels without local supervision.
+      <strong>Hardware control and every individual command are disabled by
+      default.</strong> A physical operation requires both the N.I.N.A.
+      hardware-control master switch and that exact command's individual
+      permission. Enabling the master switch alone grants no equipment access.
     </p>
   </div>
 
   <p>
-    Telescope control is <strong>disabled by default</strong>. The default installation only posts telemetry notifications and does not execute actions. Once enabled, available slash commands include parking or unparking the mount, aborting captures, and starting, pausing, or stopping sequences.
+    Monitoring and read-only status commands remain available without hardware
+    permissions. Approved operations can include parking or unparking a mount,
+    changing filters, guiding, camera cooling, autofocus, aborting captures,
+    and starting or stopping imaging sequences. Skipping sequence validation
+    requires its own additional local permission. Disable the master switch to
+    immediately return the N.I.N.A. profile to monitoring-only operation.
   </p>
   <p>
-    The system provides two security safeguards, and you should understand their limitations:
+    Additional safeguards narrow access but cannot override the permissions
+    configured in N.I.N.A.:
   </p>
   <ul>
     <li>
-      <strong>The application implements an authorized user allowlist.</strong> Only the specific Discord user IDs you configure are permitted to issue control commands. You are responsible for maintaining this list, as unauthorized or compromised accounts on the list will retain control permissions.
+      <strong>Local command permissions are mandatory.</strong> The master
+      switch and the individual command must both be enabled in the active
+      N.I.N.A. profile. A Discord user, server manager, or role cannot enable
+      these settings remotely.
+    </li>
+    <li>
+      <strong>Discord authority is restricted.</strong> With an empty user
+      allowlist, only managers of the invoking Discord server can request
+      approved hardware commands. With an explicit allowlist, only those
+      listed users qualify. Requests must come from the telescope's configured
+      channel; direct messages and unrelated servers are rejected.
     </li>
     <li>
       <strong>Destructive commands require explicit confirmation.</strong> Commands such as parking, aborting a capture, or stopping a sequence require an initial button press confirmation. This mechanism prevents accidental command execution but does not block authorized malicious actions.
     </li>
   </ul>
   <p>
-    Neither safeguard eliminates the fundamental risk: <strong>the physical safety of your equipment depends on the security of your third-party chat accounts.</strong> If an authorized Discord account is compromised, a bot token is leaked, or the bot is invited to an unverified channel, any user with access can execute commands allowed by your authorization list.
+    These safeguards do not eliminate the fundamental risk:
+    <strong>the safety of enabled equipment operations depends on the security
+    of your N.I.N.A. computer, Discord accounts, configured server and channel,
+    and bot credentials.</strong> A compromised authorized account can still
+    request commands permitted by both the Discord checks and your local
+    N.I.N.A. settings.
   </p>
   <p>
     You must evaluate the potential consequences of incorrect command execution on your specific hardware. Unwanted mount movements, such as slewing or unparking, can cause physical collisions, cable wraps, or optical damage. Aborting a capture or stopping a sequence can result in data loss or lost imaging time. The chat interface has no awareness of local physical conditions, such as roof status, daylight, or local personnel.
   </p>
   <p>
-    Therefore, you should enable control features only if you accept these operational risks. It is recommended to restrict the allowlist to essential accounts, secure those accounts, and ensure that your physical and software safety limits, such as horizon limits, meridian limits, and roof interlocks, are fully configured and functional. Hardware and safety controller limits are the primary mechanisms for protecting equipment from damage.
+    Enable only the individual operations whose risks you accept. Limit server
+    management access or an explicit allowlist to essential accounts, secure
+    those accounts, and configure independent horizon limits, meridian limits,
+    roof interlocks, and emergency stops. Chat permissions are not a physical
+    safety system.
   </p>
 
   <h2>5. The software is provided without warranty of any kind.</h2>

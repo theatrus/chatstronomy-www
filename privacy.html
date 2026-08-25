@@ -27,7 +27,7 @@
   </div>
 
   <h1>This policy governs the privacy of self-hosted Chatstronomy.</h1>
-  <p class="updated">This document was last updated on 16 August 2026.</p>
+  <p class="updated">This document was last updated on 24 August 2026.</p>
 
   <p class="lede">
     The Chatstronomy application runs entirely on your local computer, does not communicate with our servers, and does not transmit any information about you or your equipment to us.
@@ -42,23 +42,61 @@
 
   <h2>We do not collect personal data.</h2>
   <p>
-    We do not collect any personal data. The application does not use accounts, telemetry, analytics, crash reporting, or license checks. Because this version of the application never contacts our servers, there is no channel through which we could collect information.
+    We do not collect any personal data. The self-hosted application does not
+    use project-operated accounts, developer telemetry, analytics, crash
+    reporting, or license checks. Because this version never contacts our
+    servers, there is no channel through which we could collect information.
   </p>
 
-  <h2>Certain configuration and log files are stored on your local machine.</h2>
+  <h2>Settings, credentials, and logs remain on your local machine.</h2>
   <ul>
     <li>
-      The application stores your configuration, which includes the Discord bot token or Matrix credentials you supply and the Chatstronomy settings within your N.I.N.A. profile.
+      Nonsecret delivery, privacy, and equipment-control settings are stored in
+      the relevant N.I.N.A. profile. Discord webhook URLs, bot tokens, and
+      Matrix passwords are stored separately in Windows Credential Manager.
     </li>
     <li>
       The application maintains a small state file containing the identifiers of chat messages so the bot can edit a live status post instead of creating a new post each time.
     </li>
     <li>
-      The application generates log output, which is saved to the default locations managed by your operating system.
+      The application and N.I.N.A. can generate local logs. Credentials are
+      passed to the bundled runtime through a current-user-only named pipe,
+      not through command-line arguments or generated configuration files.
     </li>
   </ul>
   <p>
-    These are the only files stored locally. Removing the application and these files deletes all associated local data.
+    To remove local data, remove the application, its N.I.N.A. profile settings,
+    its Windows Credential Manager entries, and any remaining state or log
+    files. Content already sent to Discord or Matrix must be removed through
+    that service.
+  </p>
+
+  <h2>Event switches decide what may leave N.I.N.A.</h2>
+  <p>
+    Ordinary event categories, image delivery, and N.I.N.A. popup notifications
+    are enabled by default. Review them before starting the local runtime.
+    Disabling a category prevents its underlying events from reaching the
+    runtime, including events that were previously buffered. Events captured
+    while a category is disabled cannot be released later by turning it back on.
+    No state-maintenance exception bypasses these settings. Disabling images
+    also blocks image history, previews, thumbnails, and explicit last-image
+    requests.
+  </p>
+  <p>
+    Equipment-status snapshots and permitted non-image, read-only queries can
+    remain available independently. Raw N.I.N.A. log forwarding is disabled by
+    default and must be enabled separately for each log level.
+  </p>
+
+  <h2>Observatory-location sharing is disabled by default.</h2>
+  <p>
+    The plugin removes observatory latitude, longitude, elevation, and
+    location-derived mount readings before data leaves N.I.N.A. unless you
+    explicitly enable location sharing in that profile. Hardware device and
+    driver identifiers remain redacted even when location sharing is enabled.
+    Target names, celestial coordinates, image contents, capture metadata,
+    equipment display names, notifications, and optional logs can still reveal
+    sensitive information. Review the information you choose to share.
   </p>
 
   <h2>Data is transmitted directly to Discord or Matrix.</h2>
@@ -71,13 +109,24 @@
     We do not have access to this data and cannot retrieve or delete it. If you need to remove information from a channel, you must manage it directly through your chat service.
   </p>
   <p>
-    Astronomical images often contain metadata headers that describe your equipment, capture time, and geographic location. Any user with access to the chat channel can view this metadata.
+    Image previews and their accompanying capture metadata may reveal equipment,
+    target names, timestamps, or other observatory details. Anyone with access
+    to the selected channel or room can view content posted there.
   </p>
 
   <h2>Slash commands are processed locally.</h2>
   <p>
-    If you enable control features, the bot reads the Discord user ID of any user executing a slash command to verify them against your configured allow list. This verification process occurs locally on your machine and is not transmitted externally. The
-    <a href="/terms.html">Terms of Service</a> describe the security implications of enabling control features.
+    Hardware control and every individual equipment permission start disabled.
+    A Discord hardware command requires both the local master switch and that
+    command's individual N.I.N.A. permission; skipping sequence validation
+    requires additional local approval. With no explicit user allowlist, only
+    managers of the configured Discord server can request locally permitted
+    commands. If you configure an allowlist, only its listed users qualify.
+    Commands must originate in the telescope's configured Discord channel;
+    direct messages are rejected. These checks happen locally, while Discord
+    still processes the original interaction. The
+    <a href="/terms.html">self-hosted terms</a> describe the risks of enabling
+    equipment control.
   </p>
 
   <h2 id="website-analytics">The marketing website collects standard web metrics.</h2>

@@ -72,16 +72,19 @@
   <div class="callout">
     <p>
       <strong>Event switches are transmission and privacy controls.</strong>
+      Ordinary event categories, images, and N.I.N.A. popup notifications start
+      enabled; review or disable them in N.I.N.A. before pairing with the Hub.
       When you disable an event family in N.I.N.A., its underlying event records
       do not leave the plugin: they are not sent to the hosted Hub or to a
       local Chatstronomy runtime. This also applies immediately to previously
       buffered records. Events that occur while a family is disabled cannot be
-      released later by re-enabling it. Disabling images also blocks image
-      history, previews, thumbnails, and automatic image delivery, including
-      previously captured images. Other permitted events, equipment-status
-      snapshots, and non-image information explicitly requested by a slash
-      command can still be shared. Raw N.I.N.A. log forwarding is separately
-      controlled by level and is opt-in; disabled levels stop being transmitted.
+      released later by re-enabling it, and there is no state-maintenance
+      exception. Disabling images also blocks image history, previews,
+      thumbnails, and automatic image delivery, including previously captured
+      images. Other permitted events, equipment-status snapshots, and non-image
+      information explicitly requested by a slash command can still be shared.
+      Raw N.I.N.A. log forwarding starts disabled, is controlled separately by
+      level, and is opt-in; disabled levels stop being transmitted.
     </p>
   </div>
 

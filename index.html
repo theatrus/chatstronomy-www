@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Chatstronomy is a Discord bot for your telescope.</title>
-<meta name="description" content="Chatstronomy posts details about your N.I.N.A. imaging session to a Discord channel as the session progresses. The bot sends updates for image captures, autofocus runs, guiding, and live equipment status. It also allows you to control your equipment with slash commands. The software supports Matrix and is open source.">
+<meta name="description" content="Chatstronomy sends selected N.I.N.A. imaging updates to Discord through its hosted Hub, or to Discord or Matrix locally. Hardware commands require explicit approval in N.I.N.A.">
 <link rel="stylesheet" href="/assets/style.css">
 <link rel="icon" href="/assets/favicon.ico" sizes="any">
 <meta property="og:title" content="Chatstronomy is a Discord bot for your telescope.">
-<meta property="og:description" content="The application posts details about your N.I.N.A. imaging session to chat as the session progresses, and it allows you to control the rig using slash commands.">
+<meta property="og:description" content="Send selected N.I.N.A. imaging updates to chat. Optional telescope-control commands require explicit approval on the observatory computer.">
 <meta property="og:image" content="https://chatstronomy.com/assets/og-image.png">
 <meta property="og:url" content="https://chatstronomy.com/">
 <meta property="og:type" content="website">
@@ -38,12 +38,12 @@
   <div class="hero">
     <img class="mark" src="/assets/logo.png" alt="Chatstronomy logo.">
     <h1>A Discord bot for your telescope.</h1>
-    <p class="tagline">The application provides observatory notifications and equipment control in your chat channels.</p>
+    <p class="tagline">Observatory notifications and locally approved equipment control in your chat channels.</p>
     <p class="lede">
       Chatstronomy monitors your <a href="https://nighttime-imaging.eu/">N.I.N.A.</a>
-      rigs and posts real-time updates to a chat channel. It posts each capture, autofocus
-      run, guiding graph, and status change. You can run slash commands to check on the rig,
-      or to control it.
+      rigs and posts the imaging updates you permit, including captures, autofocus
+      runs, guiding graphs, and status changes. Discord slash commands can check on
+      the rig; hardware control is available only when you approve it in N.I.N.A.
     </p>
     <div class="cta">
       <a class="btn" href="https://hub.chatstronomy.com/">Open Chatstronomy Hub</a>
@@ -58,7 +58,7 @@
   </div>
 
   <section id="nina-plugin">
-    <h2>The Chatstronomy plugin is built into N.I.N.A.</h2>
+    <h2>The Chatstronomy plugin integrates directly with N.I.N.A.</h2>
     <p class="sub">
       The plugin reads N.I.N.A. natively, renders guider and autofocus graphs,
       sends the event families you choose, and exposes approved bot commands.
@@ -69,11 +69,19 @@
         <strong>Event switches control what leaves N.I.N.A.</strong>
         Disabled event families, including previously buffered events, are
         never sent to the hosted Hub or local bot; events captured while
-        disabled cannot be released later. Disabling images also blocks image
+        disabled cannot be released later. There is no background
+        state-reconstruction exception. Disabling images also blocks image
         history, previews, thumbnails, and automatic image delivery. Other
         permitted equipment-status snapshots and explicitly requested non-image
         slash-command data remain available; raw N.I.N.A. logs are shared only
         when you enable individual log levels.
+      </p>
+      <p>
+        Standard event categories, image previews, and N.I.N.A. popup
+        notifications start enabled. Review or disable them before pairing with
+        the Hub or starting a local runtime. Raw logs, observatory-location
+        sharing, the hardware-control master switch, and every individual
+        hardware permission start disabled.
       </p>
     </div>
     <div class="grid two">
@@ -84,7 +92,8 @@
           for the simplest setup. Each N.I.N.A. machine connects outbound over
           authenticated WSS, so one centralized Discord bot can serve
           rigs on different systems without opening observatory ports or copying
-          chat credentials to every computer.
+          chat credentials to every computer. The hosted Hub supports Discord;
+          Matrix is available through local mode.
         </p>
         <p class="note">
           The Hub processes account and observatory information.
@@ -93,7 +102,7 @@
         </p>
       </div>
       <div class="card">
-        <h3>Local Direct mode keeps all operations local.</h3>
+        <h3>Local Direct mode keeps the integration on your computer.</h3>
         <p>
           You can run the integration entirely on the observatory computer using a Discord webhook,
           a custom Discord application, or a Matrix account on an HTTPS homeserver.
@@ -106,10 +115,10 @@
     <div class="install" id="install-plugin">
       <h3>You can install the plugin from the N.I.N.A. plugin manager.</h3>
       <ol>
-        <li>You open <strong>Plugins &gt; Available</strong>, find <strong>Chatstronomy</strong>, install the plugin, and restart N.I.N.A.</li>
-        <li>To install the current release from our development repository, you open <strong>Options &gt; General &gt; Plugin Repositories</strong>, select <strong>+</strong>, and add <a href="https://raw.githubusercontent.com/theatrus/chatstronomy-nina-plugin/main/registry"><code>https://raw.githubusercontent.com/theatrus/chatstronomy-nina-plugin/main/registry</code></a>.</li>
-        <li>You return to <strong>Plugins &gt; Available</strong>, install <strong>Chatstronomy</strong>, and restart N.I.N.A.</li>
-        <li>You review the <a href="/hub-privacy.html">hosted Hub privacy policy</a> and <a href="/hub-terms.html">terms</a>, open <a href="https://hub.chatstronomy.com/">Chatstronomy Hub</a>, create a pairing code, select <strong>Chatstronomy Hub — hosted service</strong> in the plugin, and pair the rig.</li>
+        <li>Use the official repository when <strong>Chatstronomy</strong> is listed. Otherwise, open <strong>Options &gt; General &gt; Plugin Repositories</strong>, select <strong>+</strong>, and add our development repository: <a href="https://raw.githubusercontent.com/theatrus/chatstronomy-nina-plugin/main/registry"><code>https://raw.githubusercontent.com/theatrus/chatstronomy-nina-plugin/main/registry</code></a>.</li>
+        <li>Open <strong>Plugins &gt; Available</strong>, install <strong>Chatstronomy</strong>, and restart N.I.N.A.</li>
+        <li>Open the plugin options and review the event, image, location, logging, and hardware-control settings before connecting or starting a local runtime.</li>
+        <li>For hosted mode, review the <a href="/hub-privacy.html">hosted Hub privacy policy</a> and <a href="/hub-terms.html">terms</a>, open <a href="https://hub.chatstronomy.com/">Chatstronomy Hub</a>, create a pairing code, select <strong>Chatstronomy Hub — hosted service</strong>, and pair the rig.</li>
       </ol>
       <p class="note">
         N.I.N.A. supports more than one plugin repository, so adding the
@@ -130,12 +139,12 @@
     </p>
     <div class="grid two">
       <div class="card">
-        <h3>The bot posts every sub-exposure as it is captured.</h3>
-        <p>New captures are posted as full-size previews with metadata including the filter, exposure duration, and target. You can configure a cooldown interval to prevent a fast sequence from flooding the channel.</p>
+        <h3>The bot can post new image captures.</h3>
+        <p>When image delivery is enabled, captures are posted as JPEG previews up to 1,024 pixels wide with metadata such as the filter, exposure duration, and target. A configurable cooldown can prevent a fast sequence from flooding the channel.</p>
       </div>
       <div class="card">
         <h3>The bot sends autofocus and guiding charts.</h3>
-        <p>Autofocus runs are sent as plotted curves, and guiding data is sent as a graph. These charts allow you to monitor focusing and tracking performance during the session.</p>
+        <p>When their event categories are enabled, autofocus runs are sent as plotted curves and guiding data is sent as a graph. These charts let you monitor focusing and tracking performance during the session.</p>
       </div>
       <div class="card">
         <h3>The bot reports live status updates.</h3>
@@ -143,7 +152,7 @@
       </div>
       <div class="card">
         <h3>The Hub supports multiple rigs.</h3>
-        <p>You can pair multiple N.I.N.A. instances on different systems with a single centrally managed bot, and then route each telescope's telemetry to a dedicated channel or room.</p>
+        <p>You can pair multiple N.I.N.A. instances on different systems with one centrally managed Discord bot, and then route each telescope's permitted updates to its selected Discord channels. Matrix rooms are available only with a local runtime.</p>
       </div>
     </div>
   </section>
@@ -173,7 +182,7 @@
       <li>/park</li><li>/unpark</li><li>/home</li><li>/cool</li>
       <li>/change-filter</li><li>/abort-capture</li><li>/stop-sequence</li>
     </ul>
-    <p class="note">The plugin provides twenty-one commands in total; the read-only commands do not require special permissions.</p>
+    <p class="note">The plugin provides twenty-one commands in total. Read-only commands do not require hardware-control permission; image queries still require image delivery to be enabled.</p>
 
     <div class="callout">
       <p>
@@ -191,6 +200,11 @@
         <a href="/terms.html">self-hosted terms</a> for the risks of managing
         physical equipment remotely.
       </p>
+      <p>
+        Observatory coordinates and location-derived mount readings are hidden
+        unless location sharing is enabled in N.I.N.A. Hardware device
+        identifiers remain redacted even when location sharing is on.
+      </p>
     </div>
   </section>
 
@@ -200,7 +214,7 @@
       <div class="card">
         <h3>The Chatstronomy Hub topology is recommended.</h3>
         <p>
-          This option pairs multiple N.I.N.A. installations with a centrally managed bot. The observatory computers make outbound connections over WebSockets, which eliminates the need to expose N.I.N.A. or local ports to the internet.
+          This option pairs multiple N.I.N.A. installations with a centrally managed Discord bot. The observatory computers make outbound encrypted WebSocket connections, which eliminates the need to expose N.I.N.A. or local ports to the internet. Hosted delivery does not support Matrix.
           <a href="https://hub.chatstronomy.com/">Open the Hub</a> to begin.
         </p>
       </div>

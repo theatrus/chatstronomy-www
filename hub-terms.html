@@ -125,15 +125,17 @@
 
   <h2>5. The Hub shares and retains specific information.</h2>
   <p>
-    Event-family switches in the N.I.N.A. plugin control transmission, not
-    merely Discord notifications. Events in a disabled family, including
-    previously buffered records, are not sent to the Hub or local runtime.
-    Events captured while a family is disabled are not released if it is later
-    re-enabled. Disabling images also blocks image history, previews,
-    thumbnails, and automatic image delivery, including previously captured
-    images. Other permitted events, equipment-status snapshots, and explicitly
-    requested non-image slash-command data can still be shared; raw N.I.N.A.
-    logs are forwarded only for individually enabled levels.
+    Ordinary event families, images, and N.I.N.A. popup notifications start
+    enabled. Review or disable them in N.I.N.A. before pairing. Event-family
+    switches control transmission, not merely Discord notifications. Events in
+    a disabled family, including previously buffered records, are not sent to
+    the Hub or local runtime. Events captured while a family is disabled are
+    not released if it is later re-enabled, and there is no state-maintenance
+    exception. Disabling images also blocks image history, previews, thumbnails,
+    and automatic image delivery, including previously captured images. Other
+    permitted events, equipment-status snapshots, and explicitly requested
+    non-image slash-command data can still be shared; raw N.I.N.A. logs start
+    disabled and are forwarded only for individually enabled levels.
     Observatory-location sharing is disabled by default; when disabled, the
     plugin redacts site coordinates and practical location-derived mount
     readings. Hardware device and driver identifiers are always redacted. Your
