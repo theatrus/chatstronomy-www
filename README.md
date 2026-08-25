@@ -52,12 +52,18 @@ they should remain readable without tracking or accepting marketing cookies.
 ## Hosted policies must match the actual service.
 
 The Hub stores Discord identity, telescope configuration, routing, session,
-credential, and management-audit records. It processes live observatory events,
-images, and optionally selected logs even when some events are suppressed from
-chat. Its AWS-hosted SQLite database is backed up hourly to private, encrypted,
-versioned S3 storage; older backup versions expire after 90 days. Account
-deletion is currently a manual request, and administrative audit history has no
-fixed automatic retention schedule.
+credential, and management-audit records. It processes permitted observatory
+events, equipment telemetry, images, and explicitly selected log levels. Event
+switches are local transmission boundaries: disabled event families, including
+previously buffered records, never reach either the hosted Hub or local runtime.
+Events captured while a family is disabled cannot be released later. Disabling
+images also prevents image history, previews, thumbnails, and automatic image
+delivery, including previously captured images. Other permitted events,
+equipment-status snapshots, and explicitly requested non-image slash-command
+data remain available. Its AWS-hosted SQLite database is backed up hourly to
+private, encrypted, versioned S3 storage; older backup versions expire after 90
+days. Account deletion is currently a manual request, and administrative audit
+history has no fixed automatic retention schedule.
 
 The hardware-control master switch and every individual equipment-command
 permission default to off in each local N.I.N.A. profile. An equipment command

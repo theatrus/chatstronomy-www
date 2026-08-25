@@ -125,15 +125,22 @@
 
   <h2>5. The Hub shares and retains specific information.</h2>
   <p>
-    The Hub processes observatory data even when an event category is disabled
-    for Discord delivery, because the raw event can still be needed to
-    reconstruct equipment state. Observatory-location sharing is disabled by
-    default; when disabled, the plugin redacts site coordinates and practical
-    location-derived mount readings. Hardware device and driver identifiers are
-    always redacted. Your connection IP address, images, metadata, equipment
-    display names, timestamps, and optional logs can still disclose sensitive
-    information. Messages and images posted to Discord remain subject to
-    Discord's retention practices and the access granted to its users.
+    Event-family switches in the N.I.N.A. plugin control transmission, not
+    merely Discord notifications. Events in a disabled family, including
+    previously buffered records, are not sent to the Hub or local runtime.
+    Events captured while a family is disabled are not released if it is later
+    re-enabled. Disabling images also blocks image history, previews,
+    thumbnails, and automatic image delivery, including previously captured
+    images. Other permitted events, equipment-status snapshots, and explicitly
+    requested non-image slash-command data can still be shared; raw N.I.N.A.
+    logs are forwarded only for individually enabled levels.
+    Observatory-location sharing is disabled by default; when disabled, the
+    plugin redacts site coordinates and practical location-derived mount
+    readings. Hardware device and driver identifiers are always redacted. Your
+    connection IP address, permitted images, metadata, equipment display names,
+    timestamps, and optional logs can still disclose sensitive information.
+    Messages and images posted to Discord remain subject to Discord's retention
+    practices and the access granted to its users.
   </p>
   <p>
     The primary service runs on AWS infrastructure in the United States. Live
