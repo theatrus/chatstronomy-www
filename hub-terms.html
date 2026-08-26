@@ -18,7 +18,7 @@
   </div>
 
   <h1>These terms of service govern Chatstronomy Hub.</h1>
-  <p class="updated">This document was last updated on 24 August 2026.</p>
+  <p class="updated">This document was last updated on 26 August 2026.</p>
 
   <p class="lede">
     These terms apply to the hosted Chatstronomy Hub operated by Yann Ramin at
@@ -100,8 +100,10 @@
     A request to skip sequence validation requires an additional, separately
     enabled local permission beyond permission to start the sequence. Accepting
     or submitting a command does not itself guarantee that an asynchronous
-    equipment operation completed successfully; check the reported outcome and
-    actual equipment state.
+    equipment operation completed successfully. Once N.I.N.A. accepts a locally
+    permitted command, its terminal failure is always sent through the Hub as
+    part of that command exchange; check the reported outcome and actual
+    equipment state.
   </p>
 
   <h2>4. Physical safety remains your responsibility.</h2>
@@ -134,8 +136,11 @@
     exception. Disabling images also blocks image history, previews, thumbnails,
     and automatic image delivery, including previously captured images. Other
     permitted events, equipment-status snapshots, and explicitly requested
-    non-image slash-command data can still be shared; raw N.I.N.A. logs start
-    disabled and are forwarded only for individually enabled levels.
+    non-image slash-command data can still be shared. Once N.I.N.A. accepts a
+    locally permitted command, its terminal failure is always delivered as part
+    of that command exchange and is not controlled by optional event switches.
+    Raw N.I.N.A. logs start disabled and are forwarded only for individually
+    enabled levels.
     Observatory-location sharing is disabled by default; when disabled, the
     plugin redacts site coordinates and practical location-derived mount
     readings. Hardware device and driver identifiers are always redacted. Your

@@ -27,7 +27,7 @@
   </div>
 
   <h1>This policy governs the privacy of self-hosted Chatstronomy.</h1>
-  <p class="updated">This document was last updated on 24 August 2026.</p>
+  <p class="updated">This document was last updated on 26 August 2026.</p>
 
   <p class="lede">
     The Chatstronomy application runs entirely on your local computer, does not communicate with our servers, and does not transmit any information about you or your equipment to us.
@@ -84,8 +84,11 @@
   </p>
   <p>
     Equipment-status snapshots and permitted non-image, read-only queries can
-    remain available independently. Raw N.I.N.A. log forwarding is disabled by
-    default and must be enabled separately for each log level.
+    remain available independently. Once N.I.N.A. accepts a locally permitted
+    command, its terminal failure is always delivered as part of that command
+    exchange and is not controlled by optional event switches. Raw N.I.N.A. log
+    forwarding is disabled by default and must be enabled separately for each
+    log level.
   </p>
 
   <h2>Observatory-location sharing is disabled by default.</h2>
@@ -101,7 +104,19 @@
 
   <h2>Data is transmitted directly to Discord or Matrix.</h2>
   <p>
-    The application transmits the data you configure it to post, such as images, autofocus results, equipment status, and session progress. This data is sent directly from your machine to the configured chat service using your bot credentials, and it is governed by that service's privacy policy, such as the
+    The application transmits the data you configure it to post, such as images,
+    autofocus and guiding results, durable safety status, sequence progress and
+    failure summaries, image-save failures, mount-slew and plate-solve results,
+    dome/shutter activity, flat-panel cover, light, and brightness changes, and
+    connection state for weather and switch devices. It does not capture
+    structured weather measurements, switch values, or LiveStack data. Enabled
+    popup notifications and opt-in raw N.I.N.A. logs remain unstructured text
+    and may contain operational details. Enabled sequence sharing can also
+    include user-authored annotation and message text. Failure summaries can
+    contain sanitized N.I.N.A. operational error text; local path-shaped strings
+    are redacted before transmission. This data is sent directly from your
+    machine to the configured chat service using your bot credentials, and it is
+    governed by that service's privacy policy, such as the
     <a href="https://discord.com/privacy">Discord Privacy Policy</a>, or your
     Matrix homeserver's policy.
   </p>
@@ -124,7 +139,9 @@
     commands. If you configure an allowlist, only its listed users qualify.
     Commands must originate in the telescope's configured Discord channel;
     direct messages are rejected. These checks happen locally, while Discord
-    still processes the original interaction. The
+    still processes the original interaction. Once N.I.N.A. accepts a permitted
+    command, any later terminal failure is sent to the configured chat as part
+    of that command exchange. The
     <a href="/terms.html">self-hosted terms</a> describe the risks of enabling
     equipment control.
   </p>

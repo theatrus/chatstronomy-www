@@ -61,9 +61,9 @@
     <h2>The Chatstronomy plugin integrates directly with N.I.N.A.</h2>
     <p class="sub">
       The plugin reads N.I.N.A. natively, renders guider and autofocus graphs,
-      reports selected safety and sequence activity, sends the event families
-      you choose, and exposes approved bot commands. No N.I.N.A. web server or
-      polling setup is required.
+      retains selected safety and equipment state, reports sequence and image
+      failures, sends the event families you choose, and exposes approved bot
+      commands. No N.I.N.A. web server or polling setup is required.
     </p>
     <div class="callout">
       <p>
@@ -76,6 +76,11 @@
         permitted equipment-status snapshots and explicitly requested non-image
         slash-command data remain available; raw N.I.N.A. logs are shared only
         when you enable individual log levels.
+      </p>
+      <p>
+        Once N.I.N.A. accepts a locally permitted command, its terminal failure
+        is always returned as part of that command exchange. Optional event
+        switches cannot hide that outcome.
       </p>
       <p>
         Standard event categories, image previews, and N.I.N.A. popup
@@ -141,7 +146,7 @@
     <div class="grid two">
       <div class="card">
         <h3>The bot can post new image captures.</h3>
-        <p>When image delivery is enabled, captures are posted as JPEG previews up to 1,024 pixels wide with metadata such as the filter, exposure duration, and target. A configurable cooldown can prevent a fast sequence from flooding the channel.</p>
+        <p>When image delivery is enabled, captures are posted as JPEG previews up to 1,024 pixels wide with metadata such as the filter, exposure duration, and target. Image-save and camera-download failures are also reported. A configurable cooldown can prevent a fast sequence from flooding the channel.</p>
       </div>
       <div class="card">
         <h3>The bot sends autofocus and guiding charts.</h3>
@@ -149,7 +154,8 @@
       </div>
       <div class="card">
         <h3>The bot reports live status updates.</h3>
-        <p>Status updates include Sequence and Target Scheduler targets, cooling progress, timed waits, and supported long-running Sequencer+ waits such as <strong>Wait Until Safe</strong>. The bot can also report native safety-monitor transitions, slewing and centering results, mount state, meridian flips, equipment telemetry, N.I.N.A. notifications, and optional logs.</p>
+        <p>Status updates include durable safety state; Sequence and Target Scheduler targets; camera cooling and warming; built-in timed, altitude, Moon-altitude, Sun-altitude, horizon, and safety waits; and supported Sequencer+ condition and manual waits. The bot reports sequence-item failures and presents clean, failed, stopped, cancelled, or otherwise ended sequence outcomes without treating every finish event as success. It can also report mount-slew completion, centering and plate-solve results, dome/shutter activity, flat-panel cover, light, and brightness changes, weather and switch-device connection state, N.I.N.A. notifications, and optional logs.</p>
+        <p class="note">The plugin does not capture structured weather measurements, switch values, or LiveStack data. Enabled popup notifications and opt-in raw N.I.N.A. logs remain unstructured text and may contain operational details. A dedicated <strong>Observatory and flat panel</strong> event switch controls dome/shutter and flat-panel activity; connection events use <strong>Equipment connections</strong>.</p>
       </div>
       <div class="card">
         <h3>The Hub supports multiple rigs.</h3>

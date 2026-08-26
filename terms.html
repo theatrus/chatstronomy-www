@@ -27,7 +27,7 @@
   </div>
 
   <h1>These terms of service govern self-hosted Chatstronomy.</h1>
-  <p class="updated">This document was last updated on 24 August 2026.</p>
+  <p class="updated">This document was last updated on 26 August 2026.</p>
 
   <p class="lede">
     These terms cover only the Chatstronomy software you run on your own
@@ -89,7 +89,10 @@
     these settings. Disabling images also prevents image history, thumbnails,
     previews, and explicit last-image requests. Equipment-status snapshots and
     other permitted non-image queries can remain available. Raw N.I.N.A. logs
-    are disabled unless you explicitly enable individual log levels.
+    are disabled unless you explicitly enable individual log levels. Once
+    N.I.N.A. accepts a locally permitted command, its terminal failure is always
+    delivered as part of that command exchange and is not controlled by
+    optional event switches.
   </p>
   <p>
     Permitted updates travel directly to your configured Discord or Matrix
@@ -129,6 +132,9 @@
     and starting or stopping imaging sequences. Skipping sequence validation
     requires its own additional local permission. Disable the master switch to
     immediately return the N.I.N.A. profile to monitoring-only operation.
+    Accepting an asynchronous command does not mean that its hardware operation
+    completed. If it later fails, the plugin reports that terminal failure to
+    the configured chat as part of the command exchange.
   </p>
   <p>
     Additional safeguards narrow access but cannot override the permissions

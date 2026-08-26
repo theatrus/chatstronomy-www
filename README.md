@@ -36,8 +36,9 @@ Branding assets are sourced from `theatrus/chatstronomy` under `assets/branding/
 The landing page tracks the separately released
 [`theatrus/chatstronomy-nina-plugin`](https://github.com/theatrus/chatstronomy-nina-plugin),
 which provides native N.I.N.A. integration, local Discord or Matrix delivery,
-autofocus and guider graphs, selected safety-monitor and Sequencer+ wait
-updates, and multi-machine Discord pairing through the recommended
+autofocus and guider graphs, durable safety status, built-in and Sequencer+
+operation updates, dome/shutter and flat-panel lifecycle events, and
+multi-machine Discord pairing through the recommended
 [Chatstronomy Hub](https://hub.chatstronomy.com/). Install the plugin from
 N.I.N.A.'s official repository once it is listed there, or add our development
 repository URL:
@@ -74,9 +75,16 @@ Events captured while a family is disabled cannot be released later; there is no
 state-maintenance exception. Disabling images also prevents image history,
 previews, thumbnails, and automatic image delivery, including previously
 captured images. Other permitted events, equipment-status snapshots, and
-explicitly requested non-image slash-command data remain available. Raw N.I.N.A.
-logs start disabled and require a separate opt-in for each level. Its AWS-hosted
-SQLite database is backed up hourly to private, encrypted, versioned S3 storage;
+explicitly requested non-image slash-command data remain available. Once
+N.I.N.A. accepts a locally permitted command, its terminal failure is always
+delivered as part of that command exchange and is not controlled by optional
+event switches. Raw N.I.N.A. logs start disabled and require a separate opt-in
+for each level. The plugin reports dome/shutter actions, flat-panel cover,
+light, and brightness changes, and connection state for weather and switch
+devices; it does not capture structured weather measurements, switch values, or
+LiveStack data. Enabled popup notifications and opt-in raw N.I.N.A. logs remain
+unstructured text and may contain operational details. Its AWS-hosted SQLite
+database is backed up hourly to private, encrypted, versioned S3 storage;
 older backup versions expire after 90 days. Account deletion is currently a
 manual request, and administrative audit history has no fixed automatic
 retention schedule.
