@@ -61,8 +61,9 @@
     <h2>The Chatstronomy plugin integrates directly with N.I.N.A.</h2>
     <p class="sub">
       The plugin reads N.I.N.A. natively, renders guider and autofocus graphs,
-      sends the event families you choose, and exposes approved bot commands.
-      No N.I.N.A. web server or polling setup is required.
+      reports selected safety and sequence activity, sends the event families
+      you choose, and exposes approved bot commands. No N.I.N.A. web server or
+      polling setup is required.
     </p>
     <div class="callout">
       <p>
@@ -115,7 +116,7 @@
     <div class="install" id="install-plugin">
       <h3>You can install the plugin from the N.I.N.A. plugin manager.</h3>
       <ol>
-        <li>Use the official repository when <strong>Chatstronomy</strong> is listed. Otherwise, open <strong>Options &gt; General &gt; Plugin Repositories</strong>, select <strong>+</strong>, and add our development repository: <a href="https://raw.githubusercontent.com/theatrus/chatstronomy-nina-plugin/main/registry"><code>https://raw.githubusercontent.com/theatrus/chatstronomy-nina-plugin/main/registry</code></a>.</li>
+        <li>Use the official repository when <strong>Chatstronomy</strong> is listed. Otherwise, open <strong>Options &gt; General &gt; Plugin Repositories</strong>, select <strong>+</strong>, and add our development repository: <a href="https://github.com/theatrus/chatstronomy-nina-plugin/tree/main/registry"><code>https://raw.githubusercontent.com/theatrus/chatstronomy-nina-plugin/main/registry</code></a>.</li>
         <li>Open <strong>Plugins &gt; Available</strong>, install <strong>Chatstronomy</strong>, and restart N.I.N.A.</li>
         <li>Open the plugin options and review the event, image, location, logging, and hardware-control settings before connecting or starting a local runtime.</li>
         <li>For hosted mode, review the <a href="/hub-privacy.html">hosted Hub privacy policy</a> and <a href="/hub-terms.html">terms</a>, open <a href="https://hub.chatstronomy.com/">Chatstronomy Hub</a>, create a pairing code, select <strong>Chatstronomy Hub — hosted service</strong>, and pair the rig.</li>
@@ -144,11 +145,11 @@
       </div>
       <div class="card">
         <h3>The bot sends autofocus and guiding charts.</h3>
-        <p>When their event categories are enabled, autofocus runs are sent as plotted curves and guiding data is sent as a graph. These charts let you monitor focusing and tracking performance during the session.</p>
+        <p>When their event categories are enabled, each autofocus curve is built from the report matching that completed run, and guiding data is sent as a graph. These charts let you monitor focusing and tracking performance during the session.</p>
       </div>
       <div class="card">
         <h3>The bot reports live status updates.</h3>
-        <p>Status updates include Sequence and Target Scheduler targets, cooling progress, timed-wait status, slewing events, and centering results. The bot also tracks mount state, meridian flips, equipment telemetry, N.I.N.A. notifications, and optional logs.</p>
+        <p>Status updates include Sequence and Target Scheduler targets, cooling progress, timed waits, and supported long-running Sequencer+ waits such as <strong>Wait Until Safe</strong>. The bot can also report native safety-monitor transitions, slewing and centering results, mount state, meridian flips, equipment telemetry, N.I.N.A. notifications, and optional logs.</p>
       </div>
       <div class="card">
         <h3>The Hub supports multiple rigs.</h3>
@@ -162,7 +163,7 @@
     <div class="grid two">
       <figure>
         <img src="/assets/autofocus-graph.png" alt="An autofocus run plotted as a V-curve of HFR against focuser position">
-        <figcaption>The autofocus run plots as a curve to confirm that the focus sequence completed successfully.</figcaption>
+        <figcaption>The report matching the completed autofocus run is plotted as a curve for reviewing focus quality.</figcaption>
       </figure>
       <figure>
         <img src="/assets/guiding-graph.png" alt="A guiding graph showing RA and Dec error over time">

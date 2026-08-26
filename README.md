@@ -36,7 +36,8 @@ Branding assets are sourced from `theatrus/chatstronomy` under `assets/branding/
 The landing page tracks the separately released
 [`theatrus/chatstronomy-nina-plugin`](https://github.com/theatrus/chatstronomy-nina-plugin),
 which provides native N.I.N.A. integration, local Discord or Matrix delivery,
-and multi-machine Discord pairing through the recommended
+autofocus and guider graphs, selected safety-monitor and Sequencer+ wait
+updates, and multi-machine Discord pairing through the recommended
 [Chatstronomy Hub](https://hub.chatstronomy.com/). Install the plugin from
 N.I.N.A.'s official repository once it is listed there, or add our development
 repository URL:
