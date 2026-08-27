@@ -36,7 +36,10 @@ Branding assets are sourced from `theatrus/chatstronomy` under `assets/branding/
 The landing page tracks the separately released
 [`theatrus/chatstronomy-nina-plugin`](https://github.com/theatrus/chatstronomy-nina-plugin),
 which provides native N.I.N.A. integration, local Discord or Matrix delivery,
-and multi-machine Discord pairing through the recommended
+autofocus and guider graphs, durable safety status, built-in and Sequencer+
+operation updates, dome/shutter and flat-panel lifecycle events, optional
+weather-change and high-wind notifications, and multi-machine Discord pairing
+through the recommended
 [Chatstronomy Hub](https://hub.chatstronomy.com/). Install the plugin from
 N.I.N.A.'s official repository once it is listed there, or add our development
 repository URL:
@@ -64,18 +67,37 @@ they should remain readable without tracking or accepting marketing cookies.
 The Hub supports Discord; Matrix requires a local runtime. The Hub stores
 Discord identity, telescope configuration, routing, session, credential, and
 management-audit records. It processes permitted observatory events, equipment
-telemetry, images, and explicitly selected log levels. Ordinary event
+telemetry, images, and explicitly selected log levels. Most ordinary event
 categories, image delivery, and N.I.N.A. popup notifications start enabled;
-users should review them before pairing or starting a local runtime. Event
-switches are local transmission boundaries: disabled event families, including
-previously buffered records, never reach either the hosted Hub or local runtime.
+the two independent controls for meaningful weather changes and high-wind
+alerts start disabled. Users should review every setting before pairing or
+starting a local runtime. Event switches are local transmission boundaries:
+disabled event families, including previously buffered records, never reach
+either the hosted Hub or local runtime.
 Events captured while a family is disabled cannot be released later; there is no
 state-maintenance exception. Disabling images also prevents image history,
 previews, thumbnails, and automatic image delivery, including previously
 captured images. Other permitted events, equipment-status snapshots, and
-explicitly requested non-image slash-command data remain available. Raw N.I.N.A.
-logs start disabled and require a separate opt-in for each level. Its AWS-hosted
-SQLite database is backed up hourly to private, encrypted, versioned S3 storage;
+explicitly requested non-image slash-command data remain available. Once
+N.I.N.A. accepts a locally permitted command, its terminal failure is always
+delivered as part of that command exchange and is not controlled by optional
+event switches. Raw N.I.N.A. logs start disabled and require a separate opt-in
+for each level. The plugin reports dome/shutter actions, flat-panel cover,
+light, and brightness changes, and connection state for weather and switch
+devices. When separately enabled, meaningful weather-change posts are grouped
+and rate-limited, while high-wind alerts compare wind speed or gusts with a
+user-selected threshold in meters per second and report both alert and recovery
+transitions. General weather-change posts can contain numeric temperature,
+dew-point, humidity, pressure, cloud, rain, wind, sky, and seeing readings.
+High-wind records contain only wind speed, gust, threshold, and alert state;
+an active alert may be resent after reconnecting or changing the threshold to
+synchronize status without a duplicate chat alert. Both omit weather-station
+names and device or driver identifiers. They are informational rather than a
+safety system: readings and posts can be delayed, missing, or inaccurate. The
+plugin does not capture switch values or LiveStack data. Enabled popup
+notifications and opt-in raw N.I.N.A. logs remain unstructured text and may
+contain operational details. Its AWS-hosted SQLite
+database is backed up hourly to private, encrypted, versioned S3 storage;
 older backup versions expire after 90 days. Account deletion is currently a
 manual request, and administrative audit history has no fixed automatic
 retention schedule.

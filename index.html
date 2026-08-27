@@ -61,8 +61,9 @@
     <h2>The Chatstronomy plugin integrates directly with N.I.N.A.</h2>
     <p class="sub">
       The plugin reads N.I.N.A. natively, renders guider and autofocus graphs,
-      sends the event families you choose, and exposes approved bot commands.
-      No N.I.N.A. web server or polling setup is required.
+      retains selected safety and equipment state, reports sequence and image
+      failures, sends the event families you choose, and exposes approved bot
+      commands. No N.I.N.A. web server or polling setup is required.
     </p>
     <div class="callout">
       <p>
@@ -77,11 +78,17 @@
         when you enable individual log levels.
       </p>
       <p>
-        Standard event categories, image previews, and N.I.N.A. popup
+        Once N.I.N.A. accepts a locally permitted command, its terminal failure
+        is always returned as part of that command exchange. Optional event
+        switches cannot hide that outcome.
+      </p>
+      <p>
+        Most standard event categories, image previews, and N.I.N.A. popup
         notifications start enabled. Review or disable them before pairing with
-        the Hub or starting a local runtime. Raw logs, observatory-location
-        sharing, the hardware-control master switch, and every individual
-        hardware permission start disabled.
+        the Hub or starting a local runtime. Meaningful weather changes and
+        high-wind alerts have separate controls and both start disabled. Raw
+        logs, observatory-location sharing, the hardware-control master switch,
+        and every individual hardware permission also start disabled.
       </p>
     </div>
     <div class="grid two">
@@ -115,7 +122,7 @@
     <div class="install" id="install-plugin">
       <h3>You can install the plugin from the N.I.N.A. plugin manager.</h3>
       <ol>
-        <li>Use the official repository when <strong>Chatstronomy</strong> is listed. Otherwise, open <strong>Options &gt; General &gt; Plugin Repositories</strong>, select <strong>+</strong>, and add our development repository: <a href="https://raw.githubusercontent.com/theatrus/chatstronomy-nina-plugin/main/registry"><code>https://raw.githubusercontent.com/theatrus/chatstronomy-nina-plugin/main/registry</code></a>.</li>
+        <li>Use the official repository when <strong>Chatstronomy</strong> is listed. Otherwise, open <strong>Options &gt; General &gt; Plugin Repositories</strong>, select <strong>+</strong>, and add our development repository: <a href="https://github.com/theatrus/chatstronomy-nina-plugin/tree/main/registry"><code>https://raw.githubusercontent.com/theatrus/chatstronomy-nina-plugin/main/registry</code></a>.</li>
         <li>Open <strong>Plugins &gt; Available</strong>, install <strong>Chatstronomy</strong>, and restart N.I.N.A.</li>
         <li>Open the plugin options and review the event, image, location, logging, and hardware-control settings before connecting or starting a local runtime.</li>
         <li>For hosted mode, review the <a href="/hub-privacy.html">hosted Hub privacy policy</a> and <a href="/hub-terms.html">terms</a>, open <a href="https://hub.chatstronomy.com/">Chatstronomy Hub</a>, create a pairing code, select <strong>Chatstronomy Hub — hosted service</strong>, and pair the rig.</li>
@@ -140,15 +147,17 @@
     <div class="grid two">
       <div class="card">
         <h3>The bot can post new image captures.</h3>
-        <p>When image delivery is enabled, captures are posted as JPEG previews up to 1,024 pixels wide with metadata such as the filter, exposure duration, and target. A configurable cooldown can prevent a fast sequence from flooding the channel.</p>
+        <p>When image delivery is enabled, captures are posted as JPEG previews up to 1,024 pixels wide with metadata such as the filter, exposure duration, and target. Image-save and camera-download failures are also reported. A configurable cooldown can prevent a fast sequence from flooding the channel.</p>
       </div>
       <div class="card">
         <h3>The bot sends autofocus and guiding charts.</h3>
-        <p>When their event categories are enabled, autofocus runs are sent as plotted curves and guiding data is sent as a graph. These charts let you monitor focusing and tracking performance during the session.</p>
+        <p>When their event categories are enabled, each autofocus curve is built from the report matching that completed run, and guiding data is sent as a graph. These charts let you monitor focusing and tracking performance during the session.</p>
       </div>
       <div class="card">
         <h3>The bot reports live status updates.</h3>
-        <p>Status updates include Sequence and Target Scheduler targets, cooling progress, timed-wait status, slewing events, and centering results. The bot also tracks mount state, meridian flips, equipment telemetry, N.I.N.A. notifications, and optional logs.</p>
+        <p>Status updates include durable safety state; Sequence and Target Scheduler targets; camera cooling and warming; built-in timed, altitude, Moon-altitude, Sun-altitude, horizon, and safety waits; and supported Sequencer+ condition and manual waits. The bot reports sequence-item failures and presents clean, failed, stopped, cancelled, or otherwise ended sequence outcomes without treating every finish event as success. It can also report mount-slew completion, centering and plate-solve results, dome/shutter activity, flat-panel cover, light, and brightness changes, weather and switch-device connection state, N.I.N.A. notifications, and optional logs.</p>
+        <p>Weather reporting uses two independent, default-off controls. <strong>Meaningful weather changes</strong> groups changed readings into rate-limited updates that can include numeric temperature, dew-point, humidity, pressure, cloud, rain, wind, sky, and seeing readings. <strong>High-wind alerts</strong> compares wind speed or gusts with your threshold in meters per second. Its records contain only wind speed, gust, threshold, and alert state, and report both alert and recovery. An active alert may be resent after reconnecting or changing the threshold to keep status synchronized without another chat alert. Weather-station names and device or driver identifiers are omitted.</p>
+        <p class="note">Weather notifications are informational, not a safety system. Sensor readings or chat posts may be delayed, missing, or inaccurate, so keep independent weather monitoring and hardware interlocks in place. The plugin does not capture switch values or LiveStack data. Enabled popup notifications and opt-in raw N.I.N.A. logs remain unstructured text and may contain operational details. A dedicated <strong>Observatory and flat panel</strong> event switch controls dome/shutter and flat-panel activity; connection events use <strong>Equipment connections</strong>.</p>
       </div>
       <div class="card">
         <h3>The Hub supports multiple rigs.</h3>
@@ -162,7 +171,7 @@
     <div class="grid two">
       <figure>
         <img src="/assets/autofocus-graph.png" alt="An autofocus run plotted as a V-curve of HFR against focuser position">
-        <figcaption>The autofocus run plots as a curve to confirm that the focus sequence completed successfully.</figcaption>
+        <figcaption>The report matching the completed autofocus run is plotted as a curve for reviewing focus quality.</figcaption>
       </figure>
       <figure>
         <img src="/assets/guiding-graph.png" alt="A guiding graph showing RA and Dec error over time">

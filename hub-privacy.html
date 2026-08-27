@@ -18,7 +18,7 @@
   </div>
 
   <h1>This policy governs the privacy of the hosted Chatstronomy Hub.</h1>
-  <p class="updated">This document was last updated on 24 August 2026.</p>
+  <p class="updated">This document was last updated on 26 August 2026.</p>
 
   <p class="lede">
     Chatstronomy Hub is a hosted service operated by Yann Ramin. Unlike the
@@ -60,10 +60,39 @@
   </p>
   <ul>
     <li>
-      The plugin transmits status information, which includes the connection status, equipment display names, celestial target coordinates, permitted mount-position fields, and details regarding the telescope, camera, mount, focuser, filter wheel, rotator, and guider.
+      The plugin transmits status information, which includes connection state,
+      equipment display names, celestial target coordinates, permitted
+      mount-position fields, durable safety status, and details regarding the
+      telescope, camera, mount, focuser, filter wheel, rotator, and guider.
     </li>
     <li>
-      The plugin can transmit permitted session details, including Sequence and Target Scheduler names and progress, exposure metadata, autofocus and guiding measurements, plots, previews, images, timestamps, and explicitly selected log messages.
+      The plugin can transmit permitted session details, including Sequence and
+      Target Scheduler names and progress, user-authored sequence annotation and
+      message text, sequence-item and image-save failure summaries, completion
+      outcomes, built-in wait and plate-solve results, exposure metadata,
+      autofocus and guiding measurements, plots, previews, images, timestamps,
+      and explicitly selected log messages. Failure summaries can contain
+      sanitized N.I.N.A. operational error text; local path-shaped strings are
+      redacted before transmission.
+    </li>
+    <li>
+      Permitted observatory-device events can include mount-slew completion,
+      dome/shutter actions, flat-panel cover, light, and brightness changes,
+      and connection state for weather and switch devices. Structured weather
+      reporting has two independent local controls, both disabled by default.
+      Meaningful weather changes are grouped and rate-limited; high-wind
+      notifications compare wind speed or gusts with a user-selected
+      threshold in meters per second and report alert and recovery transitions.
+      General weather-change posts can contain numeric temperature, dew-point,
+      humidity, pressure, cloud, rain, wind, sky, and seeing readings. High-wind
+      records contain only wind speed, gust, threshold, and alert state. An
+      active alert may be resent after reconnecting or changing the threshold
+      to synchronize status without another chat alert; missing readings do not
+      clear it. Weather-station names and device or driver identifiers are
+      omitted. The plugin does not
+      capture switch values or LiveStack data. Enabled popup notifications and
+      opt-in raw N.I.N.A. logs remain unstructured text and may contain
+      operational details.
     </li>
     <li>
       The plugin transmits site information, which includes the latitude, longitude, elevation, and location-derived mount readings, but only if you explicitly enable the local observatory-location setting.
@@ -72,8 +101,9 @@
   <div class="callout">
     <p>
       <strong>Event switches are transmission and privacy controls.</strong>
-      Ordinary event categories, images, and N.I.N.A. popup notifications start
-      enabled; review or disable them in N.I.N.A. before pairing with the Hub.
+      Most ordinary event categories, images, and N.I.N.A. popup notifications
+      start enabled; the two weather-reporting controls start disabled. Review
+      every setting in N.I.N.A. before pairing with the Hub.
       When you disable an event family in N.I.N.A., its underlying event records
       do not leave the plugin: they are not sent to the hosted Hub or to a
       local Chatstronomy runtime. This also applies immediately to previously
@@ -83,10 +113,20 @@
       thumbnails, and automatic image delivery, including previously captured
       images. Other permitted events, equipment-status snapshots, and non-image
       information explicitly requested by a slash command can still be shared.
-      Raw N.I.N.A. log forwarding starts disabled, is controlled separately by
-      level, and is opt-in; disabled levels stop being transmitted.
+      Once N.I.N.A. accepts a locally permitted command, its terminal failure
+      is always delivered as part of that command exchange and is not
+      controlled by optional event switches. Raw N.I.N.A. log forwarding starts
+      disabled, is controlled separately by level, and is opt-in; disabled
+      levels stop being transmitted.
     </p>
   </div>
+
+  <p>
+    Weather notifications are informational telemetry, not a safety system.
+    Sensor readings and Hub or Discord posts may be delayed, missing, or
+    inaccurate because of sensor, N.I.N.A., plugin, network, service, or Discord
+    behavior. Do not rely on these notifications to protect equipment or people.
+  </p>
 
   <h2>The application provides location sharing and redaction controls.</h2>
   <p>
@@ -209,7 +249,9 @@
     setting, server manager, Discord role, or service operator cannot change
     these local permissions remotely. For enabled commands, related attempts
     and operational or audit information may be processed by the Hub and
-    Discord. Review the <a href="/hub-terms.html">hosted Hub terms</a> before
+    Discord. Once N.I.N.A. accepts a locally permitted command, its later
+    terminal failure is sent through the Hub as part of the command exchange.
+    Review the <a href="/hub-terms.html">hosted Hub terms</a> before
     enabling control.
   </p>
 

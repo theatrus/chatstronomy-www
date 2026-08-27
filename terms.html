@@ -27,7 +27,7 @@
   </div>
 
   <h1>These terms of service govern self-hosted Chatstronomy.</h1>
-  <p class="updated">This document was last updated on 24 August 2026.</p>
+  <p class="updated">This document was last updated on 26 August 2026.</p>
 
   <p class="lede">
     These terms cover only the Chatstronomy software you run on your own
@@ -81,15 +81,30 @@
 
   <h2>3. The application transmits telemetry data to third-party chat services.</h2>
   <p>
-    Ordinary event categories, images, and N.I.N.A. popup notifications start
-    enabled. Review or disable them in N.I.N.A. before starting a local runtime.
-    Disabled event categories never reach the runtime, including previously
-    buffered records; events captured while disabled are not released when a
-    category is re-enabled. No background state-maintenance exception bypasses
-    these settings. Disabling images also prevents image history, thumbnails,
-    previews, and explicit last-image requests. Equipment-status snapshots and
-    other permitted non-image queries can remain available. Raw N.I.N.A. logs
-    are disabled unless you explicitly enable individual log levels.
+    Most ordinary event categories, images, and N.I.N.A. popup notifications
+    start enabled. Meaningful weather changes and high-wind alerts have
+    independent controls and both start disabled. Review every setting in
+    N.I.N.A. before starting a local runtime. Disabled event categories never
+    reach the runtime, including previously buffered records; events captured
+    while disabled are not released when a category is re-enabled. No background
+    state-maintenance exception bypasses these settings. Disabling images also
+    prevents image history, thumbnails, previews, and explicit last-image
+    requests. Equipment-status snapshots and other permitted non-image queries
+    can remain available. Raw N.I.N.A. logs are disabled unless you explicitly
+    enable individual log levels. Once N.I.N.A. accepts a locally permitted
+    command, its terminal failure is always delivered as part of that command
+    exchange and is not controlled by optional event switches.
+  </p>
+  <p>
+    When enabled, meaningful weather-change notifications group qualifying
+    numeric readings and rate-limit posts. The separate high-wind option checks
+    wind speed or gusts against the threshold you set in meters per second
+    and reports both alert and recovery transitions. General weather-change
+    posts may contain numeric temperature, dew-point, humidity, pressure,
+    cloud, rain, wind, sky, and seeing data. High-wind records contain only
+    wind speed, gust, threshold, and alert state and may resynchronize an active
+    alert after reconnecting or changing the threshold. Neither includes the
+    weather station's name or device or driver identifiers.
   </p>
   <p>
     Permitted updates travel directly to your configured Discord or Matrix
@@ -129,6 +144,9 @@
     and starting or stopping imaging sequences. Skipping sequence validation
     requires its own additional local permission. Disable the master switch to
     immediately return the N.I.N.A. profile to monitoring-only operation.
+    Accepting an asynchronous command does not mean that its hardware operation
+    completed. If it later fails, the plugin reports that terminal failure to
+    the configured chat as part of the command exchange.
   </p>
   <p>
     Additional safeguards narrow access but cannot override the permissions
@@ -169,6 +187,13 @@
     those accounts, and configure independent horizon limits, meridian limits,
     roof interlocks, and emergency stops. Chat permissions are not a physical
     safety system.
+  </p>
+  <p>
+    Weather readings and chat notifications are informational and are not a
+    safety system. They can be delayed, missing, or inaccurate because of
+    sensors, N.I.N.A., the plugin, the network, or the configured chat service.
+    Maintain independent weather monitoring, physical interlocks, and emergency
+    procedures.
   </p>
 
   <h2>5. The software is provided without warranty of any kind.</h2>
