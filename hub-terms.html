@@ -124,23 +124,40 @@
     interlocks, horizon and meridian limits, emergency stops, and other
     independent safety systems configured. The Hub is not a safety controller.
   </p>
+  <p>
+    Optional weather readings and notifications are informational and are not a
+    safety system. Sensors, N.I.N.A., the plugin, the network, the Hub, or
+    Discord can make a reading or post delayed, missing, or inaccurate. Maintain
+    independent weather monitoring, physical interlocks, and emergency
+    procedures.
+  </p>
 
   <h2>5. The Hub shares and retains specific information.</h2>
   <p>
-    Ordinary event families, images, and N.I.N.A. popup notifications start
-    enabled. Review or disable them in N.I.N.A. before pairing. Event-family
-    switches control transmission, not merely Discord notifications. Events in
-    a disabled family, including previously buffered records, are not sent to
-    the Hub or local runtime. Events captured while a family is disabled are
-    not released if it is later re-enabled, and there is no state-maintenance
-    exception. Disabling images also blocks image history, previews, thumbnails,
-    and automatic image delivery, including previously captured images. Other
-    permitted events, equipment-status snapshots, and explicitly requested
-    non-image slash-command data can still be shared. Once N.I.N.A. accepts a
-    locally permitted command, its terminal failure is always delivered as part
-    of that command exchange and is not controlled by optional event switches.
-    Raw N.I.N.A. logs start disabled and are forwarded only for individually
-    enabled levels.
+    Most ordinary event families, images, and N.I.N.A. popup notifications start
+    enabled. Meaningful weather changes and high-wind alerts have independent
+    controls and both start disabled. Review every setting in N.I.N.A. before
+    pairing. Event-family switches control transmission, not merely Discord
+    notifications. Events in a disabled family, including previously buffered
+    records, are not sent to the Hub or local runtime. Events captured while a
+    family is disabled are not released if it is later re-enabled, and there is
+    no state-maintenance exception. Disabling images also blocks image history,
+    previews, thumbnails, and automatic image delivery, including previously
+    captured images. Other permitted events, equipment-status snapshots, and
+    explicitly requested non-image slash-command data can still be shared. Once
+    N.I.N.A. accepts a locally permitted command, its terminal failure is always
+    delivered as part of that command exchange and is not controlled by optional
+    event switches. Raw N.I.N.A. logs start disabled and are forwarded only for
+    individually enabled levels.
+    When enabled, meaningful weather-change posts group qualifying readings and
+    are rate-limited. The high-wind option compares wind speed or gusts with
+    a user-selected threshold in meters per second and reports alert and recovery
+    transitions. General weather-change posts can contain numeric temperature,
+    dew-point, humidity, pressure, cloud, rain, wind, sky, and seeing data.
+    High-wind records contain only wind speed, gust, threshold, and alert state
+    and may resynchronize an active alert after reconnecting or changing the
+    threshold. Neither includes the weather station's name or device or driver
+    identifiers.
     Observatory-location sharing is disabled by default; when disabled, the
     plugin redacts site coordinates and practical location-derived mount
     readings. Hardware device and driver identifiers are always redacted. Your
