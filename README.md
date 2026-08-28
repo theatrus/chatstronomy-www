@@ -36,10 +36,10 @@ Branding assets are sourced from `theatrus/chatstronomy` under `assets/branding/
 The landing page tracks the separately released
 [`theatrus/chatstronomy-nina-plugin`](https://github.com/theatrus/chatstronomy-nina-plugin),
 which provides native N.I.N.A. integration, local Discord or Matrix delivery,
-autofocus and guider graphs, durable safety status, built-in and Sequencer+
-operation updates, dome/shutter and flat-panel lifecycle events, optional
-weather-change and high-wind notifications, and multi-machine Discord pairing
-through the recommended
+native and Hocus Focus autofocus reports and graphs, guider graphs, durable
+safety status, built-in and Sequencer+ operation updates, dome/shutter and
+flat-panel lifecycle events, optional weather-change and high-wind
+notifications, and multi-machine Discord pairing through the recommended
 [Chatstronomy Hub](https://hub.chatstronomy.com/). Install the plugin from
 N.I.N.A.'s official repository once it is listed there, or add our development
 repository URL:
