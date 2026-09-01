@@ -38,8 +38,9 @@ The landing page tracks the separately released
 which provides native N.I.N.A. integration, local Discord or Matrix delivery,
 native and Hocus Focus autofocus reports and graphs, guider graphs, durable
 safety status, built-in and Sequencer+ operation updates, dome/shutter and
-flat-panel lifecycle events, optional weather-change and high-wind
-notifications, and multi-machine Discord pairing through the recommended
+flat-panel lifecycle events, optional slew and rotator start/end diagnostics,
+optional weather-change and high-wind notifications, and multi-machine Discord
+pairing through the recommended
 [Chatstronomy Hub](https://hub.chatstronomy.com/). Install the plugin from
 N.I.N.A.'s official repository once it is listed there, or add our development
 repository URL:
@@ -68,10 +69,11 @@ The Hub supports Discord; Matrix requires a local runtime. The Hub stores
 Discord identity, telescope configuration, routing, session, credential, and
 management-audit records. It processes permitted observatory events, equipment
 telemetry, images, and explicitly selected log levels. Most ordinary event
-categories, image delivery, and N.I.N.A. popup notifications start enabled;
-the two independent controls for meaningful weather changes and high-wind
-alerts start disabled. Users should review every setting before pairing or
-starting a local runtime. Event switches are local transmission boundaries:
+categories, image delivery, and N.I.N.A. popup notifications start enabled.
+Meaningful weather changes, high-wind alerts, slew start/end diagnostics, and
+rotator move start/end diagnostics have separate controls and start disabled.
+Users should review every setting before pairing or starting a local runtime.
+Event switches are local transmission boundaries:
 disabled event families, including previously buffered records, never reach
 either the hosted Hub or local runtime.
 Events captured while a family is disabled cannot be released later; there is no
@@ -96,7 +98,28 @@ names and device or driver identifiers. They are informational rather than a
 safety system: readings and posts can be delayed, missing, or inaccurate. The
 plugin does not capture switch values or LiveStack data. Enabled popup
 notifications and opt-in raw N.I.N.A. logs remain unstructured text and may
-contain operational details. Its AWS-hosted SQLite
+contain operational details.
+
+N.I.N.A. provides completion callbacks for slews and rotator moves but no public
+start callback. When separately enabled, the plugin infers moving and idle
+transitions from live N.I.N.A. `Slewing` and `IsMoving` state. When it observes
+both edges, it pairs the start and end and reports the interval between them.
+Slew records include a requested target when N.I.N.A. provides one and observed
+moving and idle RA/Dec positions. State-observed start/end altitude and azimuth
+remain subject to the observatory-location sharing setting. N.I.N.A. does not
+expose the requested rotator target at its public start-state boundary.
+State-observed rotator starts report available sky and mechanical angles; a
+recovered start carries the callback's available logical or mechanical `From`
+angle. An ordinary end
+means N.I.N.A. first reported the device idle, not that it settled or that the
+operation succeeded. If a short move completes between live state observations,
+Chatstronomy reconstructs the pair from N.I.N.A.'s completion callback, marks
+the capture as **Recovered after motion began**, and omits a duration it could
+not observe. A recovered mount start contains callback RA/Dec but no historical
+altitude or azimuth because the callback has no start timestamp; its end uses
+the available live idle snapshot. Neither recovery record implies success.
+
+The Hub's AWS-hosted SQLite
 database is backed up hourly to private, encrypted, versioned S3 storage;
 older backup versions expire after 90 days. Account deletion is currently a
 manual request, and administrative audit history has no fixed automatic

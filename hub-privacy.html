@@ -18,7 +18,7 @@
   </div>
 
   <h1>This policy governs the privacy of the hosted Chatstronomy Hub.</h1>
-  <p class="updated">This document was last updated on 28 August 2026.</p>
+  <p class="updated">This document was last updated on 31 August 2026.</p>
 
   <p class="lede">
     Chatstronomy Hub is a hosted service operated by Yann Ramin. Unlike the
@@ -80,10 +80,30 @@
       redacted before transmission.
     </li>
     <li>
-      Permitted observatory-device events can include mount-slew completion,
-      dome/shutter actions, flat-panel cover, light, and brightness changes,
-      and connection state for weather and switch devices. Structured weather
-      reporting has two independent local controls, both disabled by default.
+      Permitted observatory-device events can include separately controlled
+      mount-slew and rotator-move start/end diagnostics, dome/shutter actions,
+      flat-panel cover, light, and brightness changes, and connection state for
+      weather and switch devices. Both motion-diagnostic controls are disabled
+      by default. When enabled, the plugin watches live N.I.N.A. motion state.
+      When it observes both moving and idle edges, it pairs them and reports the
+      interval between them. Slew records include a requested target when
+      N.I.N.A. provides one and observed moving and idle RA/Dec positions;
+      state-observed start/end altitude and azimuth are included only when
+      observatory-location sharing is enabled. N.I.N.A. does not expose the
+      requested rotator target at its public start-state boundary.
+      State-observed rotator starts report available sky and mechanical angles;
+      a recovered start carries the callback's available logical or mechanical
+      <code>From</code> angle. An ordinary ended
+      record means N.I.N.A. first reported the device idle, not that settling
+      finished or the operation succeeded. If a short move completes between
+      live updates, Chatstronomy reconstructs the pair from N.I.N.A.'s
+      completion callback, marks the capture as <strong>Recovered after motion
+      began</strong>, and omits a duration it could not observe. A recovered
+      mount start contains callback RA/Dec but no historical altitude or azimuth
+      because the callback has no start timestamp; its end uses the available
+      live idle snapshot. Neither recovery record implies success. Structured
+      weather reporting also has two independent local
+      controls, both disabled by default.
       Meaningful weather changes are grouped and rate-limited; high-wind
       notifications compare wind speed or gusts with a user-selected
       threshold in meters per second and report alert and recovery transitions.
@@ -106,8 +126,8 @@
     <p>
       <strong>Event switches are transmission and privacy controls.</strong>
       Most ordinary event categories, images, and N.I.N.A. popup notifications
-      start enabled; the two weather-reporting controls start disabled. Review
-      every setting in N.I.N.A. before pairing with the Hub.
+      start enabled. The two motion-diagnostic and two weather-reporting controls
+      start disabled. Review every setting in N.I.N.A. before pairing with the Hub.
       When you disable an event family in N.I.N.A., its underlying event records
       do not leave the plugin: they are not sent to the hosted Hub or to a
       local Chatstronomy runtime. This also applies immediately to previously

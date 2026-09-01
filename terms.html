@@ -27,7 +27,7 @@
   </div>
 
   <h1>These terms of service govern self-hosted Chatstronomy.</h1>
-  <p class="updated">This document was last updated on 26 August 2026.</p>
+  <p class="updated">This document was last updated on 31 August 2026.</p>
 
   <p class="lede">
     These terms cover only the Chatstronomy software you run on your own
@@ -82,9 +82,10 @@
   <h2>3. The application transmits telemetry data to third-party chat services.</h2>
   <p>
     Most ordinary event categories, images, and N.I.N.A. popup notifications
-    start enabled. Meaningful weather changes and high-wind alerts have
-    independent controls and both start disabled. Review every setting in
-    N.I.N.A. before starting a local runtime. Disabled event categories never
+    start enabled. Meaningful weather changes, high-wind alerts, slew start/end
+    diagnostics, and rotator move start/end diagnostics have independent
+    controls and all start disabled. Review every setting in N.I.N.A. before
+    starting a local runtime. Disabled event categories never
     reach the runtime, including previously buffered records; events captured
     while disabled are not released when a category is re-enabled. No background
     state-maintenance exception bypasses these settings. Disabling images also
@@ -94,6 +95,25 @@
     enable individual log levels. Once N.I.N.A. accepts a locally permitted
     command, its terminal failure is always delivered as part of that command
     exchange and is not controlled by optional event switches.
+  </p>
+  <p>
+    When enabled, motion diagnostics watch live N.I.N.A. state. When both moving
+    and idle edges are observed, the plugin pairs them and reports the interval
+    between them. Slew records include a requested target when N.I.N.A. provides
+    one and observed moving and idle RA/Dec positions; state-observed start/end
+    altitude and azimuth remain subject to the local location-sharing setting. N.I.N.A. does
+    not expose the requested rotator target at its public start-state boundary.
+    State-observed rotator starts report available sky and mechanical angles; a
+    recovered start carries the callback's available logical or mechanical
+    <code>From</code> angle. An ordinary
+    ended record means N.I.N.A. first reported the device idle, not that settling
+    finished or the operation succeeded. If a short move completes between live
+    updates, Chatstronomy reconstructs the pair from N.I.N.A.'s completion
+    callback, marks the capture as <strong>Recovered after motion began</strong>,
+    and omits a duration it could not observe. A recovered mount start contains
+    callback RA/Dec but no historical altitude or azimuth because the callback
+    has no start timestamp; its end uses the available live idle snapshot.
+    Neither recovery record implies success.
   </p>
   <p>
     When enabled, meaningful weather-change notifications group qualifying
