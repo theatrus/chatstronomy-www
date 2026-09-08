@@ -38,9 +38,9 @@ The landing page tracks the separately released
 which provides native N.I.N.A. integration, local Discord or Matrix delivery,
 native and Hocus Focus autofocus reports and graphs, guider graphs, durable
 safety status, built-in and Sequencer+ operation updates, dome/shutter and
-flat-panel lifecycle events, optional slew and rotator start/end diagnostics,
-optional weather-change and high-wind notifications, and multi-machine Discord
-pairing through the recommended
+flat-panel lifecycle events, timed-wait countdowns, optional slew and rotator
+start/end diagnostics, optional weather-change and high-wind notifications,
+and multi-machine Discord pairing through the recommended
 [Chatstronomy Hub](https://hub.chatstronomy.com/). Install the plugin from
 N.I.N.A.'s official repository once it is listed there, or add our development
 repository URL:
@@ -48,6 +48,14 @@ repository URL:
 `https://raw.githubusercontent.com/theatrus/chatstronomy-nina-plugin/main/registry`
 
 The installation notes must remain accurate. The development repository serves the current tagged package without a separate beta channel. Plugin tags are used to sign and verify both the pinned Rust runtime and the `Chatstronomy.dll` library before packaging.
+
+Timed sequence waits and Target Scheduler waits show their scheduled end time
+and remaining duration when available. Discord uses native timestamps for local
+time display and a live relative countdown. Matrix uses UTC timestamps and a
+remaining-duration snapshot from when the message was sent. Target Scheduler
+waits are tracked independently from sequence waits. Their scheduled end is an
+estimate, so passing it does not imply completion. Malformed legacy timestamps
+remain visible as source text without an invented countdown.
 
 The files `terms.html` and `privacy.html` describe only self-hosted software.
 The public managed service has separate, directly linkable policies at
