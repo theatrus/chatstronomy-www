@@ -27,7 +27,7 @@
   </div>
 
   <h1>This policy governs the privacy of self-hosted Chatstronomy.</h1>
-  <p class="updated">This document was last updated on 28 August 2026.</p>
+  <p class="updated">This document was last updated on 31 August 2026.</p>
 
   <p class="lede">
     The Chatstronomy application runs entirely on your local computer, does not communicate with our servers, and does not transmit any information about you or your equipment to us.
@@ -74,9 +74,10 @@
   <h2>Event switches decide what may leave N.I.N.A.</h2>
   <p>
     Most ordinary event categories, image delivery, and N.I.N.A. popup
-    notifications are enabled by default. Meaningful weather changes and
-    high-wind alerts have independent controls and are both disabled by default.
-    Review every setting before starting the local runtime. Disabling a category
+    notifications are enabled by default. Meaningful weather changes, high-wind
+    alerts, slew start/end diagnostics, and rotator move start/end diagnostics
+    have independent controls and are disabled by default. Review every setting
+    before starting the local runtime. Disabling a category
     prevents its underlying events from reaching the runtime, including events
     that were previously buffered. Events captured while a category is disabled
     cannot be released later by turning it back on. No state-maintenance
@@ -107,9 +108,10 @@
   <p>
     The application transmits the data you configure it to post, such as images,
     autofocus and guiding results, durable safety status, sequence progress and
-    failure summaries, image-save failures, mount-slew and plate-solve results,
-    dome/shutter activity, flat-panel cover, light, and brightness changes, and
-    connection state for weather and switch devices. Enabled sequence sharing
+    failure summaries, image-save failures, optional mount-slew and rotator-move
+    start/end diagnostics, plate-solve results, dome/shutter activity,
+    flat-panel cover, light, and brightness changes, and connection state for
+    weather and switch devices. Enabled sequence sharing
     can also include user-authored annotation and message text. Failure
     summaries can contain sanitized N.I.N.A. operational error text; local
     path-shaped strings are redacted before transmission. This data is sent
@@ -118,6 +120,25 @@
     governed by that service's privacy policy, such as the
     <a href="https://discord.com/privacy">Discord Privacy Policy</a>, or your
     Matrix homeserver's policy.
+  </p>
+  <p>
+    Motion diagnostics watch live N.I.N.A. state. When both moving and idle
+    edges are observed, the plugin pairs them and reports the interval between
+    them. Slew records include a requested target when N.I.N.A. provides one and
+    observed moving and idle RA/Dec positions; state-observed start/end altitude
+    and azimuth are included only when observatory-location sharing is enabled. N.I.N.A. does
+    not expose the requested rotator target at its public start-state boundary.
+    State-observed rotator starts report available sky and mechanical angles; a
+    recovered start carries the callback's available logical or mechanical
+    <code>From</code> angle. An ordinary
+    ended record means N.I.N.A. first reported the device idle, not that settling
+    finished or the operation succeeded. If a short move completes between live
+    updates, Chatstronomy reconstructs the pair from N.I.N.A.'s completion
+    callback, marks the capture as <strong>Recovered after motion began</strong>,
+    and omits a duration it could not observe. A recovered mount start contains
+    callback RA/Dec but no historical altitude or azimuth because the callback
+    has no start timestamp; its end uses the available live idle snapshot.
+    Neither recovery record implies success.
   </p>
   <p>
     A permitted Hocus Focus autofocus report can enrich the standard N.I.N.A.

@@ -85,10 +85,11 @@
       <p>
         Most standard event categories, image previews, and N.I.N.A. popup
         notifications start enabled. Review or disable them before pairing with
-        the Hub or starting a local runtime. Meaningful weather changes and
-        high-wind alerts have separate controls and both start disabled. Raw
-        logs, observatory-location sharing, the hardware-control master switch,
-        and every individual hardware permission also start disabled.
+        the Hub or starting a local runtime. Meaningful weather changes,
+        high-wind alerts, slew start/end diagnostics, and rotator move start/end
+        diagnostics have separate controls and all start disabled. Raw logs,
+        observatory-location sharing, the hardware-control master switch, and
+        every individual hardware permission also start disabled.
       </p>
     </div>
     <div class="grid two">
@@ -155,7 +156,9 @@
       </div>
       <div class="card">
         <h3>The bot reports live status updates.</h3>
-        <p>Status updates include durable safety state; Sequence and Target Scheduler targets; camera cooling and warming; built-in timed, altitude, Moon-altitude, Sun-altitude, horizon, and safety waits; and supported Sequencer+ condition and manual waits. The bot reports sequence-item failures and presents clean, failed, stopped, cancelled, or otherwise ended sequence outcomes without treating every finish event as success. It can also report mount-slew completion, centering and plate-solve results, dome/shutter activity, flat-panel cover, light, and brightness changes, weather and switch-device connection state, N.I.N.A. notifications, and optional logs.</p>
+        <p>Status updates include durable safety state; Sequence and Target Scheduler targets; camera cooling and warming; built-in timed, altitude, Moon-altitude, Sun-altitude, horizon, and safety waits; and supported Sequencer+ condition and manual waits. The bot reports sequence-item failures and presents clean, failed, stopped, cancelled, or otherwise ended sequence outcomes without treating every finish event as success. It can also report optional mount-slew and rotator-motion diagnostics, centering and plate-solve results, dome/shutter activity, flat-panel cover, light, and brightness changes, weather and switch-device connection state, N.I.N.A. notifications, and optional logs.</p>
+        <p>Timed sequence waits and Target Scheduler waits show their scheduled end time and remaining duration when available. Discord displays times in your local timezone with a live relative countdown; Matrix shows UTC times and the remaining duration when the message was sent. Target Scheduler's end time is an estimate: reaching it does not mean the wait has finished.</p>
+        <p>Slew and rotator diagnostics have separate switches and start disabled. They report observed starts, ends, and available positions. Slew updates can include the requested target and RA/Dec; altitude and azimuth require observatory-location sharing. Rotator updates include available sky or mechanical angles. If a short move is only detected after it began, it is marked <strong>Recovered after motion began</strong>, without a measured duration. Recovered mount starts omit altitude and azimuth. An <strong>ended</strong> update means motion was reported idle; it does not confirm settling or success.</p>
         <p>Weather reporting uses two independent, default-off controls. <strong>Meaningful weather changes</strong> groups changed readings into rate-limited updates that can include numeric temperature, dew-point, humidity, pressure, cloud, rain, wind, sky, and seeing readings. <strong>High-wind alerts</strong> compares wind speed or gusts with your threshold in meters per second. Its records contain only wind speed, gust, threshold, and alert state, and report both alert and recovery. An active alert may be resent after reconnecting or changing the threshold to keep status synchronized without another chat alert. Weather-station names and device or driver identifiers are omitted.</p>
         <p class="note">Weather notifications are informational, not a safety system. Sensor readings or chat posts may be delayed, missing, or inaccurate, so keep independent weather monitoring and hardware interlocks in place. The plugin does not capture switch values or LiveStack data. Enabled popup notifications and opt-in raw N.I.N.A. logs remain unstructured text and may contain operational details. A dedicated <strong>Observatory and flat panel</strong> event switch controls dome/shutter and flat-panel activity; connection events use <strong>Equipment connections</strong>.</p>
       </div>
