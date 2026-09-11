@@ -1,0 +1,59 @@
+/* Homepage-only layout. Keep the shared policy-page styles unchanged. */
+.home .wrap { max-width: 1160px; padding-inline: 28px; }
+.home .site-head { padding: 24px 0; border-bottom: 1px solid var(--line); }
+.home .site-head .brand { font-size: 1.15rem; }
+.home .hero {
+  display: grid; grid-template-columns: .9fr 1.1fr; align-items: center;
+  gap: 44px; padding: 48px 0; text-align: left;
+}
+.home .hero h1 { font-size: clamp(2.4rem, 4.6vw, 3.8rem); margin: 12px 0 22px; }
+.home .eyebrow { color: var(--accent); font-weight: 650; margin: 0; }
+.home .lede { font-size: 1.125rem; margin: 0; max-width: 38ch; }
+.home .cta { justify-content: flex-start; margin-top: 28px; }
+.home .note { font-size: .875rem; }
+.home section { padding: 40px 0; }
+.home h2 { font-size: 1.5rem; line-height: 1.3; margin: 0 0 12px; }
+.home section > p.sub { max-width: 68ch; }
+.home .grid { gap: 28px; }
+.home figcaption { font-size: .875rem; line-height: 1.5; }
+.home .discord-crop { display: block; position: relative; overflow: hidden; background: #110d20; border-radius: 12px; }
+.home .discord-crop img { max-width: none; height: auto; position: absolute; border: 0; border-radius: 0; }
+/* Two unaltered message views from the supplied 1668 × 1624 screenshot. */
+.home .capture { aspect-ratio: 1240 / 1144; }
+.home .capture img { width: 134.516129%; left: 0; top: 0; }
+.home .dither { aspect-ratio: 960 / 480; }
+.home .dither img { width: 173.75%; left: -12.5%; top: -237.5%; }
+.home .focus-shot > a { display: grid; place-items: center; aspect-ratio: 2; background: var(--card); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.home .focus-shot img { max-height: 100%; border: 0; border-radius: 0; }
+.home .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; list-style: none; padding: 0; counter-reset: setup; }
+.home .steps li { counter-increment: setup; margin: 8px 0 0; }
+.home .steps h3 { font-size: 1.05rem; margin: 0 0 10px; }
+.home .steps h3::before { content: counter(setup) ". "; color: var(--accent); }
+.home .steps p { margin: 0; color: var(--muted); }
+.home .dev-repo { border-top: 1px solid var(--line); margin-top: 24px; padding-top: 18px; }
+.home summary { cursor: pointer; font-weight: 600; }
+.home .dev-repo code { overflow-wrap: anywhere; }
+.home .dev-repo p { margin-bottom: 0; }
+.home .cmds { margin: 24px 0; }
+.home .commands > p:not(.sub) { max-width: 78ch; color: var(--muted); }
+.home .choices p { color: var(--muted); }
+.home footer { margin-top: 0; padding-bottom: 36px; }
+.home footer p { margin-top: 0; }
+.home footer a { display: inline-block; margin-bottom: 8px; }
+.home a:focus-visible, .home summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+@media (max-width: 800px) {
+  .home .hero { grid-template-columns: 1fr; gap: 28px; padding: 32px 0; }
+  .home .hero-copy { max-width: 620px; }
+  .home .hero h1 { max-width: 15ch; }
+  .home .hero-shot { width: 100%; max-width: 600px; justify-self: center; }
+  .home .lede { max-width: 48ch; }
+  .home .steps { grid-template-columns: 1fr; gap: 20px; }
+}
+@media (max-width: 480px) {
+  .home .wrap { padding-inline: 20px; }
+  .home .site-head { flex-wrap: wrap; gap: 10px; }
+  .home .site-head nav { width: 100%; margin-left: 50px; gap: 24px; }
+  .home .hero h1 { font-size: 2.6rem; }
+  .home .cta { flex-direction: column; align-items: stretch; text-align: center; }
+  .home .cmds li { max-width: 100%; overflow-wrap: anywhere; }
+}
