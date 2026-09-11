@@ -18,7 +18,7 @@
   </div>
 
   <h1>This policy governs the privacy of the hosted Chatstronomy Hub.</h1>
-  <p class="updated">This document was last updated on 31 August 2026.</p>
+  <p class="updated">This document was last updated on 11 September 2026.</p>
 
   <p class="lede">
     Chatstronomy Hub is a hosted service operated by Yann Ramin. Unlike the
@@ -203,9 +203,10 @@
     The service operator and administrators who maintain its infrastructure
     can access operational systems and stored service data when necessary to
     operate, troubleshoot, secure, or restore the service. The Hub does not
-    maintain a separate permanent image or observatory-event archive in its
-    SQLite database; live telemetry is processed for current state and delivery.
-    Discord messages, operational logs, and account or configuration records
+    archive images or full observatory-event payloads in its SQLite database;
+    live telemetry is processed for current state and delivery. It retains
+    limited autofocus delivery records to prevent duplicate posts, as described
+    below. Discord messages, operational logs, and account or configuration records
     have their own retention characteristics.
   </p>
 
@@ -242,6 +243,14 @@
     Administrative audit entries can include account or server identifiers and
     descriptions of management actions. There is currently no fixed automatic
     expiration schedule for account records or audit history.
+  </p>
+  <p>
+    To prevent duplicate autofocus posts after a restart, the Hub stores report
+    timestamps, delivery times, and associated telescope, N.I.N.A. profile, and
+    Discord channel identifiers. These records contain no images or report
+    measurements. They remain until the telescope is deleted, including when
+    a plugin disconnects or a channel route is removed. The backup retention
+    described below also applies.
   </p>
   <p>
     The database is backed up approximately hourly to versioned, encrypted S3
