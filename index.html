@@ -3,12 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Chatstronomy is a Discord bot for your telescope.</title>
-<meta name="description" content="Chatstronomy sends selected N.I.N.A. imaging updates to Discord through its hosted Hub, or to Discord or Matrix locally. Hardware commands require explicit approval in N.I.N.A.">
+<title>Chatstronomy — a Discord bot for your telescope</title>
+<meta name="description" content="Your N.I.N.A. imaging session in Discord: image previews, autofocus and guiding graphs, and optional telescope commands. Install from the N.I.N.A. plugin manager and pair with Chatstronomy Hub.">
 <link rel="stylesheet" href="/assets/style.css">
+<link rel="stylesheet" href="/assets/home.css">
 <link rel="icon" href="/assets/favicon.ico" sizes="any">
-<meta property="og:title" content="Chatstronomy is a Discord bot for your telescope.">
-<meta property="og:description" content="Send selected N.I.N.A. imaging updates to chat. Optional telescope-control commands require explicit approval on the observatory computer.">
+<meta property="og:title" content="Chatstronomy — a Discord bot for your telescope">
+<meta property="og:description" content="Your N.I.N.A. imaging session in Discord. Install the plugin, pair with the Hub, and follow the night from chat.">
 <meta property="og:image" content="https://chatstronomy.com/assets/og-image.png">
 <meta property="og:url" content="https://chatstronomy.com/">
 <meta property="og:type" content="website">
@@ -18,275 +19,109 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-2J8D9J19WL');
 </script>
 </head>
-<body>
+<body class="home">
 <div class="wrap">
 
-  <div class="site-head">
-    <img src="/assets/logo.png" alt="">
+  <header class="site-head">
+    <img src="/assets/logo.png" alt="" width="40" height="40">
     <span class="brand"><a href="/">Chatstronomy</a></span>
-    <nav>
+    <nav aria-label="Main navigation">
+      <a href="#install-plugin">Install</a>
+      <a href="https://github.com/theatrus/chatstronomy-nina-plugin#readme">Docs</a>
       <a href="https://hub.chatstronomy.com/">Hub</a>
-      <a href="#nina-plugin">N.I.N.A. plugin</a>
-      <a href="https://github.com/theatrus/chatstronomy">Backend</a>
     </nav>
-  </div>
+  </header>
 
-  <div class="hero">
-    <img class="mark" src="/assets/logo.png" alt="Chatstronomy logo.">
-    <h1>A Discord bot for your telescope.</h1>
-    <p class="tagline">Observatory notifications and locally approved equipment control in your chat channels.</p>
-    <p class="lede">
-      Chatstronomy monitors your <a href="https://nighttime-imaging.eu/">N.I.N.A.</a>
-      rigs and posts the imaging updates you permit, including captures, autofocus
-      runs, guiding graphs, and status changes. Discord slash commands can check on
-      the rig; hardware control is available only when you approve it in N.I.N.A.
-    </p>
-    <div class="cta">
-      <a class="btn" href="https://hub.chatstronomy.com/">Open Chatstronomy Hub</a>
-      <a class="btn secondary" href="#install-plugin">Install the N.I.N.A. plugin</a>
-    </div>
-    <p class="note">
-      Before pairing a rig, review the
-      <a href="/hub-privacy.html">hosted Hub privacy policy</a> and
-      <a href="/hub-terms.html">hosted Hub terms</a>.
-    </p>
-    <p class="note">The software supports N.I.N.A. 3.2+ on Windows, runs on standalone Windows and Linux backends, and is licensed under Apache-2.0.</p>
-  </div>
-
-  <section id="nina-plugin">
-    <h2>The Chatstronomy plugin integrates directly with N.I.N.A.</h2>
-    <p class="sub">
-      The plugin reads N.I.N.A. natively, renders guider and autofocus graphs,
-      retains selected safety and equipment state, reports sequence and image
-      failures, sends the event families you choose, and exposes approved bot
-      commands. No N.I.N.A. web server or polling setup is required.
-    </p>
-    <div class="callout">
-      <p>
-        <strong>Event switches control what leaves N.I.N.A.</strong>
-        Disabled event families, including previously buffered events, are
-        never sent to the hosted Hub or local bot; events captured while
-        disabled cannot be released later. There is no background
-        state-reconstruction exception. Disabling images also blocks image
-        history, previews, thumbnails, and automatic image delivery. Other
-        permitted equipment-status snapshots and explicitly requested non-image
-        slash-command data remain available; raw N.I.N.A. logs are shared only
-        when you enable individual log levels.
-      </p>
-      <p>
-        Once N.I.N.A. accepts a locally permitted command, its terminal failure
-        is always returned as part of that command exchange. Optional event
-        switches cannot hide that outcome.
-      </p>
-      <p>
-        Most standard event categories, image previews, and N.I.N.A. popup
-        notifications start enabled. Review or disable them before pairing with
-        the Hub or starting a local runtime. Meaningful weather changes,
-        high-wind alerts, slew start/end diagnostics, and rotator move start/end
-        diagnostics have separate controls and all start disabled. Raw logs,
-        observatory-location sharing, the hardware-control master switch, and
-        every individual hardware permission also start disabled.
-      </p>
-    </div>
-    <div class="grid two">
-      <div class="card">
-        <h3>The Chatstronomy Hub is the recommended setup.</h3>
-        <p>
-          Pair the plugin with <a href="https://hub.chatstronomy.com/">Chatstronomy Hub</a>
-          for the simplest setup. Each N.I.N.A. machine connects outbound over
-          authenticated WSS, so one centralized Discord bot can serve
-          rigs on different systems without opening observatory ports or copying
-          chat credentials to every computer. The hosted Hub supports Discord;
-          Matrix is available through local mode.
-        </p>
-        <p class="note">
-          The Hub processes account and observatory information.
-          Read its <a href="/hub-privacy.html">privacy policy</a> and
-          <a href="/hub-terms.html">terms</a> before connecting.
-        </p>
+  <main>
+    <div class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">N.I.N.A. meets Discord</p>
+        <h1>A Discord bot for your telescope.</h1>
+        <p class="lede">Image previews, focus curves, and guiding updates. Follow your imaging session without opening a remote desktop.</p>
+        <div class="cta">
+          <a class="btn" href="https://hub.chatstronomy.com/">Open Chatstronomy Hub</a>
+          <a class="btn secondary" href="#install-plugin">Install the plugin</a>
+        </div>
+        <p class="note">Available in the official N.I.N.A. plugin repository.</p>
       </div>
-      <div class="card">
-        <h3>Local Direct mode keeps the integration on your computer.</h3>
-        <p>
-          You can run the integration entirely on the observatory computer using a Discord webhook,
-          a custom Discord application, or a Matrix account on an HTTPS homeserver.
-          The plugin starts its signed, release-pinned Chatstronomy runtime in
-          the background and supplies N.I.N.A. data directly.
-        </p>
-      </div>
-    </div>
-
-    <div class="install" id="install-plugin">
-      <h3>You can install the plugin from the N.I.N.A. plugin manager.</h3>
-      <ol>
-        <li>Use the official repository when <strong>Chatstronomy</strong> is listed. Otherwise, open <strong>Options &gt; General &gt; Plugin Repositories</strong>, select <strong>+</strong>, and add our development repository: <a href="https://github.com/theatrus/chatstronomy-nina-plugin/tree/main/registry"><code>https://raw.githubusercontent.com/theatrus/chatstronomy-nina-plugin/main/registry</code></a>.</li>
-        <li>Open <strong>Plugins &gt; Available</strong>, install <strong>Chatstronomy</strong>, and restart N.I.N.A.</li>
-        <li>Open the plugin options and review the event, image, location, logging, and hardware-control settings before connecting or starting a local runtime.</li>
-        <li>For hosted mode, review the <a href="/hub-privacy.html">hosted Hub privacy policy</a> and <a href="/hub-terms.html">terms</a>, open <a href="https://hub.chatstronomy.com/">Chatstronomy Hub</a>, create a pairing code, select <strong>Chatstronomy Hub — hosted service</strong>, and pair the rig.</li>
-      </ol>
-      <p class="note">
-        N.I.N.A. supports more than one plugin repository, so adding the
-        development repository does not replace the official one. It serves
-        the current tagged package without a separate beta channel. Both the
-        release-pinned runtime and <code>Chatstronomy.dll</code> are signed and
-        verified before publication. See the
-        <a href="https://github.com/theatrus/chatstronomy-nina-plugin#install-from-nina">plugin repository</a>
-        for current installation details.
-      </p>
-    </div>
-  </section>
-
-  <section>
-    <h2>The plugin sends telemetry updates to the chat channel.</h2>
-    <p class="sub">
-      These notifications provide enough information to track the session without opening a remote desktop.
-    </p>
-    <div class="grid two">
-      <div class="card">
-        <h3>The bot can post new image captures.</h3>
-        <p>When image delivery is enabled, captures are posted as JPEG previews up to 1,024 pixels wide with metadata such as the filter, exposure duration, and target. Image-save and camera-download failures are also reported. A configurable cooldown can prevent a fast sequence from flooding the channel.</p>
-      </div>
-      <div class="card">
-        <h3>The bot sends autofocus and guiding charts.</h3>
-        <p>When their event categories are enabled, each autofocus curve is built from the report matching that completed run, and guiding data is sent as a graph. Native N.I.N.A. Star HFR and Contrast Detection modes are supported. Hocus Focus reports add available fit quality, accepted-star range, region, validation, and algorithm details while falling back to the standard N.I.N.A. view when those fields are absent.</p>
-      </div>
-      <div class="card">
-        <h3>The bot reports live status updates.</h3>
-        <p>Status updates include durable safety state; Sequence and Target Scheduler targets; camera cooling and warming; built-in timed, altitude, Moon-altitude, Sun-altitude, horizon, and safety waits; and supported Sequencer+ condition and manual waits. The bot reports sequence-item failures and presents clean, failed, stopped, cancelled, or otherwise ended sequence outcomes without treating every finish event as success. It can also report optional mount-slew and rotator-motion diagnostics, centering and plate-solve results, dome/shutter activity, flat-panel cover, light, and brightness changes, weather and switch-device connection state, N.I.N.A. notifications, and optional logs.</p>
-        <p>Timed sequence waits and Target Scheduler waits show their scheduled end time and remaining duration when available. Discord displays times in your local timezone with a live relative countdown; Matrix shows UTC times and the remaining duration when the message was sent. Target Scheduler's end time is an estimate: reaching it does not mean the wait has finished.</p>
-        <p>Slew and rotator diagnostics have separate switches and start disabled. They report observed starts, ends, and available positions. Slew updates can include the requested target and RA/Dec; altitude and azimuth require observatory-location sharing. Rotator updates include available sky or mechanical angles. If a short move is only detected after it began, it is marked <strong>Recovered after motion began</strong>, without a measured duration. Recovered mount starts omit altitude and azimuth. An <strong>ended</strong> update means motion was reported idle; it does not confirm settling or success.</p>
-        <p>Weather reporting uses two independent, default-off controls. <strong>Meaningful weather changes</strong> groups changed readings into rate-limited updates that can include numeric temperature, dew-point, humidity, pressure, cloud, rain, wind, sky, and seeing readings. <strong>High-wind alerts</strong> compares wind speed or gusts with your threshold in meters per second. Its records contain only wind speed, gust, threshold, and alert state, and report both alert and recovery. An active alert may be resent after reconnecting or changing the threshold to keep status synchronized without another chat alert. Weather-station names and device or driver identifiers are omitted.</p>
-        <p class="note">Weather notifications are informational, not a safety system. Sensor readings or chat posts may be delayed, missing, or inaccurate, so keep independent weather monitoring and hardware interlocks in place. The plugin does not capture switch values or LiveStack data. Enabled popup notifications and opt-in raw N.I.N.A. logs remain unstructured text and may contain operational details. A dedicated <strong>Observatory and flat panel</strong> event switch controls dome/shutter and flat-panel activity; connection events use <strong>Equipment connections</strong>.</p>
-      </div>
-      <div class="card">
-        <h3>The Hub supports multiple rigs.</h3>
-        <p>You can pair multiple N.I.N.A. instances on different systems with one centrally managed Discord bot, and then route each telescope's permitted updates to its selected Discord channels. Matrix rooms are available only with a local runtime.</p>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <h2>The plugin generates visual telemetry graphs.</h2>
-    <div class="grid two">
-      <figure>
-        <img src="/assets/autofocus-graph.png" alt="An autofocus run plotted as a V-curve of HFR against focuser position">
-        <figcaption>The matching native N.I.N.A. or Hocus Focus report is plotted with the measurements and selected fit markers available for that run.</figcaption>
-      </figure>
-      <figure>
-        <img src="/assets/guiding-graph.png" alt="A guiding graph showing RA and Dec error over time">
-        <figcaption>The guiding graph shows Dec and RA tracking error over time.</figcaption>
+      <figure class="hero-shot">
+        <a class="discord-crop capture" href="/assets/discord-session.png" aria-label="View the full Discord session screenshot">
+          <img src="/assets/discord-session.png" width="1668" height="1624" fetchpriority="high" alt="Chatstronomy in Discord: an NGC 7023 image preview, guiding graph, and capture details including filter, exposure, temperature, and HFR.">
+        </a>
+        <figcaption>A real session: a new frame, its guiding graph, and the details that matter. <a href="/assets/discord-session.png">View full size</a></figcaption>
       </figure>
     </div>
-  </section>
 
-  <section>
-    <h2>You can control the telescope using slash commands.</h2>
-    <p class="sub">
-      You can query the current status of your equipment and, when individually approved in N.I.N.A., issue commands directly from chat.
-    </p>
-    <ul class="cmds">
-      <li>/status</li><li>/sequence</li><li>/target</li><li>/mount</li>
-      <li>/last-image</li><li>/autofocus</li><li>/guider</li><li>/events</li>
-      <li>/park</li><li>/unpark</li><li>/home</li><li>/cool</li>
-      <li>/change-filter</li><li>/abort-capture</li><li>/stop-sequence</li>
-      <li>/start-sequence</li><li>/slew-target</li><li>/center-target</li>
-      <li>/center-rotate-target</li>
-    </ul>
-    <p class="note">Use these subcommands under <code>/chatstronomy</code> in Discord. Read-only commands do not require hardware-control permission; image queries still require image delivery to be enabled. Matrix and Discord webhooks provide notifications, not slash commands.</p>
-
-    <p>
-      With plugin <strong>0.1.0.28 or newer</strong>, autofocus chooses its path
-      automatically: it runs when N.I.N.A. is idle, or waits for the next light
-      exposure boundary during an advanced sequence. Filter changes and target
-      moves use the same approach. Add the matching <strong>Chatstronomy</strong>
-      trigger to the target's enclosing instruction set to allow queued commands.
-      For Target Scheduler's standard workflow, put the triggers directly on
-      the Target Scheduler container. The simple sequencer and parallel
-      instruction sets do not support queued commands. Requests are cancelled
-      if their target, sequence run, profile, or local permission changes.
-    </p>
-    <p>
-      Target moves use the target configured inside N.I.N.A., never coordinates
-      supplied through chat. When idle, exactly one advanced-sequence target
-      must be loaded. Choose slew, slew and center, or slew, center and rotate
-      to restore the target's position and framing. Cooling and warming
-      remain available while sequencing. Parking, homing, unparking, guiding
-      changes, and exposure abortion require an idle sequence; use
-      <code>stop-sequence</code> first, and
-      <code>start-sequence</code> to start the loaded advanced sequence when idle.
-      A queued or accepted reply does not mean the operation has completed.
-      See the <a href="https://github.com/theatrus/chatstronomy-nina-plugin#commands-while-imaging">command and trigger setup guide</a>
-      for the required triggers and local permissions.
-    </p>
-
-    <div class="callout">
-      <p>
-        <strong>Hardware control and every individual equipment command are disabled by default.</strong>
-        Monitoring and read-only queries remain available. To permit a command,
-        turn on both the local hardware-control master switch and that command's
-        individual permission in the N.I.N.A. profile. Enabling the master
-        switch alone grants no commands.
-      </p>
-      <p>
-        Skipping sequence validation requires separate local approval. Hub or
-        Discord permissions can add further restrictions; neither can enable
-        the master switch or grant an individual equipment permission.
-        Review the <a href="/hub-terms.html">hosted Hub terms</a> or
-        <a href="/terms.html">self-hosted terms</a> for the risks of managing
-        physical equipment remotely.
-      </p>
-      <p>
-        Observatory coordinates and location-derived mount readings are hidden
-        unless location sharing is enabled in N.I.N.A. Hardware device
-        identifiers remain redacted even when location sharing is on.
-      </p>
-    </div>
-  </section>
-
-  <section>
-    <h2>You can select your deployment topology.</h2>
-    <div class="grid two">
-      <div class="card">
-        <h3>The Chatstronomy Hub topology is recommended.</h3>
-        <p>
-          This option pairs multiple N.I.N.A. installations with a centrally managed Discord bot. The observatory computers make outbound encrypted WebSocket connections, which eliminates the need to expose N.I.N.A. or local ports to the internet. Hosted delivery does not support Matrix.
-          <a href="https://hub.chatstronomy.com/">Open the Hub</a> to begin.
-        </p>
+    <section class="session" aria-labelledby="session-heading">
+      <h2 id="session-heading">More than a finished image.</h2>
+      <p class="sub">See focus, guiding, sequence progress, and equipment updates as the night unfolds.</p>
+      <div class="grid two">
+        <figure>
+          <a class="discord-crop dither" href="/assets/discord-session.png" aria-label="View the full Discord screenshot with a guider dither update">
+            <img src="/assets/discord-session.png" width="1668" height="1624" loading="lazy" alt="A Discord guider dither update showing the current target, guiding state, pixel scale, and RA and Dec RMS error.">
+          </a>
+          <figcaption>Guiding updates, right in the channel.</figcaption>
+        </figure>
+        <figure class="focus-shot">
+          <a href="/assets/autofocus-graph.png"><img src="/assets/autofocus-graph.png" loading="lazy" alt="An autofocus report plotted as a V-curve of HFR against focuser position."></a>
+          <figcaption>Autofocus graphs from N.I.N.A. or Hocus Focus reports.</figcaption>
+        </figure>
       </div>
-      <div class="card">
-        <h3>The local host topology is available now.</h3>
-        <p>
-          You can configure the N.I.N.A. plugin to run in Direct mode using a
-          local Discord webhook, a custom Discord application, or a Matrix
-          account. This approach does not route observatory data through
-          Chatstronomy-operated servers; your selected Discord or Matrix
-          service still receives posted content. The plugin manages the local
-          background runtime automatically.
-        </p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section>
-    <h2>The software is open source and independently developed.</h2>
-    <p class="sub" style="max-width:64ch">
-      Chatstronomy is licensed under the Apache License 2.0 and developed publicly at
-      <a href="https://github.com/theatrus/chatstronomy">github.com/theatrus/chatstronomy</a>.
-      It is independent software and has no affiliation with N.I.N.A., Discord, or Matrix.
-      The project logo represents the integration of observatory systems with chat platforms.
-    </p>
-  </section>
+    <section id="nina-plugin" aria-labelledby="install-heading">
+      <div id="install-plugin">
+        <h2 id="install-heading">From N.I.N.A. to Discord in three steps.</h2>
+        <ol class="steps">
+          <li><h3>Install</h3><p>In N.I.N.A., open <strong>Plugins &gt; Available</strong>, install <strong>Chatstronomy</strong>, and restart. No extra repository needed.</p></li>
+          <li><h3>Choose what to share</h3><p>Open the plugin options and review events, images, logs, and location sharing.</p></li>
+          <li><h3>Pair with the Hub</h3><p>Open <a href="https://hub.chatstronomy.com/">Chatstronomy Hub</a>, get a pairing code, and enter it in the plugin. Connect your Discord channel in the Hub.</p></li>
+        </ol>
+        <p class="note">N.I.N.A. 3.2+ on Windows. Before pairing, read the <a href="/hub-privacy.html">Hub privacy policy</a> and <a href="/hub-terms.html">terms</a>.</p>
+        <details class="dev-repo">
+          <summary>Looking for the development repository?</summary>
+          <p>In <strong>Options &gt; General &gt; Plugin Repositories</strong>, select <strong>+</strong> and add:</p>
+          <p><code>https://raw.githubusercontent.com/theatrus/chatstronomy-nina-plugin/main/registry</code></p>
+          <p>This can sit alongside the official repository. <a href="https://github.com/theatrus/chatstronomy-nina-plugin#install-from-nina">Full installation guide</a></p>
+        </details>
+      </div>
+    </section>
+
+    <section class="commands" aria-labelledby="commands-heading">
+      <h2 id="commands-heading">Check in. Or take control.</h2>
+      <p class="sub">Use <code>/chatstronomy</code> in Discord to check status, request an image, or run a locally permitted command.</p>
+      <ul class="cmds" aria-label="Example Discord commands">
+        <li>/chatstronomy status</li><li>/chatstronomy last-image</li>
+        <li>/chatstronomy autofocus</li><li>/chatstronomy center-rotate-target</li>
+      </ul>
+      <p>Hardware commands need both the master switch and individual permission in N.I.N.A. Autofocus, filter changes, and target moves use matching triggers during an advanced sequence.</p>
+      <a href="https://github.com/theatrus/chatstronomy-nina-plugin#commands-while-imaging">Command and trigger guide</a>
+    </section>
+
+    <section class="grid two choices" aria-label="Connection and sharing options">
+      <div>
+        <h2>One rig or several.</h2>
+        <p>Pair each N.I.N.A. computer with the Hub and route its updates to your Discord channels. No observatory ports to open.</p>
+        <p>Prefer local? The plugin can run your own Discord bot, Discord webhook, or Matrix account. Matrix and webhooks support notifications, not slash commands.</p>
+        <a href="https://github.com/theatrus/chatstronomy-nina-plugin#readme">Local setup guide</a>
+      </div>
+      <div>
+        <h2>You choose what leaves N.I.N.A.</h2>
+        <p>Disabled event categories are never sent to the Hub or local bot. Image, log, and location sharing have their own controls. Hub permissions cannot override local command permissions.</p>
+        <a href="/hub-privacy.html">How the Hub handles your data</a>
+      </div>
+    </section>
+  </main>
 
   <footer>
-    <a href="https://hub.chatstronomy.com/">Chatstronomy Hub</a>
+    <p>Open source under Apache-2.0. Independent of N.I.N.A., Discord, and Matrix.</p>
     <a href="https://github.com/theatrus/chatstronomy">Backend source</a>
     <a href="https://github.com/theatrus/chatstronomy-nina-plugin">Plugin source</a>
-    <a href="/hub-terms.html">Hosted Hub terms</a>
-    <a href="/hub-privacy.html">Hosted Hub privacy</a>
+    <a href="/hub-terms.html">Hub terms</a>
+    <a href="/hub-privacy.html">Hub privacy</a>
     <a href="/terms.html">Self-hosted terms</a>
     <a href="/privacy.html">Self-hosted privacy</a>
     <a href="https://github.com/theatrus/chatstronomy/issues">Report an issue</a>

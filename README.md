@@ -42,12 +42,20 @@ flat-panel lifecycle events, timed-wait countdowns, optional slew and rotator
 start/end diagnostics, optional weather-change and high-wind notifications,
 and multi-machine Discord pairing through the recommended
 [Chatstronomy Hub](https://hub.chatstronomy.com/). Install the plugin from
-N.I.N.A.'s official repository once it is listed there, or add our development
-repository URL:
+N.I.N.A.'s official repository under **Plugins > Available**. Our optional
+development repository can be added alongside the official repository:
 
 `https://raw.githubusercontent.com/theatrus/chatstronomy-nina-plugin/main/registry`
 
 The installation notes must remain accurate. The development repository serves the current tagged package without a separate beta channel. Plugin tags are used to sign and verify both the pinned Rust runtime and the `Chatstronomy.dll` library before packaging.
+
+Keep the homepage brief: show real Discord messages, explain installation and
+pairing, and link to the plugin guide and policies for detailed behavior. The
+user-supplied `assets/discord-session.png` is an unmodified screenshot from a real
+session. The homepage shows two CSS-cropped message views, each linking to the
+full screenshot. Do not substitute generated UI or describe standalone graph
+assets as Discord screenshots. Homepage-specific styles live in `assets/home.css`
+so layout changes do not affect policy pages.
 
 Timed sequence waits and Target Scheduler waits show their scheduled end time
 and remaining duration when available. Discord uses native timestamps for local
