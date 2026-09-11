@@ -193,8 +193,33 @@
       <li>/last-image</li><li>/autofocus</li><li>/guider</li><li>/events</li>
       <li>/park</li><li>/unpark</li><li>/home</li><li>/cool</li>
       <li>/change-filter</li><li>/abort-capture</li><li>/stop-sequence</li>
+      <li>/start-sequence</li><li>/slew-target</li><li>/center-target</li>
+      <li>/center-rotate-target</li>
     </ul>
-    <p class="note">The plugin provides twenty-one commands in total. Read-only commands do not require hardware-control permission; image queries still require image delivery to be enabled.</p>
+    <p class="note">Use these subcommands under <code>/chatstronomy</code> in Discord. Read-only commands do not require hardware-control permission; image queries still require image delivery to be enabled. Matrix and Discord webhooks provide notifications, not slash commands.</p>
+
+    <p>
+      With plugin <strong>0.1.0.28 or newer</strong>, autofocus chooses its path
+      automatically: it runs when N.I.N.A. is idle, or waits for the next light
+      exposure boundary during an advanced sequence. Filter changes and target
+      moves use the same approach. Add the matching <strong>Chatstronomy</strong>
+      trigger to the target's enclosing instruction set to allow queued commands.
+      For Target Scheduler's standard planning container, put the triggers
+      directly on that container. Requests are cancelled if their target,
+      sequence run, profile, or local permission changes.
+    </p>
+    <p>
+      Target moves use the target configured inside N.I.N.A., never coordinates
+      supplied through chat. Choose slew, slew and center, or slew, center and
+      rotate to restore the target's position and framing. Cooling and warming
+      remain available while sequencing. Parking, homing, unparking, guiding
+      changes, and exposure abortion require an idle sequence; use
+      <code>stop-sequence</code> first, and
+      <code>start-sequence</code> to start the loaded advanced sequence when idle.
+      A queued or accepted reply does not mean the operation has completed.
+      See the <a href="https://github.com/theatrus/chatstronomy-nina-plugin#commands-while-imaging">command and trigger setup guide</a>
+      for the required triggers and local permissions.
+    </p>
 
     <div class="callout">
       <p>

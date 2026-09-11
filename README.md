@@ -147,3 +147,18 @@ Manager, not in plaintext N.I.N.A. profile settings. With no explicit local
 Discord user allowlist, only server managers issuing requests from the
 telescope's configured Discord channel can request locally approved commands;
 an explicit allowlist replaces that manager fallback.
+
+Plugin 0.1.0.28 adds sequence-safe autofocus, filter changes, and current-target
+slew, center, and center-and-rotate commands. During an advanced sequence,
+these requests need the matching Chatstronomy trigger before a light exposure;
+there is no fallback that interrupts the active exposure. The standard Target
+Scheduler planning container accepts triggers directly on that container, with
+requests bound to the same scheduled project and target. Other scheduler modes
+without a verifiable target are rejected. Pending requests expire or cancel on
+target, sequence-run, profile, or permission changes. Cooling and warming remain
+available while sequencing; other hardware commands are guarded until idle.
+Autofocus cancellation only cancels Chatstronomy's own request. Start/stop use
+N.I.N.A.'s sequence controls. Describe asynchronous replies as accepted or
+queued, not completed. These local safeguards require the updated plugin, not
+just an updated Hub. Slash commands are Discord-only; Matrix and webhooks remain
+notification transports.
