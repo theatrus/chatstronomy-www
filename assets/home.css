@@ -18,13 +18,12 @@
 .home figcaption { font-size: .875rem; line-height: 1.5; }
 .home .discord-crop { display: block; position: relative; overflow: hidden; background: #110d20; border-radius: 12px; }
 .home .discord-crop img { max-width: none; height: auto; position: absolute; border: 0; border-radius: 0; }
-/* Two unaltered message views from the supplied 1668 × 1624 screenshot. */
+/* An unaltered message view from the supplied 1668 × 1624 screenshot. */
 .home .capture { aspect-ratio: 1240 / 1144; }
 .home .capture img { width: 134.516129%; left: 0; top: 0; }
-.home .dither { aspect-ratio: 960 / 480; }
-.home .dither img { width: 173.75%; left: -12.5%; top: -237.5%; }
-.home .focus-shot > a { display: grid; place-items: center; aspect-ratio: 2; background: var(--card); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
-.home .focus-shot img { max-height: 100%; border: 0; border-radius: 0; }
+.home .focus-examples { align-items: center; }
+.home .focus-examples > figure { min-width: 0; }
+.home .focus-examples img { width: 100%; height: auto; }
 .home .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; list-style: none; padding: 0; counter-reset: setup; }
 .home .steps li { counter-increment: setup; margin: 8px 0 0; }
 .home .steps h3 { font-size: 1.05rem; margin: 0 0 10px; }

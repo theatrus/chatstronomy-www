@@ -56,10 +56,14 @@ and [event-sharing reference](https://github.com/theatrus/chatstronomy-nina-plug
 for detailed behavior. Hosted-service privacy links must still point to the
 [Hub privacy policy](https://chatstronomy.com/hub-privacy.html), not the plugin reference. The
 user-supplied `assets/discord-session.png` is an unmodified screenshot from a real
-session. The homepage shows two CSS-cropped message views, each linking to the
-full screenshot. Do not substitute generated UI or describe standalone graph
-assets as Discord screenshots. Homepage-specific styles live in `assets/home.css`
-so layout changes do not affect policy pages.
+session. The homepage shows a CSS-cropped capture view linking to the full
+screenshot. The user-supplied `assets/hocus-focus-graph.png` is a real
+Chatstronomy-generated Hocus Focus graph; `assets/discord-autofocus-results.png`
+is a real Discord autofocus results screenshot. Both are stored unmodified,
+shown without cropping at their natural aspect ratios, and linked at full size.
+Do not substitute generated UI or describe standalone graph assets as Discord
+screenshots. Homepage-specific styles live in `assets/home.css` so layout
+changes do not affect policy pages.
 
 Timed sequence waits and Target Scheduler waits show their scheduled end time
 and remaining duration when available. Discord uses native timestamps for local
