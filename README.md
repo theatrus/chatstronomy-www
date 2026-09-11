@@ -47,10 +47,14 @@ development repository can be added alongside the official repository:
 
 `https://raw.githubusercontent.com/theatrus/chatstronomy-nina-plugin/main/registry`
 
-The installation notes must remain accurate. The development repository serves the current tagged package without a separate beta channel. Plugin tags are used to sign and verify both the pinned Rust runtime and the `Chatstronomy.dll` library before packaging.
+The installation notes must remain accurate. The development repository serves the current tagged package without a separate beta channel. Plugin tags are used to sign and verify both the pinned Rust runtime and the `Chatstronomy.dll` library before packaging. See the plugin's [build and test guide](https://github.com/theatrus/chatstronomy-nina-plugin/blob/main/docs/development.md).
 
 Keep the homepage brief: show real Discord messages, explain installation and
-pairing, and link to the plugin guide and policies for detailed behavior. The
+pairing, and link directly to the plugin's
+[command guide](https://github.com/theatrus/chatstronomy-nina-plugin/blob/main/docs/commands.md)
+and [event-sharing reference](https://github.com/theatrus/chatstronomy-nina-plugin/blob/main/docs/events-and-privacy.md)
+for detailed behavior. Hosted-service privacy links must still point to the
+[Hub privacy policy](https://chatstronomy.com/hub-privacy.html), not the plugin reference. The
 user-supplied `assets/discord-session.png` is an unmodified screenshot from a real
 session. The homepage shows two CSS-cropped message views, each linking to the
 full screenshot. Do not substitute generated UI or describe standalone graph
