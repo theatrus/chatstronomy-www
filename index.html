@@ -204,14 +204,16 @@
       exposure boundary during an advanced sequence. Filter changes and target
       moves use the same approach. Add the matching <strong>Chatstronomy</strong>
       trigger to the target's enclosing instruction set to allow queued commands.
-      For Target Scheduler's standard planning container, put the triggers
-      directly on that container. Requests are cancelled if their target,
-      sequence run, profile, or local permission changes.
+      For Target Scheduler's standard workflow, put the triggers directly on
+      the Target Scheduler container. The simple sequencer and parallel
+      instruction sets do not support queued commands. Requests are cancelled
+      if their target, sequence run, profile, or local permission changes.
     </p>
     <p>
       Target moves use the target configured inside N.I.N.A., never coordinates
-      supplied through chat. Choose slew, slew and center, or slew, center and
-      rotate to restore the target's position and framing. Cooling and warming
+      supplied through chat. When idle, exactly one advanced-sequence target
+      must be loaded. Choose slew, slew and center, or slew, center and rotate
+      to restore the target's position and framing. Cooling and warming
       remain available while sequencing. Parking, homing, unparking, guiding
       changes, and exposure abortion require an idle sequence; use
       <code>stop-sequence</code> first, and

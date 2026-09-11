@@ -151,10 +151,12 @@ an explicit allowlist replaces that manager fallback.
 Plugin 0.1.0.28 adds sequence-safe autofocus, filter changes, and current-target
 slew, center, and center-and-rotate commands. During an advanced sequence,
 these requests need the matching Chatstronomy trigger before a light exposure;
-there is no fallback that interrupts the active exposure. The standard Target
-Scheduler planning container accepts triggers directly on that container, with
-requests bound to the same scheduled project and target. Other scheduler modes
-without a verifiable target are rejected. Pending requests expire or cancel on
+there is no fallback that interrupts the active exposure. In Target Scheduler's
+standard workflow, add the triggers directly to the Target Scheduler container;
+requests remain bound to the same scheduled project and target. Other scheduler
+modes without a verifiable target, parallel instruction sets, and the simple
+sequencer do not support queued commands. Idle target moves require exactly one
+loaded advanced-sequence target. Pending requests expire or cancel on
 target, sequence-run, profile, or permission changes. Cooling and warming remain
 available while sequencing; other hardware commands are guarded until idle.
 Autofocus cancellation only cancels Chatstronomy's own request. Start/stop use
